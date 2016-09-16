@@ -3,6 +3,15 @@ $(document).ready(function () {
 //    go();
 });
 
+$(window).load(function () {
+    go();
+});
+
+function go() {
+    var height = getHeight("#content");
+    setCSSProperty("aside","height",height);
+}
+
 
 function includeHtml(htmlToInclude, elementId) {
     $(function () {

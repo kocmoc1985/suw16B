@@ -66,17 +66,15 @@ footer{
 #content{
     background-color: rgba(255,0,255,0.1);
     float: left;
-    margin-top: 0px;
-    margin-bottom:0px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 50px;
-    width: 100%;
+    /*padding-bottom: 50px;*/
+    width: 80%;
     height: auto;
+    min-height: 600px;
     overflow: auto;
     font-size: larger;
 }
 
+/*============================================================================*/
 
 .centeredTextSnippet{
     font-size: 17pt;
@@ -93,10 +91,12 @@ footer{
 article{
     margin-top: 40px;
     margin-left: 20px;
+    margin-bottom: 40px;
     width: 85%;
     background-color: rgba(255,0,255,0.1);
     padding-bottom: 20px;
 }
+
 
 article p,h3{
     padding-top: 10px;
@@ -115,4 +115,51 @@ article img{
     margin-right: 40px;
     margin-left:20px;
     margin-bottom: 10px;
+}
+
+/*============================================================================*/
+
+
+aside{
+    background-color: rgba(255,255,255,0.5);
+    float:left;
+    width: 20%;
+    height: auto;
+    padding-bottom: 10px;
+    /*overflow: auto;*/
+}
+
+.link {
+    /*display: inline-block;*/
+    font-size:16pt;
+    font-style: italic;
+    width: 85%;
+
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    /*overflow: auto;*/
+    /*drop shadow*/
+    -webkit-box-shadow: 0px 0px 5px 0px #444;
+    -moz-box-shadow: 0px 0px 5px 0px #444;
+    box-shadow: 0px 0px 5px 0px #444;
+
+    -o-transition:1s;
+    -ms-transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
+    transition: 1s;
+}
+
+.link:hover{
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    width: 90%;
+
+    -webkit-box-shadow: 0px 0px 15px 0px #6666FF;
+    -moz-box-shadow: 0px 0px 15px 0px #6666FF;
+    box-shadow: 0px 0px 15px 0px #6666FF;
 }
