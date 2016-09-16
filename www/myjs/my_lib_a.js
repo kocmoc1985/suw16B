@@ -920,15 +920,16 @@ function slideDown(element_id_class_tag) {
 }
 
 /**
- * 
- * @param {String} rightOrLeft - "left" or "right"
- * @param {String} elemIdTagOrClass description
+ * Slide left or right
+ * @param {type} elemIdTagOrClass
+ * @param {String} width
+ * @param {int} millis animation duration
  * @returns {undefined}
  */
-function slideLeftOrRight(elemIdTagOrClass, rightOrLeft) {
-    $(elemIdTagOrClass).hide('slide', {direction: "'" + rightOrLeft + "'"}, 1000);
-
+function slideSideWards(elemIdTagOrClass,width,millis) {
+    $(elemIdTagOrClass).animate({width:width},millis);
 }
+
 
 
 /**
@@ -1285,6 +1286,7 @@ function stopBubbling(event) {
  *      preventDefaultAction(eventObj);
  *  }
  * 
+ * "getEventObject()" Returns the EVENT it's self, NOT the "EventTargetElement"
  * 
  * @param {Event} eventObject
  * @returns {@exp;window@pro;event}
@@ -1300,7 +1302,7 @@ function getEventObject(eventObject) {
 }
 
 /**
- * Returns the element to which the event belongs
+ * Returns the element to which the event belongs, not the EVENT!!
  * @param {Event} eventObject
  * @returns {@exp;eventObject@pro;srcElement|@exp;eventObject@pro;target}
  */
@@ -1653,6 +1655,12 @@ function setCheckedForCheckBox(elem_id, checked) {
     $("#" + elem_id).prop('checked', checked);
 }
 
+function includeHtml(htmlToInclude, elementId) {
+    $(function () {
+        $("#" + elementId).load(htmlToInclude);
+    });
+}
+
 /**
  *This method is useful when you have for example a button
  *and when you press it the action uppon pressing the button
@@ -1813,15 +1821,14 @@ function hideElement(elementId, property) {
     document.getElementById(elementId).style.visibility = property;
 }
 
-/**
- * 
- * @param {String} element_id_tag_class
- * @returns {undefined}
- */
-function hideElementByAnything(element_id_tag_class) {
+
+function hideElementsByAnything(element_id_tag_class) {
     $(element_id_tag_class).hide();
 }
 
+function unhideElementsByAnything(element_id_tag_class){
+    $(element_id_tag_class).show();
+}
 
 
 

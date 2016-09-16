@@ -1,27 +1,45 @@
 
 $(document).ready(function () {
-//    go();
-});
-
-$(window).load(function () {
     go();
 });
 
+$(window).load(function () {
+//    go();
+});
+
+var initialSideBarWidth;
+
 function go() {
-    var elem = getElementByEnything("aside");
-   //
-    $(elem).click(function (event) {
-        alert("click");
-         slideDown(elem);
-    });
+    //
+    var elem = getElement("sidebar");
+    initialSideBarWidth = getWidth(elem);
+    addEvent(elem, "click", sideBarClicked);
+    //
     //
     var height = getHeight("#content");
-    setCSSProperty("aside","height",height);
+    setCSSProperty("aside", "height", height);
 }
 
-function sideBarClicked(event){
-    var elem = getElementByEnything("aside");
-    slideLeftOrRight(elem,"left");
+
+
+function sideBarClicked(event) {
+    //
+    var elem = getEventTargetElement(event);
+    //
+    if(getClassName(elem)=== "link"){
+        return;
+    }
+    //
+    var sidebarWidth = getWidth(elem);
+    //
+    if (sidebarWidth > 50) {
+        hideElementsByAnything(".link");
+        slideSideWards(elem, "20px",1000);
+    } else {
+        slideSideWards(elem, initialSideBarWidth + "px",200);
+        unhideElementsByAnything(".link");
+    }
+
 }
 
 
