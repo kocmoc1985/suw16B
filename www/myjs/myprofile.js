@@ -8,8 +8,20 @@ $(window).load(function () {
 });
 
 function go() {
+    var elem = getElementByEnything("aside");
+   //
+    $(elem).click(function (event) {
+        alert("click");
+         slideDown(elem);
+    });
+    //
     var height = getHeight("#content");
     setCSSProperty("aside","height",height);
+}
+
+function sideBarClicked(event){
+    var elem = getElementByEnything("aside");
+    slideLeftOrRight(elem,"left");
 }
 
 

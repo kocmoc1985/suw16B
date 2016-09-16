@@ -20,7 +20,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES FIRTS OF ALL
      */
-    $(document).ready(function() {
+    $(document).ready(function () {
         go();
     });
 
@@ -28,7 +28,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES AFTER "doc.ready"
      */
-    $(window).load(function() {
+    $(window).load(function () {
         addTransitonToNavBarBtns();
     });
 }
@@ -217,11 +217,11 @@ function addEventB(elemId, eventType, eventFunction) {
 }
 
 function addEvent_jquery_example() {
-    $("#test").click(function(event) {
+    $("#test").click(function (event) {
         //do something
     });
     ///==========OR===================
-    $("#test").hover()(function(event) {
+    $("#test").hover()(function (event) {
         //do something
     });
 }
@@ -332,7 +332,7 @@ function addEventToTheDocument(event, eventfunction) {
  * @returns {undefined}
  */
 function addHoverEventJquery(elem_id_or_tag_name) {
-    $(elem_id_or_tag_name).hover(function() {
+    $(elem_id_or_tag_name).hover(function () {
         $(this).hide();
     });
 }
@@ -618,7 +618,7 @@ function JSONbasics() {
  * @returns {nothing}
  */
 function getJsonFromUrlAsync(url) {
-     $.getJSON(url, function(data) { 
+     $.getJSON(url, function (data) { 
         ///
      });
 }
@@ -628,7 +628,7 @@ function getJsonFromUrlAsync(url) {
  * @returns {undefined}
  */
 function getJsonFromUrlEx() { 
-     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function(data) { 
+     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function (data) { 
         for (x in data) { 
             debugg("key:" + x + " value: " + data[x]);
          }
@@ -705,7 +705,7 @@ function ajaxRequest(recieving_script, paramter_name, value_to_send, asynchron) 
  * @tags ajax, xmlhttp
  */
 function ajaxRequestReady(xmlhttp, function_to_execute) {
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             function_to_execute(xmlhttp.responseText);
         } else {
@@ -774,7 +774,7 @@ function ajaxRequestJQuerry() {
         type: "POST",
         url: "some.php",
         data: {name: "John", location: "Boston"}
-    }).done(function(msg) {
+    }).done(function (msg) {
         alert("Data Saved: " + msg);
     });
 }
@@ -782,9 +782,9 @@ function ajaxRequestJQuerry() {
 function ajaxEventsExamples() {
     //
     //Super important event
-    $(document).ajaxStart(function() {
+    $(document).ajaxStart(function () {
         console.log("ajaxStart");
-    }).ajaxStop(function() {
+    }).ajaxStop(function () {
         console.log("ajaxStop");
     });
     //============================
@@ -802,7 +802,7 @@ function ajaxRequestJQuerryTest1() {
         type: "POST",
         url: "http://www.mixcont.com/index.php",
         data: {link: "_http_com", client: "901", param: "ip"}
-    }).done(function(msg) {
+    }).done(function (msg) {
         alert("Ajax Data recieved: " + msg);
     });
 }
@@ -819,7 +819,7 @@ function ajaxRequestJQuerryTest2() {
         async: true, //is true by default
         type: "GET",
         url: "https://api.ipify.org?format=json"
-    }).done(function(jsonStr) {
+    }).done(function (jsonStr) {
         alert("Ajax Data recieved: " + jsonStr["ip"]);
     });
 }
@@ -916,7 +916,18 @@ function fadeOut(element) {
  * @returns {undefined}
  */
 function slideDown(element_id_class_tag) {
-    $(element_id_class_tag).slideDown();
+    $(element_id_class_tag).slideUp();
+}
+
+/**
+ * 
+ * @param {String} rightOrLeft - "left" or "right"
+ * @param {String} elemIdTagOrClass description
+ * @returns {undefined}
+ */
+function slideLeftOrRight(elemIdTagOrClass, rightOrLeft) {
+    $(elemIdTagOrClass).hide('slide', {direction: "'" + rightOrLeft + "'"}, 1000);
+
 }
 
 
@@ -927,7 +938,7 @@ function slideDown(element_id_class_tag) {
  * @returns {undefined}
  */
 function blinkA(idElemClass, intervall) {
-    var intervalID = setInterval(function() {
+    var intervalID = setInterval(function () {
         blinkB(idElemClass);
     }, intervall);
     //This one is to stop the "Thread"
@@ -951,7 +962,7 @@ function blinkB(idElemClass) {
  * @returns {undefined}
  */
 function forEachElement(element_id_class_tag) {
-    $(element_id_class_tag).each(function(index, item) {
+    $(element_id_class_tag).each(function (index, item) {
         //Do something
         $(item).slideUp(); // $(item).remove();
     });
@@ -1409,7 +1420,7 @@ function validateEmailPrimitive(formId, emailFieldId) {
  * @returns {undefined}
  */
 function removeDefaultEventClick(elementOrItsID) {
-    $(elementOrItsID).click(function(event) {
+    $(elementOrItsID).click(function (event) {
         event.preventDefault();
     });
 }
