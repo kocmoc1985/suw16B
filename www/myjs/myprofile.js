@@ -21,6 +21,19 @@ function go() {
     //
     //
     setSideBarHeight();
+    //
+    submit();
+}
+
+function submit() {
+    $.ajax({
+        async: "true", //is true by default
+        type: "POST",
+        url: "http://localhost:3000/login",
+        data: {user: "Kocmoc", password: "4765"}
+    }).done(function (msg) {
+        alert("Data Saved: " + msg);
+    });
 }
 
 function setSideBarHeight() {
