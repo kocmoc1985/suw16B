@@ -21,7 +21,6 @@ body{
     margin-right: auto;
     text-align: left;
     width: 1200px;
-    position: relative;
     margin-bottom: 50px;
     height:auto;
     overflow: auto;
@@ -68,7 +67,7 @@ footer{
     float: left;
     /*padding-bottom: 50px;*/
     width: 80%;
-    height: auto;
+    /*height: 90%;*/
     min-height: 600px;
     overflow: auto;
     font-size: larger;
@@ -98,7 +97,7 @@ article{
 }
 
 
-article p,h3{
+article p, article ph3{
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;

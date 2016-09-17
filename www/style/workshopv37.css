@@ -48,7 +48,6 @@ html, body
     height: calc(100% - 100px);
     overflow: auto;
     border-style: solid;
-    display: inline;
 }
 
 /*============================================================================*/

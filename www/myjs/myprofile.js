@@ -12,7 +12,6 @@ var contentElem;
 var initialContentWidth;
 
 function go() {
-    //
     contentElem = getElement("content");
     initialContentWidth = getWidth(contentElem);
     //
@@ -21,6 +20,10 @@ function go() {
     addEvent(sidebar, "click", sideBarClicked);
     //
     //
+    setSideBarHeight();
+}
+
+function setSideBarHeight() {
     var height = getHeight("#content");
     setCSSProperty("aside", "height", height);
 }
@@ -36,16 +39,16 @@ function sideBarClicked(event) {
     //
     var sidebarWidth = getWidth(elem);
     //
-    if (sidebarWidth > 50) {
+    if (sidebarWidth > 50) { //hide sidebar
         //
         hideElementsByAnything(".link");
         slideSideWards(elem, "20px", 1000);
         //
         var summ = initialContentWidth + initialSideBarWidth;
-        slideSideWards(contentElem, (summ-20) + "px", 1000);
+        slideSideWards(contentElem, (summ - 20) + "px", 1000);
         setCSSProperty("article", "width", "95%");
         //
-    } else {
+    } else {// show
         slideSideWards(elem, initialSideBarWidth + "px", 1000);
         unhideElementsByAnything(".link");
         slideSideWards(contentElem, initialContentWidth + "px", 1000);
@@ -87,5 +90,10 @@ function testInsert2BasicArticles() {
     //
     document.write("<article>");
     insertBasicArticle("Article 2", "pen.png");
+    document.write("</article>");
+    //
+    //
+    document.write("<article>");
+    insertBasicArticle("Article 3", "pen.png");
     document.write("</article>");
 }
