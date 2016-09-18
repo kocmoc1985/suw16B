@@ -43,6 +43,8 @@ module.exports = class Server {
 //  res.sendfile("index.html");
 //});
 
+//==============================================================================
+
 this.app.post('/nodeTest', function (req, res) {
     //
     var param1 = req.body.param1;
@@ -51,6 +53,7 @@ this.app.post('/nodeTest', function (req, res) {
     res.end("Server: Param1 = " + param1 + ", Param2 = " + param2);
     });
     
+ //=============================================================================
  
  var mysql      = require('mysql');
  var connectionMySql;
