@@ -68,8 +68,17 @@ this.app.post('/connectMySql', function (req, res) {
     connectMySql(ip,user,pass,db,res);
     //
 });
+
+this.app.post('/executeSelect', function (req, res) {
+    //
+    var query = req.body.query;
+    //
+    executeSelect(connectionMySql,query,res);
+});
     
-    
+ 
+connectMySql("localhost","root","","vedalife_se",null);
+ 
 function connectMySql(ip,user,pass,dbname,response){
     //
       connectionMySql =  mysql.createConnection({
@@ -82,13 +91,46 @@ function connectMySql(ip,user,pass,dbname,response){
     connectionMySql.connect(function(err){
         if(!err) {
             console.log("Database is connected ... nn");
-            response.end("Connection to: " + dbname + "   OK");
+            //           
+            //
+            if(response !== null){
+                response.end("Connection to: " + dbname + "   OK");
+            }
+            //
         } else {
             console.log("Error connecting database ... nn" + err);
-            response.end("Connection to: " + dbname + "   Failed: " + err);
+             if(response !== null){
+                 response.end("Connection to: " + dbname + "   Failed: " + err);
+             }
         }
     });
-     
+    // 
+}
+
+function executeSelect(connection,query,response){
+    
+    //
+    connection.query(query, function(err, rows, fields) {
+//    connection.end();
+    //
+    if (!err)
+        //
+        console.log("Query successful: " + query);
+        //
+       if(response !== null){
+            response.json(rows);
+        }
+        //
+    else
+        //
+        console.log('Error while performing Query:' + query);
+        //
+       if(response !== null){
+            response.end('Error while performing Query: ' + query);
+        }
+        //
+  });
+    //
 }
 
 
@@ -99,7 +141,6 @@ function connectMySql(ip,user,pass,dbname,response){
       console.log("Server listening on port "+me.settings.port);
     });
   }
-  
   
   
 }
