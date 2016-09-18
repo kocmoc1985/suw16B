@@ -35,23 +35,30 @@ module.exports = class Server {
     // listen on port 3000
     var me = this;
 
-//=============================================================================    
+//==============================================================================
+//==============================================================================
     
-var express        =         require("express");
-var bodyParser     =         require("body-parser");    
-    
-this.app.use(bodyParser.urlencoded({ extended: false }));
-this.app.use(bodyParser.json());
+//var express        =         require("express");
+//var bodyParser     =         require("body-parser");    
+//    
+//this.app.use(bodyParser.urlencoded({ extended: false }));
+//this.app.use(bodyParser.json());
 
 
-this.app.post('/login', function (req, res) {
-    var user_name = req.body.user;
-    var password = req.body.password;
-    console.log("User name = " + user_name + ", password is " + password);
-    res.end("Server User name = " + user_name + ", password is " + password);
-});
+this.app.post('/nodeTest', function (req, res) {
+    //
+    var param1 = req.body.param1;
+    var param2 = req.body.param2;
+    //
+    res.end("Server: Param1 = " + param1 + ", Param2 = " + param2);
+    });
 
-//=============================================================================
+
+
+
+
+//==============================================================================
+//==============================================================================
     
     this.app.listen(this.settings.port,  function() {
       console.log("Server listening on port "+me.settings.port);

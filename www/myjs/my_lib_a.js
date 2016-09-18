@@ -661,6 +661,34 @@ function getJsonFromUrlSync(url) {
 
 //=================================</JSON>======================================
 
+//=================================<NODE>======================================
+
+function node_client_SendPostRequestEx() {
+    $.ajax({
+        async: "true", //is true by default
+        type: "POST",
+        url: "http://localhost:3000/nodeTest",
+        data: {param1: "Node.js", param2: "test successful"}
+    }).done(function (msg) {
+        //toDo
+        alert("Data Saved: " + msg);
+    });
+}
+
+function node_server_RecievePostExample() {
+    //
+    this.app.post('/nodeTest', function (req, res) {
+        //
+        var param1 = req.body.param1;
+        var param2 = req.body.param2;
+        //
+        res.end("Server: Param1 = " + param1 + ", Param2 = " + param2);
+    });
+}
+
+//=================================</NODE>======================================
+
+
 //=============================<AJAX>===========================================
 
 //#1. Synchronius calls are not so good to use in AJAX as i understand
@@ -683,16 +711,15 @@ function ajaxRequest(recieving_script, paramter_name, value_to_send, asynchron) 
         return;
     }
     if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
+// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
     } else {
-        // code for IE6, IE5
+// code for IE6, IE5
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
     xmlhttp.open("GET", recieving_script + "?" + paramter_name + "=" + value_to_send, asynchron);
     xmlhttp.send();
-
     return xmlhttp;
 }
 
@@ -726,7 +753,7 @@ function ajaxAddResponse(element_id_to_add_to, response) {
     if (classExists("response")) {
         removeClass("response");
     }
-    //
+//
     var newDiv = document.createElement("div");
     newDiv.setAttribute("class", "response");
     newDiv.innerHTML = response;
@@ -780,8 +807,8 @@ function ajaxRequestJQuerry() {
 }
 
 function ajaxEventsExamples() {
-    //
-    //Super important event
+//
+//Super important event
     $(document).ajaxStart(function () {
         console.log("ajaxStart");
     }).ajaxStop(function () {
@@ -926,8 +953,8 @@ function slideDown(element_id_class_tag) {
  * @param {int} millis animation duration
  * @returns {undefined}
  */
-function slideSideWards(elemIdTagOrClass,width,millis) {
-    $(elemIdTagOrClass).animate({width:width},millis);
+function slideSideWards(elemIdTagOrClass, width, millis) {
+    $(elemIdTagOrClass).animate({width: width}, millis);
 }
 
 
@@ -964,7 +991,7 @@ function blinkB(idElemClass) {
  */
 function forEachElement(element_id_class_tag) {
     $(element_id_class_tag).each(function (index, item) {
-        //Do something
+//Do something
         $(item).slideUp(); // $(item).remove();
     });
 }
@@ -982,7 +1009,7 @@ function forEachElement(element_id_class_tag) {
  */
 function setColorOfAnElementInsideParentElement(parentElement, tagName, color) {
     var elemArr = parentElement.getElementsByTagName(tagName);
-    var elemWithGivenTag = elemArr[0];// We think of a case with 1 such tagname in Container
+    var elemWithGivenTag = elemArr[0]; // We think of a case with 1 such tagname in Container
     setFontColor(elemWithGivenTag, color);
 }
 
@@ -1218,7 +1245,7 @@ function getDocumentTitle() {
  * @returns {undefined}
  */
 function openLinkInTheSameWindow(link) {
-    //for HTML use: target="_self"
+//for HTML use: target="_self"
     window.open(link, "_self");
 }
 
@@ -1237,7 +1264,7 @@ function openLinkInNewWindow(link) {
  * @returns {undefined}
  */
 function openLinkInNewTab(link) {
-    //for HTML use: target="_blank"
+//for HTML use: target="_blank"
     window.open(link, "_blank");
 }
 
@@ -1250,7 +1277,7 @@ function preventDefaultActionEvent(eventObject) {
     if (eventObject.preventDefault) { //DOM
         eventObject.preventDefault();
     }
-    //
+//
     if (window.event) { //IE
         window.event.returnValue = false;
     }
@@ -1519,13 +1546,60 @@ function arrayIndexExists(array, index) {
 }
 /**
  * 
- * @param {String} elem_id - element to add to
+ * @param {String} elem_id_class_tag - element to add to
  * @param {String} tag - tag of the element which is to be added
  * @param {String} text
  * @returns {undefined}
  */
-function addElement(elem_id, tag, text) {
-    $('#' + elem_id).append("<" + toLowerCase(tag) + ">" + text + "</" + toLowerCase(tag) + ">");
+function addElement(elem_id_class_tag, tag, text) {
+    $(elem_id_class_tag).append("<" + toLowerCase(tag) + ">" + text + "</" + toLowerCase(tag) + ">");
+}
+
+/**
+ * Same as "appendOneElementToAnother"
+ * @param {type} elem_id_class_tag
+ * @param {type} element_to_be_appended
+ * @returns {undefined}
+ */
+function addElementB(elem_id_class_tag, element_to_be_appended) {
+    $(elem_id_class_tag).append(element_to_be_appended);
+}
+
+/**
+ * 
+ * @param {type} elem_id_class_tag
+ * @param {type} element_to_be_appended
+ * @returns {undefined}
+ */
+function appendOneElementToAnother(elem_id_class_tag, element_to_be_appended) {
+    $(elem_id_class_tag).append(element_to_be_appended);
+}
+
+
+function insertFirst(elem_id_class_tag, parent_elem_id) {
+    $(elem_id_class_tag).prependTo($(parent_elem_id));
+}
+
+/**
+ * Moves one element above the other
+ * @Param parentId = the Element in which the "change position " is to be done
+ * @Param itemToMoveUp = the element that shoul be moved up
+ * @Param itemToMoveDown = the element that is moved under the "itemToMoveUp"
+ */
+function insertBeforeAnother(parentId, itemToMoveUp, itemToMoveDown) {
+    document.getElementById(parentId).insertBefore(document.getElementById(itemToMoveUp),
+            document.getElementById(itemToMoveDown));
+}
+
+/**
+ * @tags appendAfter, append after
+ * @note it can be also tag,id,class not only element
+ * @param {type} element_to_insert
+ * @param {type} element_after_which_the_new_elem_is_inserted
+ * @returns {undefined}
+ */
+function insertAfter(element_to_insert, element_after_which_the_new_elem_is_inserted) {
+    $(element_to_insert).insertAfter($(element_after_which_the_new_elem_is_inserted));
 }
 
 /**
@@ -1537,8 +1611,8 @@ function addElement(elem_id, tag, text) {
  * @returns {undefined}
  */
 function setAttribute(element, key, value) {
-    //Example
-    //elem.setAttribute("type","button"); 
+//Example
+//elem.setAttribute("type","button"); 
     element.setAttribute(key, value);
 }
 
@@ -1701,7 +1775,6 @@ function searchStringForOccurencesOfStringX(strToSearch, strToFind) {
 
     var startAt = 0;
     var nrHits = 0;
-
     while ((startAt < strToSearch.length) && (startAt !== -1)) {
         startAt = strToSearch.indexOf(strToFind, startAt);
         if (startAt !== -1) {
@@ -1826,34 +1899,13 @@ function hideElementsByAnything(element_id_tag_class) {
     $(element_id_tag_class).hide();
 }
 
-function unhideElementsByAnything(element_id_tag_class){
+function unhideElementsByAnything(element_id_tag_class) {
     $(element_id_tag_class).show();
 }
 
 
 
-/**
- * Moves one element above the other
- * @Param parent = the Element in which the "change position " is to be done
- * @Param itemToMoveUp = the element that shoul be moved up
- * @Param itemToMoveDown = the element that is moved under the "itemToMoveUp"
- */
-function insertBeforeAnother(parent, itemToMoveUp, itemToMoveDown) {
-    document.getElementById(parent).insertBefore(document.getElementById(itemToMoveUp),
-            document.getElementById(itemToMoveDown));
 
-}
-
-/**
- * @tags appendAfter, append after
- * @note it can be also tag,id,class not only element
- * @param {type} element_to_insert
- * @param {type} element_after_which_the_new_elem_is_inserted
- * @returns {undefined}
- */
-function insertAfter(element_to_insert, element_after_which_the_new_elem_is_inserted) {
-    $(element_to_insert).insertAfter($(element_after_which_the_new_elem_is_inserted));
-}
 
 /**
  * @tags clone element, copy element
@@ -1866,15 +1918,7 @@ function cloneElement(class_to_clone, id_of_elem_to_append_to) {
     $("#" + id_of_elem_to_append_to).append(clone);
 }
 
-/**
- * 
- * @param {type} id_of_elem_to_append_to
- * @param {type} element_to_be_appended
- * @returns {undefined}
- */
-function appendOneElementToAnother(id_of_elem_to_append_to, element_to_be_appended) {
-    $("#" + id_of_elem_to_append_to).append(element_to_be_appended);
-}
+
 
 /**
  * @tag create element, create_element, new element
@@ -1950,7 +1994,6 @@ function removeClass(className) {
  */
 function removeAllElementsForParentX(parentID) {
     var parent = document.getElementById(parentID);
-
     while (true) {
         try {
             parent.removeChild(parent.firstChild);

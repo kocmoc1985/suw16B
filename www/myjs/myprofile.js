@@ -12,6 +12,7 @@ var contentElem;
 var initialContentWidth;
 
 function go() {
+    //
     contentElem = getElement("content");
     initialContentWidth = getWidth(contentElem);
     //
@@ -20,23 +21,42 @@ function go() {
     addEvent(sidebar, "click", sideBarClicked);
     //
     //
-    setSideBarHeight();
+    addEvent(getElement("testSubmit"), "click", node_client_SendPostRequest);
     //
-    submit();
+    adjustSideBarHeight();
+    //
 }
 
-function submit() {
+function node_client_SendPostRequest() {
     $.ajax({
         async: "true", //is true by default
         type: "POST",
-        url: "http://localhost:3000/login",
-        data: {user: "Kocmoc", password: "4765"}
+        url: "http://localhost:3000/nodeTest",
+        data: {param1: "Node.js", param2: "test successful"}
     }).done(function (msg) {
-        alert("Data Saved: " + msg);
+//        alert("Data Saved: " + msg);
+        processNodeResponse(msg);
     });
 }
 
-function setSideBarHeight() {
+function processNodeResponse(response) {
+    //
+    var elemh3 = createElement("h3");
+    setTextB(elemh3,"Node.js response");
+    //
+    var elemArticle = createElement("article");
+    addElementB(elemArticle, elemh3);
+    //
+    var response_p = "<p>" + response + "</p>";
+    addElementB(elemArticle,response_p);
+    //
+    insertFirst(elemArticle, getElement("content"));
+    //
+    adjustSideBarHeight();
+}
+
+
+function adjustSideBarHeight() {
     var height = getHeight("#content");
     setCSSProperty("aside", "height", height);
 }
@@ -101,12 +121,8 @@ function testInsert2BasicArticles() {
     document.write("</article>");
     //
     //
-    document.write("<article>");
-    insertBasicArticle("Article 2", "pen.png");
-    document.write("</article>");
+//    document.write("<article>");
+//    insertBasicArticle("Article 2", "pen.png");
+//    document.write("</article>");
     //
-    //
-    document.write("<article>");
-    insertBasicArticle("Article 3", "pen.png");
-    document.write("</article>");
 }
