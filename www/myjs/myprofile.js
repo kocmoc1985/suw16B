@@ -22,9 +22,21 @@ function go() {
     //
     //
     addEvent(getElement("testSubmit"), "click", node_client_SendPostRequest);
+    addEvent(getElement("mysql"), "click", node_client_connect_db);
     //
     adjustSideBarHeight();
     //
+}
+
+function node_client_connect_db() {
+    $.ajax({
+        async: "true", //is true by default
+        type: "POST",
+        url: "http://localhost:3000/connectMySql",
+        data: {ip: "localhost", user: "root",pass: "",database:"vedalife_se"}
+    }).done(function (msg) {
+        processNodeResponse(msg);
+    });
 }
 
 function node_client_SendPostRequest() {

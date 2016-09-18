@@ -38,11 +38,6 @@ module.exports = class Server {
 //==============================================================================
 //==============================================================================
     
-//var express        =         require("express");
-//var bodyParser     =         require("body-parser");    
-//    
-//this.app.use(bodyParser.urlencoded({ extended: false }));
-//this.app.use(bodyParser.json());
 
 //this.app.get('/',function(req,res){
 //  res.sendfile("index.html");
@@ -55,6 +50,43 @@ this.app.post('/nodeTest', function (req, res) {
     //
     res.end("Server: Param1 = " + param1 + ", Param2 = " + param2);
     });
+    
+ 
+ var mysql      = require('mysql');
+ var connectionMySql;
+ 
+this.app.post('/connectMySql', function (req, res) {
+    //
+    var ip = req.body.ip;
+    var user  = req.body.user;
+    var pass = req.body.pass;
+    var db = req.body.database;
+    //
+    connectMySql(ip,user,pass,db,res);
+    //
+});
+    
+    
+function connectMySql(ip,user,pass,dbname,response){
+    //
+      connectionMySql =  mysql.createConnection({
+      host     : ip,
+      user     : user,
+      password : pass,
+      database : dbname
+    });
+    //
+    connectionMySql.connect(function(err){
+        if(!err) {
+            console.log("Database is connected ... nn");
+            response.end("Connection to: " + dbname + "   OK");
+        } else {
+            console.log("Error connecting database ... nn" + err);
+            response.end("Connection to: " + dbname + "   Failed: " + err);
+        }
+    });
+     
+}
 
 
 //==============================================================================
@@ -64,4 +96,7 @@ this.app.post('/nodeTest', function (req, res) {
       console.log("Server listening on port "+me.settings.port);
     });
   }
+  
+  
+  
 }
