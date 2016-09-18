@@ -44,6 +44,9 @@ module.exports = class Server {
 //this.app.use(bodyParser.urlencoded({ extended: false }));
 //this.app.use(bodyParser.json());
 
+//this.app.get('/',function(req,res){
+//  res.sendfile("index.html");
+//});
 
 this.app.post('/nodeTest', function (req, res) {
     //
@@ -52,9 +55,6 @@ this.app.post('/nodeTest', function (req, res) {
     //
     res.end("Server: Param1 = " + param1 + ", Param2 = " + param2);
     });
-
-
-
 
 
 //==============================================================================
