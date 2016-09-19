@@ -79,10 +79,7 @@ this.app.post('/executeSelect', function (req, res) {
  
 connectMySql("localhost","root","","vedalife_se",null);
 
-/**
- * As i understand it's right to establish connection each time when making 
- * new request to the database
- */
+
 function connectMySql(ip,user,pass,dbname,response){
     console.log("Connecting to DB");
     //
