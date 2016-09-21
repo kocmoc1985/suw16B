@@ -1,0 +1,77 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-sep-21, 13:16:08
+    Author     : mcab
+*/
+
+header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #00ffff;
+    height: 100px;
+    /*padding: 1px;*/
+}
+
+#header-not-overlap{
+    padding-top: 100px;
+}
+
+header ul{
+    list-style: none;
+    background-color: #dda0dd;
+}
+
+/*Means only ul and li directly inside the header elem, if there is anothe ul inside the ul it will not be influenced*/
+.ul-main-menu > li{
+    display: inline-block;
+    background-color: white;
+}
+
+
+.ul-main-menu li a{
+    display: inline-block;
+    padding: 15px 35px 15px 35px;
+    background-color: #009998;
+}
+
+header ul li a:hover{
+    background-color: black;
+    color: white;
+    /************/
+    -o-transition:1.5s;
+    -ms-transition:.1.5s;
+    -moz-transition:1.5s;
+    -webkit-transition:1.5s;
+    transition: 1.5s;
+}
+
+.ul-sub-menu{
+    position: absolute;
+    padding: 0;
+    background-color: #00ffff;
+    display: none;
+}
+
+.ul-sub-menu li{
+    background-color: red;
+}
+
+
+.linkOneHover:hover > ul{
+    display: block;
+    
+}
+/* ^ SAME AS below*/
+.ul-main-menu li:hover > ul{
+    display: block;
+    
+}
+
+
+

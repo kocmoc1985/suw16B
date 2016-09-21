@@ -1,0 +1,24 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-sep-21, 14:16:08
+    Author     : mcab
+*/
+
+/*inline*/
+a{
+    background-color: red;
+    padding: 20px;
+}
+
+.block a{
+    display: block;
+}
+
+.inline-block a{
+    display: inline-block;
+    padding: 20px;
+}

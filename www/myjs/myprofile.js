@@ -40,6 +40,23 @@ function node_client_execute_select() {
     });
 }
 
+function processNodeResponseB(response_rows) {
+    var randomInt = getRandomInt(1,6);
+    //
+    var elemh3 = createElement("h3");
+    setTextB(elemh3,"Node.js response: " + response_rows[randomInt].title);
+    //
+    var elemArticle = createElement("article");
+    addElementB(elemArticle, elemh3);
+    //
+    var response_p = "<p>" + response_rows[randomInt].text + "</p>";
+    addElementB(elemArticle,response_p);
+    //
+    insertFirst(elemArticle, getElement("content"));
+    //
+    adjustSideBarHeight();
+}
+
 function node_client_connect_db() {
     $.ajax({
         async: "true", //is true by default
@@ -63,22 +80,7 @@ function node_client_SendPostRequest() {
     });
 }
 
-function processNodeResponseB(response_rows) {
-    var randomInt = getRandomInt(1,6);
-    //
-    var elemh3 = createElement("h3");
-    setTextB(elemh3,"Node.js response: " + response_rows[randomInt].title);
-    //
-    var elemArticle = createElement("article");
-    addElementB(elemArticle, elemh3);
-    //
-    var response_p = "<p>" + response_rows[randomInt].text + "</p>";
-    addElementB(elemArticle,response_p);
-    //
-    insertFirst(elemArticle, getElement("content"));
-    //
-    adjustSideBarHeight();
-}
+
 
 function processNodeResponse(response) {
     //
@@ -95,8 +97,6 @@ function processNodeResponse(response) {
     //
     adjustSideBarHeight();
 }
-
-
 
 
 function adjustSideBarHeight() {

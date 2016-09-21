@@ -1,0 +1,97 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-sep-21, 09:27:03
+    Author     : mcab
+*/
+
+body{
+    margin: 2px;
+}
+
+header{
+    background-color: #00ffff;
+    /*important*/
+    /*padding: 1px;*/
+    /*position fixed means that the element is out of all context namely no parents any longer*/
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 75px;
+}
+
+
+
+header ul{
+    list-style: none;
+}
+
+/*Only ul and li *DIRECTLY* inside the "header" element*/
+header > ul > li{
+    /*tar up hela breden  + kan trycka upp höjden;*/
+    display: inline-block;
+}
+
+header ul li a{
+    padding: 10px 20px;
+    /*för att trycka upp höjden*/
+    display: block; 
+}
+
+/*Pseudo class "hover"*/
+header ul li a:hover{
+    background-color: gray;
+}
+
+header ul ul{
+    position: absolute;
+    padding: 0;
+    background-color: #00ffff;
+    display: none;
+}
+
+/*show sub menu on hover*/ 
+/*bara de länkar som har undermenu*/
+/*> pekar på child*/
+header ul li:hover > ul{
+    display: block;
+}
+
+/*============================================================================*/
+
+main{
+    padding-top: 77px;
+}
+
+.ancestor{
+    height: 500px;
+    background-color: blue;
+    position: relative;
+}
+
+.green-box{
+    background-color: green;
+    height: 300px;
+    width: 70%;
+    margin: 20px auto 0;
+}
+
+.absolute-child{
+    position: absolute;
+    background-color: red;
+    left: 300px;
+    top: 50px;
+}
+
+.absolute-child2{
+    position: absolute;
+    background-color: red;
+    left: 350px;
+    top: 100px;
+    z-index: 3;
+}
+
