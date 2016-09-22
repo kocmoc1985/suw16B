@@ -1,0 +1,21 @@
+http://www.w3schools.com/cssref/css_selectors.asp
+
+// "~" Means all p elements after <img> om <img> finns
+.item img ~ p{
+    //
+}
+
+/*Only ul and li *DIRECTLY* inside the "header" element*/
+header > ul > li{
+    //
+}
+
+/*p = child*/
+.item:hover p{
+    display: block;
+}
+
+//selects all classes which have class "aClassName"
+p.aClassName{
+}
+
