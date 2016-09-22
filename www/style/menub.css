@@ -70,7 +70,6 @@ header ul li a:hover{
 /* ^ SAME AS below*/
 .ul-main-menu li:hover > ul{
     display: block;
-    
 }
 
 
