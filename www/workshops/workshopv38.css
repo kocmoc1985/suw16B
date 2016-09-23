@@ -1,0 +1,96 @@
+html, body
+{
+    height: 100%;
+}
+
+h1{
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+#banner{
+    height: 60%;
+    background-color: #00ffff;
+    position: relative;
+}
+
+#banner > img{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#banner-text{
+    font-size: 60pt;
+    position: absolute;
+    left: 15%;
+    top: 30%;  
+}
+
+article{
+    /*background-color: #00ffff;*/
+    padding: 40px;
+}
+
+article h1{
+    text-align: center;
+    /*margin-bottom: 10px;*/
+}
+
+article p{
+    padding: 10px;
+    font-size: 16pt;
+    line-height: 1.2;
+}
+
+/**************************************************/
+
+/*body{
+    font-size: 0;
+}*/
+
+.img-container{
+    position: relative;
+    display: inline-block;
+    float: left;
+}
+
+.img-container img{
+    display: inline-block;
+    width: 100%;
+    /*height: 100%;*/
+    /*padding: 20px;*/
+}
+
+.one-fifth{
+    width: 20%;
+    /*padding: 2px;*/
+}
+
+
+.one-fourth{
+    width: 25%;
+}
+
+.half{
+    width: 50%;
+}
+
+.whole{
+    width: 100%
+}
+
+.img-container > p{
+    position: absolute;
+    display: none;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    text-align: center;
+    background-color: rgba(0,0,255,0.3);
+    color: white;
+}
+
+.img-container:hover p{
+    display: block;
+}

@@ -15,7 +15,7 @@ header > ul > li{
     display: block;
 }
 
-//selects all classes which have class "aClassName"
+//selects all <p> which have class "aClassName"
 p.aClassName{
 }
 
