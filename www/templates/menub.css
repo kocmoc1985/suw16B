@@ -15,7 +15,6 @@ header{
     right: 0px;
     background-color: #00ffff;
     height: 100px;
-    /*padding: 1px;*/
 }
 
 #header-not-overlap{
@@ -51,26 +50,26 @@ header ul li a:hover{
     transition: 1.5s;
 }
 
-.ul-sub-menu{
+.ul-sub-menu-level-one {
     position: absolute;
     padding: 0;
     background-color: #00ffff;
     display: none;
 }
 
-.ul-sub-menu li{
-    background-color: red;
-}
 
-
-.linkOneHover:hover > ul{
-    display: block;
-    
-}
 /* ^ SAME AS below*/
 .ul-main-menu li:hover > ul{
     display: block;
 }
 
+/*********************************************************************************/
 
+
+.ul-sub-menu-level-two {
+    position: absolute;
+    left: 135px;
+    background-color: #00ffff;
+    display: none;
+}
 
