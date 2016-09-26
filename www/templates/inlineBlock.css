@@ -12,13 +12,18 @@ and open the template in the editor.
 a{
     background-color: red;
     padding: 30px;
+    margin: 10px;
 }
 
 .block a{
     display: block;
+    padding: 0;
+    margin: 0;
 }
 
 .inline-block a{
     display: inline-block;
-    padding: 20px;
+    background-color: yellow;
+    padding: 0px;
+    margin: 0px;
 }

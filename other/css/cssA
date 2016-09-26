@@ -1,6 +1,6 @@
-
 margin: top-right-bottom-left  -> 10px 20px 10px 40px
 
+CSS Transparency: background-color: rgba(0,0,255,0.3);
 
 Tar bort mellanrum mellan elementen som är by default 3p
 body{
