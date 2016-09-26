@@ -76,12 +76,8 @@ header ul li:hover > ul{
 /*============================================================================*/
 
 
-header ul ul ul li{
-    position: static;
-}
-
 /*sub-level-two, has also pos = absolute. Note absolute relative the nearest "relative" or "absolute"
-parent */
+parent  or to viewport if others missing*/
 header ul ul ul{
     left: 120px;
     /*top: 20px;*/

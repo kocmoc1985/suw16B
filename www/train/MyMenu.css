@@ -34,9 +34,25 @@ header ul ul{
     padding: 0;
     background-color: black;
     display: none;
+    width: 140px;
 }
 
 header li:hover > ul{
     display: block;
+}
+
+/*************************Things needed for sub-level-two**********************/
+
+/*This is a must to have the sub-level-two*/
+header ul li{
+    position: relative;
+}
+
+/*Note that this one inherits from "header" ul ul""*/
+header ul ul ul{
+    left: 140px;
+    /*top: 20px;*/
+    top: 0px;
+    width: 160px;
 }
 
