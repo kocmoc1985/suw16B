@@ -1,0 +1,15 @@
+
+/*100% ready header element*/
+header{
+    position: fixed;
+    background-color: #c8c8c8;
+    height: 120px;
+    top: 0;
+    left:0;
+    right: 0;
+}
+
+/*especially for fixed headers*/
+#header-not-overlap{
+    padding-top: 100px;
+}

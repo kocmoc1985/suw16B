@@ -1,11 +1,5 @@
+
 margin: top-right-bottom-left  -> 10px 20px 10px 40px
-
-css position "fixed" i relation till fönster rutan
-
-css "absolute" plocka ut ur flödet och stanna exakt där den var, följer med när man skrollar.
-Rellation till closest relative parent, obs inte förälder.
-
-css  "z-index" placera element ovan/under varan
 
 
 Tar bort mellanrum mellan elementen som är by default 3p

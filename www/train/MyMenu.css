@@ -1,0 +1,42 @@
+root { 
+    display: block;
+}
+
+header{
+    position: fixed;
+    background-color: #c8c8c8;
+    height: 120px;
+    top: 0;
+    left:0;
+    right: 0;
+}
+
+header ul{
+    list-style: none;
+    background-color:#ffeeaa;
+}
+
+
+
+header > ul > li{
+    display: inline-block;
+    background-color: red;
+}
+
+header ul li a{
+    background-color: #8080ff;
+    display: block;
+    padding: 10px 30px 10px 30px;
+}
+
+header ul ul{
+    position: absolute;
+    padding: 0;
+    background-color: black;
+    display: none;
+}
+
+header li:hover > ul{
+    display: block;
+}
+

@@ -1,3 +1,5 @@
+
+
 display:inline - kan bara flytta andra element åt sidan dock inte upp och ner
 
 display:block - tar upp hela breden by default, kan utökas både up och ner och flyttar undan andra element

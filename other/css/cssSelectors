@@ -5,12 +5,12 @@ http://www.w3schools.com/cssref/css_selectors.asp
     //
 }
 
-/*Only ul and li *DIRECTLY* inside the "header" element*/
+// Choose <ul> whoes direct parent is <header> and choose <li> inside that <ul>
 header > ul > li{
     //
 }
 
-/*p = child*/
+// When the mouse hovers on ".item" pass the event to <p>
 .item:hover p{
     display: block;
 }

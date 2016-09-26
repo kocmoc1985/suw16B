@@ -1,0 +1,28 @@
+css position "static" the default position property. 
+Z-Index not working on statical elements
+
+================================================================================
+
+css position "fixed" in relation to the view port/fönster-rutan
+
+================================================================================
+
+css position "relative" - means relative to it self. Works together with top, right... attributes
+if top, right... are not set it will not have any effect. Z-Index can be used with "relative" by default 
+the relative element is placed above other statical elements.
+
+
+================================================================================
+css "absolute" plocka ut ur flödet och stanna exakt där den var.
+relative to closest "relative" or "absolute" parent, obs inte original parent.
+
+Remember that these values will be relative to the next parent element with relative
+(or absolute) positioning. If there is no such parent,
+it will default all the way back up to the <html> element itself meaning it
+will be placed relatively to the page itself.
+
+You should also note that, if an absolutely positioned element is not a
+descendant of a positioned (be it absolute, fixed, relative or sticky) element
+***then its positions are set relative to the ***viewport***.
+
+================================================================================

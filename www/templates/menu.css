@@ -7,6 +7,10 @@ and open the template in the editor.
     Created on : 2016-sep-21, 09:27:03
     Author     : mcab
 */
+main{
+    padding-top: 77px;
+}
+
 
 body{
     margin: 2px;
@@ -39,7 +43,8 @@ header > ul > li{
 header ul li a{
     padding: 10px 20px;
     /*för att trycka upp höjden*/
-    display: block; 
+    display: block;
+    background-color: #00ffff;
 }
 
 /*Pseudo class "hover"*/
@@ -52,6 +57,13 @@ header ul ul{
     padding: 0;
     background-color: #00ffff;
     display: none;
+    width: 120px;
+}
+
+header ul ul li{
+    position: relative;
+/*    padding: 5px;
+    background-color: red;*/
 }
 
 /*show sub menu on hover*/ 
@@ -63,35 +75,25 @@ header ul li:hover > ul{
 
 /*============================================================================*/
 
-main{
-    padding-top: 77px;
+
+header ul ul ul li{
+    position: static;
 }
 
-.ancestor{
-    height: 500px;
-    background-color: blue;
-    position: relative;
+/*sub-level-two, has also pos = absolute. Note absolute relative the nearest "relative" or "absolute"
+parent */
+header ul ul ul{
+    left: 120px;
+    /*top: 20px;*/
+    top: 0px;
+    width: 150px;
 }
 
-.green-box{
-    background-color: green;
-    height: 300px;
-    width: 70%;
-    margin: 20px auto 0;
-}
 
-.absolute-child{
-    position: absolute;
-    background-color: red;
-    left: 300px;
-    top: 50px;
-}
 
-.absolute-child2{
-    position: absolute;
-    background-color: red;
-    left: 350px;
-    top: 100px;
-    z-index: 3;
-}
+/*============================================================================*/
+
+
+
+
 
