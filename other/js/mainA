@@ -1,0 +1,10 @@
+
+==================Passing function with parameters as parameter=================
+
+var callBack = function(param1, param2) {
+
+ }
+
+window.setTimeout( function(){callBack('foo','bar');}, 1000 );
+
+================================================================================

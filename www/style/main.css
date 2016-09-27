@@ -47,7 +47,6 @@ header{
     height:100px;
     /*super important to not be influenced by child elements using margin-top:*/ 
     overflow: hidden; 
-    /*opacity: 0.2;*/
 }
 
 footer{

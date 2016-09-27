@@ -20,7 +20,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES FIRTS OF ALL
      */
-    $(document).ready(function () {
+    $(document).ready(function() {
         go();
     });
 
@@ -28,7 +28,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES AFTER "doc.ready"
      */
-    $(window).load(function () {
+    $(window).load(function() {
         addTransitonToNavBarBtns();
     });
 }
@@ -217,11 +217,11 @@ function addEventB(elemId, eventType, eventFunction) {
 }
 
 function addEvent_jquery_example() {
-    $("#test").click(function (event) {
+    $("#test").click(function(event) {
         //do something
     });
     ///==========OR===================
-    $("#test").hover()(function (event) {
+    $("#test").hover()(function(event) {
         //do something
     });
 }
@@ -332,7 +332,7 @@ function addEventToTheDocument(event, eventfunction) {
  * @returns {undefined}
  */
 function addHoverEventJquery(elem_id_or_tag_name) {
-    $(elem_id_or_tag_name).hover(function () {
+    $(elem_id_or_tag_name).hover(function() {
         $(this).hide();
     });
 }
@@ -609,7 +609,27 @@ function JSONbasics() {
     //
 }
 
-
+/**
+ * Very important function, because the call is
+ * asynchron this method can return a value - otherwise not.
+ * 
+ * Returns parsed JSON string so you can only use like: 
+ *  * var parsedJson = getJsonFromUrlSync(http://....);
+ * alert(parsedJson['countryCode']);
+ * 
+ * @param {type} url
+ * @returns {@exp;JSON@call;parse}
+ */
+function getJsonFromUrlSync(url) {
+    //
+    var jsonStr = $.ajax({
+        url: url,
+        dataType: 'json',
+        async: false
+    }).responseText;
+    //
+    return JSON.parse(jsonStr);
+}
 
 /**
  * Note that it will not work to use "return" with
@@ -618,7 +638,7 @@ function JSONbasics() {
  * @returns {nothing}
  */
 function getJsonFromUrlAsync(url) {
-     $.getJSON(url, function (data) { 
+     $.getJSON(url, function(data) { 
         ///
      });
 }
@@ -628,18 +648,29 @@ function getJsonFromUrlAsync(url) {
  * @returns {undefined}
  */
 function getJsonFromUrlEx() { 
-     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function (data) { 
+     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function(data) { 
         for (x in data) { 
             debugg("key:" + x + " value: " + data[x]);
          }
      });
 }
 
+
+/**
+ * Registration on the site with kocmoc1985@gmail.com and MCp...
+ * @returns {@exp;JSON@call;parse}
+ */
+function getWeather() {
+    var link = "http://api.openweathermap.org/data/2.5/weather?q=" + getIpInfo("city") + "," + getIpInfo("countryCode") + "&APPID=daeed5bb0ff921b9a30cd2fcf2c6b1fa";
+    alert(link);
+    return getJsonFromUrlSync(link);
+}
+
 /**
  * 
  * @returns {unresolved}
  */
-function getIpJson() {
+function getIp() {
     var jsonStr = $.ajax({
         url: 'https://api.ipify.org?format=json',
         dataType: 'json',
@@ -647,17 +678,47 @@ function getIpJson() {
     }).responseText;
     //
     return JSON.parse(jsonStr)['ip'];
+    //
 }
 
-function getJsonFromUrlSync(url) {
-    var jsonStr = $.ajax({
-        url: url,
+/**
+ * Some of possible parameters for the "ip-api"
+ * countryCode, country, city, org (organisation name),isp, zip
+ * @param {type} param
+ * @returns {unresolved}
+ */
+function getIpInfo(param) {
+    var jsonStr = $.ajax({
+        url: 'http://ip-api.com/json/' + getIp(),
         dataType: 'json',
         async: false
     }).responseText;
     //
-    return JSON.parse(jsonStr);
+    return JSON.parse(jsonStr)[param];
+    //
 }
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function accessJsonExample() {
+    var data = '{"name": "mkyong","age": 30,"address": {"streetAddress": "88 8nd Street","city": "New York"},"phoneNumber": [{"type": "home","number": "111 111-1111"},{"type": "fax","number": "222 222-2222"}]}';
+
+    var json = JSON.parse(data);
+
+    alert(json["name"]); //mkyong
+    alert(json.name); //mkyong
+
+    alert(json.address.streetAddress); //88 8nd Street
+    alert(json["address"].city); //New York
+
+    alert(json.phoneNumber[0].number); //111 111-1111
+    alert(json.phoneNumber[1].type); //fax
+
+    alert(json.phoneNumber.number); //undefined
+}
+
 
 //=================================</JSON>======================================
 
@@ -669,7 +730,7 @@ function node_client_SendPostRequestEx() {
         type: "POST",
         url: "http://localhost:3000/nodeTest",
         data: {param1: "Node.js", param2: "test successful"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         //toDo
         alert("Data Saved: " + msg);
     });
@@ -677,7 +738,7 @@ function node_client_SendPostRequestEx() {
 
 function node_server_RecievePostExample() {
     //
-    this.app.post('/nodeTest', function (req, res) {
+    this.app.post('/nodeTest', function(req, res) {
         //
         var param1 = req.body.param1;
         var param2 = req.body.param2;
@@ -732,7 +793,7 @@ function ajaxRequest(recieving_script, paramter_name, value_to_send, asynchron) 
  * @tags ajax, xmlhttp
  */
 function ajaxRequestReady(xmlhttp, function_to_execute) {
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             function_to_execute(xmlhttp.responseText);
         } else {
@@ -801,7 +862,7 @@ function ajaxRequestJQuerry() {
         type: "POST",
         url: "some.php",
         data: {name: "John", location: "Boston"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         alert("Data Saved: " + msg);
     });
 }
@@ -809,9 +870,9 @@ function ajaxRequestJQuerry() {
 function ajaxEventsExamples() {
 //
 //Super important event
-    $(document).ajaxStart(function () {
+    $(document).ajaxStart(function() {
         console.log("ajaxStart");
-    }).ajaxStop(function () {
+    }).ajaxStop(function() {
         console.log("ajaxStop");
     });
     //============================
@@ -829,7 +890,7 @@ function ajaxRequestJQuerryTest1() {
         type: "POST",
         url: "http://www.mixcont.com/index.php",
         data: {link: "_http_com", client: "901", param: "ip"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         alert("Ajax Data recieved: " + msg);
     });
 }
@@ -846,7 +907,7 @@ function ajaxRequestJQuerryTest2() {
         async: true, //is true by default
         type: "GET",
         url: "https://api.ipify.org?format=json"
-    }).done(function (jsonStr) {
+    }).done(function(jsonStr) {
         alert("Ajax Data recieved: " + jsonStr["ip"]);
     });
 }
@@ -966,7 +1027,7 @@ function slideSideWards(elemIdTagOrClass, width, millis) {
  * @returns {undefined}
  */
 function blinkA(idElemClass, intervall) {
-    var intervalID = setInterval(function () {
+    var intervalID = setInterval(function() {
         blinkB(idElemClass);
     }, intervall);
     //This one is to stop the "Thread"
@@ -990,7 +1051,7 @@ function blinkB(idElemClass) {
  * @returns {undefined}
  */
 function forEachElement(element_id_class_tag) {
-    $(element_id_class_tag).each(function (index, item) {
+    $(element_id_class_tag).each(function(index, item) {
 //Do something
         $(item).slideUp(); // $(item).remove();
     });
@@ -1449,7 +1510,7 @@ function validateEmailPrimitive(formId, emailFieldId) {
  * @returns {undefined}
  */
 function removeDefaultEventClick(elementOrItsID) {
-    $(elementOrItsID).click(function (event) {
+    $(elementOrItsID).click(function(event) {
         event.preventDefault();
     });
 }
@@ -1730,7 +1791,7 @@ function setCheckedForCheckBox(elem_id, checked) {
 }
 
 function includeHtml(htmlToInclude, elementId) {
-    $(function () {
+    $(function() {
         $("#" + elementId).load(htmlToInclude);
     });
 }
