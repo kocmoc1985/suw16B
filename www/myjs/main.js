@@ -80,8 +80,6 @@ function node_client_SendPostRequest() {
     });
 }
 
-
-
 function processNodeResponse(response) {
     //
     var elemh3 = createElement("h3");
@@ -98,12 +96,10 @@ function processNodeResponse(response) {
     adjustSideBarHeight();
 }
 
-
 function adjustSideBarHeight() {
     var height = getHeight("#content");
     setCSSProperty("aside", "height", height);
 }
-
 
 function sideBarClicked(event) {
     //
@@ -130,7 +126,6 @@ function sideBarClicked(event) {
         slideSideWards(contentElem, initialContentWidth + "px", 1000);
         setCSSProperty("article", "width", "90%");
     }
-
 }
 
 
@@ -139,7 +134,6 @@ function includeHtml(htmlToInclude, elementId) {
         $("#" + elementId).load(htmlToInclude);
     });
 }
-
 
 function insertBasicArticle(title, imageName) {
     document.write("<h3>" + title + "</h3>");
