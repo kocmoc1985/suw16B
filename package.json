@@ -12,5 +12,9 @@
     "gulp-less": "*",
     "gulp-clean-css": "*",
     "mysql": "*"
-  }
+  },
+    "scripts": {
+        "start": "node www\/index.html"
+    }
+
 }
