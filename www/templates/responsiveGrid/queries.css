@@ -1,0 +1,41 @@
+@media (max-width:629px){
+
+    header{
+        height: 150px;
+    }
+    
+    main{
+        padding-top: 152px;
+    }
+
+    header .logo{
+        margin: 10px auto;
+        float: none;
+        height: 80px;
+    }
+
+    header nav{
+        float:none;
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    header nav ul{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (orientation: landscape){
+
+    header{
+        background-color: #00ee00;
+    }
+
+}
+
+@media print {
+    .grid-item p{
+        display: block;
+    }
+}

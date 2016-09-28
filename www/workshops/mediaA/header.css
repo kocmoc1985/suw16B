@@ -1,0 +1,34 @@
+html,body{
+    height: 100%;
+}
+
+header{
+    background-color: #00ee00;
+    height: 15%;
+    position: relative;
+}
+
+header ul{
+    list-style: none;
+    /*background-color:#ffeeaa;*/
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+header > ul > li{
+    display: inline-block;
+    background-color: red;
+}
+
+header ul li a{
+    background-color: #8080ff;
+    display: block;
+    padding: 10px 30px 10px 30px;
+}
+
+
+
+

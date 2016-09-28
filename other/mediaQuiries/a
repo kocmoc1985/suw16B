@@ -1,0 +1,25 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+markera "large" om desktop-first och "small" om "mobile-first"
+
+en class ska ha 2 classer "lg-one-third" -> för desktop and "sm-full-width" -> för mobile
+
+<!-- CSS media query on a link element -->
+<link rel="stylesheet" media="(max-width: 800px)" href="example.css" />
+
+
+<!-- CSS media query within a stylesheet -->
+<style>
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
+</style>
+
+OBS! Media quiries alltid sist:
+<link rel="stylesheet" type="text/css" href="normalize.css">
+<link rel="stylesheet" type="text/css" href="header.css">
+<link rel="stylesheet" type="text/css" href="grid.css">
+<link rel="stylesheet" type="text/css" href="media_queries.css">  OBS!!

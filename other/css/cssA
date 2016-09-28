@@ -1,3 +1,9 @@
+DONT USE ID's, USE CLASSES INSTEAD
+
+OBS! Media quiries alltid sist:
+
+
+
 margin: top-right-bottom-left  -> 10px 20px 10px 40px
 
 CSS Transparency: background-color: rgba(0,0,255,0.3);

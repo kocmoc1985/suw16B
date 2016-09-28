@@ -1,0 +1,23 @@
+html,body{
+    height: 100%;
+}
+
+
+section{
+    min-height: 85%;
+    width: 80%;
+    float: left;
+    background-color: gray;
+}
+
+.clearfix{
+    clear: both;
+}
+
+.grid-item{
+    margin: 15px;
+    width: 30%;
+    height: 20%;
+    background-color: #dda0dd;
+    float: left;
+}

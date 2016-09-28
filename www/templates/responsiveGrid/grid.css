@@ -1,0 +1,114 @@
+.clearfix {
+  clear: both;
+}
+
+/* grid-items float to the left */
+.grid-item{
+  float: left;
+  margin: 1%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* make image responsive */
+.grid-item img {
+  width: 100%;
+  display: block;
+}
+
+/* grid item sizes */
+.one-third {
+  width: 31.33%;
+}
+
+.one-half {
+  width: 48%;
+}
+
+.two-thirds {
+  width: 64.66%;
+}
+
+
+/* position and style the p tag */
+.grid-item p {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+  display: none;
+
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* hover */
+.grid-item:hover > p {
+  display: block;
+}
+
+.grid-item:not(.sub-grid):hover {
+  -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.75);
+}
+
+
+/**
+ * SUB GRIDS
+ * (next stop: math town)
+ *
+ */
+
+
+/* reset sub grid margins */
+.sub-grid .grid-item {
+  margin: 0;
+}
+
+/* margins for sub grid items */
+.sub-grid-thirds .grid-item {
+  /* 
+    MATH!
+    i = 3 (number of items)
+    w = 31.33 (% width of one item)
+    
+    (100-(w*i))/(i-1) = 3 (ish)
+  */
+  width: 31.33%;
+  margin-right: 3%; 
+  margin-bottom: 3%;
+}
+
+.sub-grid-half .grid-item {
+
+  /*
+    MATH!
+    i = 2 (number of items)
+    w = 48 (% width of one item)
+    
+    (100-(w*i))/(i-1) = 4
+  */
+  width: 48%;
+  margin-right: 4%;
+  margin-bottom: 4%;
+}
+
+/* end of a row of any sub grid */
+.sub-grid .last {
+  margin: 0;
+}
+
+/* last row of any sub grid*/
+.sub-grid .bottom {
+  margin-bottom: 0;
+}
+
+
