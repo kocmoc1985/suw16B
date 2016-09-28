@@ -6,6 +6,15 @@ header{
     background-color: #00ee00;
     height: 15%;
     position: relative;
+    background: url(../../images/background1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*******/
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(143,143,143,1);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(143,143,143,1);
+    box-shadow: 0px 3px 5px 0px rgba(143,143,143,1);
 }
 
 header ul{

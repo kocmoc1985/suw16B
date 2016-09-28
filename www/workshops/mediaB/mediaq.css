@@ -1,7 +1,39 @@
-@media (max-width:629px){
+
+/*===============================DESKTOP=======================================*/
+
+@media (max-width:1543px){
+    .grid-item{
+        width: 28.5%;
+         background-color: #0000ff;
+    }
+}
+
+@media (max-width:1400px){
+    .grid-item{
+        width: 27.9%;
+         background-color: #0000ff;
+    }
+}
+
+@media (max-width:1300px){
+    .grid-item{
+        width: 26.5%;
+         background-color: #0000ff;
+    }
+}
+
+/*===============================MOBILE=======================================*/
+
+/*OBS real value = 674*/
+@media (max-width:750px){
     header{
         background-color: #0000ff;
         height: 8%;
+    }
+    
+    .grid-item{
+        width: 42%;
+         background-color: #0000ff;
     }
 
     section{

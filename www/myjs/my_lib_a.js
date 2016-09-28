@@ -20,7 +20,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES FIRTS OF ALL
      */
-    $(document).ready(function() {
+    $(document).ready(function () {
         go();
     });
 
@@ -28,7 +28,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES AFTER "doc.ready"
      */
-    $(window).load(function() {
+    $(window).load(function () {
         addTransitonToNavBarBtns();
     });
 }
@@ -67,6 +67,30 @@ function debugg(message) {
 
 function showMessageOwnWindow(message) {
     alert(message);
+}
+
+/**
+ * This works really nice can use with running:
+ * "<a href="#" onclick="include('blog1.html')">Blog1</a>"
+ * 
+ * OBS! Example how to include a html file which have following content:
+ * 
+ *<link rel="stylesheet" type="text/css" href="blogEntry.css"> you dont need the <head> tag to be able to link to a .css file
+ *<div class="blogEntry">
+ *   <h2>Blogg One</h2>
+ *   <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+ *</div>
+ * 
+ * By doing so you don't need to copy everything from the .html doc you are calling "include from"
+ * 
+ * @param {type} selector - class,id,tag....
+ * @param {type} html - example.html
+ * @returns {undefined}
+ */
+function includeHtml(selector, html) {
+    $(function () {
+        $(selector).load(html);
+    });
 }
 
 /**
@@ -217,11 +241,11 @@ function addEventB(elemId, eventType, eventFunction) {
 }
 
 function addEvent_jquery_example() {
-    $("#test").click(function(event) {
+    $("#test").click(function (event) {
         //do something
     });
     ///==========OR===================
-    $("#test").hover()(function(event) {
+    $("#test").hover()(function (event) {
         //do something
     });
 }
@@ -332,7 +356,7 @@ function addEventToTheDocument(event, eventfunction) {
  * @returns {undefined}
  */
 function addHoverEventJquery(elem_id_or_tag_name) {
-    $(elem_id_or_tag_name).hover(function() {
+    $(elem_id_or_tag_name).hover(function () {
         $(this).hide();
     });
 }
@@ -638,7 +662,7 @@ function getJsonFromUrlSync(url) {
  * @returns {nothing}
  */
 function getJsonFromUrlAsync(url) {
-     $.getJSON(url, function(data) { 
+     $.getJSON(url, function (data) { 
         ///
      });
 }
@@ -648,7 +672,7 @@ function getJsonFromUrlAsync(url) {
  * @returns {undefined}
  */
 function getJsonFromUrlEx() { 
-     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function(data) { 
+     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function (data) { 
         for (x in data) { 
             debugg("key:" + x + " value: " + data[x]);
          }
@@ -730,7 +754,7 @@ function node_client_SendPostRequestEx() {
         type: "POST",
         url: "http://localhost:3000/nodeTest",
         data: {param1: "Node.js", param2: "test successful"}
-    }).done(function(msg) {
+    }).done(function (msg) {
         //toDo
         alert("Data Saved: " + msg);
     });
@@ -738,7 +762,7 @@ function node_client_SendPostRequestEx() {
 
 function node_server_RecievePostExample() {
     //
-    this.app.post('/nodeTest', function(req, res) {
+    this.app.post('/nodeTest', function (req, res) {
         //
         var param1 = req.body.param1;
         var param2 = req.body.param2;
@@ -793,7 +817,7 @@ function ajaxRequest(recieving_script, paramter_name, value_to_send, asynchron) 
  * @tags ajax, xmlhttp
  */
 function ajaxRequestReady(xmlhttp, function_to_execute) {
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             function_to_execute(xmlhttp.responseText);
         } else {
@@ -862,7 +886,7 @@ function ajaxRequestJQuerry() {
         type: "POST",
         url: "some.php",
         data: {name: "John", location: "Boston"}
-    }).done(function(msg) {
+    }).done(function (msg) {
         alert("Data Saved: " + msg);
     });
 }
@@ -870,9 +894,9 @@ function ajaxRequestJQuerry() {
 function ajaxEventsExamples() {
 //
 //Super important event
-    $(document).ajaxStart(function() {
+    $(document).ajaxStart(function () {
         console.log("ajaxStart");
-    }).ajaxStop(function() {
+    }).ajaxStop(function () {
         console.log("ajaxStop");
     });
     //============================
@@ -890,7 +914,7 @@ function ajaxRequestJQuerryTest1() {
         type: "POST",
         url: "http://www.mixcont.com/index.php",
         data: {link: "_http_com", client: "901", param: "ip"}
-    }).done(function(msg) {
+    }).done(function (msg) {
         alert("Ajax Data recieved: " + msg);
     });
 }
@@ -907,7 +931,7 @@ function ajaxRequestJQuerryTest2() {
         async: true, //is true by default
         type: "GET",
         url: "https://api.ipify.org?format=json"
-    }).done(function(jsonStr) {
+    }).done(function (jsonStr) {
         alert("Ajax Data recieved: " + jsonStr["ip"]);
     });
 }
@@ -1027,7 +1051,7 @@ function slideSideWards(elemIdTagOrClass, width, millis) {
  * @returns {undefined}
  */
 function blinkA(idElemClass, intervall) {
-    var intervalID = setInterval(function() {
+    var intervalID = setInterval(function () {
         blinkB(idElemClass);
     }, intervall);
     //This one is to stop the "Thread"
@@ -1051,7 +1075,7 @@ function blinkB(idElemClass) {
  * @returns {undefined}
  */
 function forEachElement(element_id_class_tag) {
-    $(element_id_class_tag).each(function(index, item) {
+    $(element_id_class_tag).each(function (index, item) {
 //Do something
         $(item).slideUp(); // $(item).remove();
     });
@@ -1510,7 +1534,7 @@ function validateEmailPrimitive(formId, emailFieldId) {
  * @returns {undefined}
  */
 function removeDefaultEventClick(elementOrItsID) {
-    $(elementOrItsID).click(function(event) {
+    $(elementOrItsID).click(function (event) {
         event.preventDefault();
     });
 }
@@ -1791,7 +1815,7 @@ function setCheckedForCheckBox(elem_id, checked) {
 }
 
 function includeHtml(htmlToInclude, elementId) {
-    $(function() {
+    $(function () {
         $("#" + elementId).load(htmlToInclude);
     });
 }

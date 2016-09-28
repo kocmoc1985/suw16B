@@ -129,12 +129,6 @@ function sideBarClicked(event) {
 }
 
 
-function includeHtml(htmlToInclude, elementId) {
-    $(function () {
-        $("#" + elementId).load(htmlToInclude);
-    });
-}
-
 function insertBasicArticle(title, imageName) {
     document.write("<h3>" + title + "</h3>");
     document.write("<img class='image_a' src='images/" + imageName + "' alt='" + imageName + "'>");

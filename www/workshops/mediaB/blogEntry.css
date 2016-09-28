@@ -1,0 +1,16 @@
+.blogEntry{
+    width: 85%;
+    margin: 40px auto;
+    min-height: 200px;
+    height: auto;
+    background-color: #eee;
+}
+
+.blogEntry p{
+    padding: 20px;
+}
+
+.blogEntry h2{
+    padding-top: 20px;
+    padding-left: 20px;
+}
