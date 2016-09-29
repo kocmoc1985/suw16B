@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <style type="text/css">
+
+            .col-xs-12, .col-sm-4,.col-sm-3{
+
+            }
+
+            .splash{
+                height: 70vh;
+                background-color: gray;
+                overflow: auto;
+                position: relative;
+            }
+
+            .splash h1{
+                position: absolute;
+                top: 45%;
+                left: 30%;
+                font-size: 46pt;
+                color: white;
+            }
+
+
+            .products{
+                height: 60vh;
+                background-color: lightgrey;
+                position: relative;
+            }
+
+            .products .nav-tabs{
+                border-bottom: none;
+            }
+
+            .products .nav-tabs li{
+                width: 350px;
+                font-size: 48px;
+                background-color: lightgrey;
+            }
+
+            .products .nav-tabs li a{
+                color: #0f0f0f;
+            }
+
+            /*Content text in the tabs*/
+            .tab-content{ 
+                width: 1400px;
+                min-height: 500px;
+            }
+            
+            
+
+            .tab-pane-reparations{
+                width: 95%;
+                min-height: 450px;
+                margin-top: 40px;
+                margin-right: auto;
+                margin-left: auto;
+                background-color: greenyellow;
+            }
+
+            .tabPaneContainer{
+                position: absolute;
+                top: -85px;
+                left: 0;
+                z-index: 10;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="splash">
+                    <h1>Vi tar hand om din bil</h1>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="products">
+                    <div class="tabPaneContainer">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <div class="tab-pane-reparations">
+                                    <h3>Reparationer</h3>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="profile">bbb</div>
+                            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
