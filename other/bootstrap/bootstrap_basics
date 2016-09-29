@@ -1,9 +1,31 @@
+================================================================================
+install bootstrap with npm -> goto package.json -> add "bootstrap": "*" to package.json
+Make npm install from netbeans
+
+start node cmd as admin:
+
+go to the folder with cmd where your bootstrap.html ->
+
+from this folder you shall make a link for "css", "js", "fonts"  like:
+
+mklink /d css ..\..\..\node_modules\bootstrap\dist\css
+
+mklink /d fonts ..\..\..\node_modules\bootstrap\dist\fonts
+
+mklink /d js ..\..\..\node_modules\bootstrap\dist\js
+
+OBS! pay attention at "\" slashes
+
+================================================================================
+http://www.w3schools.com/bootstrap/bootstrap_templates.asp
+
 http://www.w3schools.com/bootstrap/bootstrap_get_started.asp
 
 http://getbootstrap.com/components/
 
 
 ================================================================================
+Iam not sure if it's ok to use those links:
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
