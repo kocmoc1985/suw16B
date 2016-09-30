@@ -9,82 +9,93 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid|Titillium+Web" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="../../style/normalizeReset.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="workshopv39v2.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <style type="text/css">
-
-            
-            html,body{
-                height: 100%;
-                width: 100%;
-            }
-            
-       
-            
-            /*No margin bottom*/
-            .navbar, .navbar-default{
-                margin: 0;
-            }
-
-            .col-xs-12, .col-sm-4,.col-sm-3{
-                padding: 1px;
-            }
-
-            .row{
-            }
-
-            header{
-                min-height: 40%;
-                background-color: #8c8c8c;
-            }
-
-            .oneHalf{
-                width: 100;
-                height: 50vh;
-                background-color: lightgray;
-                border-style: solid;
-                border-color: darkgray;
-                border-width: 1px;
-            }
-
-        </style>
 
     </head>
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">CarFix</a>
+                    <a class="navbar-brand" href="#hot">Cafe Lorem</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Page 1</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
+                    <li class="active"><a href="#" onclick="setNavBarActive(event)">Home</a></li>
+                    <li><a href="#hot" onclick="setNavBarActive(event)">Hot</a></li>
+                    <li><a href="#juicy" onclick="setNavBarActive(event)">Juicy</a></li>
+                    <li><a href="#cosy" onclick="setNavBarActive(event)">Cosy</a></li>
                 </ul>
             </div>
         </nav>
 
-        <header>
+        <script language = "javascript">
 
-        </header>
+            function setNavBarActive(event) {
+                var targetElem = getEventTargetElement(event);
+                var parent = getParentElement(targetElem);
+                if (parent !== null) {
+                    resetAllActives();
+                    parent.className = "active";
+                }
+            }
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <div class="oneHalf">
-                    <h3>Om oss</h3>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <div class="oneHalf">
-                    <h3>Nyheter</h3>
-                </div>
+            function getEventTargetElement(eventObject) {
+                if (eventObject.target) { //DOM
+                    return eventObject.target;
+                } else if (eventObject.srcElement) { //IE
+                    return eventObject.srcElement;
+                } else {
+                    return null;
+                }
+            }
+
+            function getParentElement(element) {
+                return element.parentNode;
+            }
+
+            function resetAllActives() {
+                var elemntArray = $("." + "active").get();
+
+                for (i = 0; i < elemntArray.length; i++) {
+                   elemntArray[i].className = "none"; 
+                }
+            }
+        </script>
+
+        <div class="oneWhole" id="hot">
+            <a name="#hot"></a> 
+            <div class="titleTextContainer">
+                <h1>Hot</h1>
+                <p class="marginLess">Hot freshly ground black coffee or a cup of exquisite tea?</p>
+                <br>
+                <p class="marginMax">We give you that perfect cup every time!</p>
             </div>
         </div>
 
+        <div class="oneWhole" id="juice">
+            <a name="#juicy"></a>
+            <div class="titleTextContainer">
+                <h1>Juice</h1>
+                <p class="marginLess">Hot freshly ground black coffee or a cup of exquisite tea?</p>
+                <br>
+                <p class="marginMax">We give you that perfect cup every time!</p>
+            </div>
+        </div>
+
+        <div class="oneWhole" id="cosy">
+            <a name="#cosy"></a>
+            <div class="titleTextContainer">
+                <h1>Cosy</h1>
+                <p class="marginLess">Hang around. Enjoy the settings.</p>
+                <br>
+                <p class="marginMax">Use our fast WiFi. Borrow a newspaper or a novel.</p>
+            </div>
+        </div>
 
     </body>
 </html>

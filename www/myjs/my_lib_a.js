@@ -115,8 +115,11 @@ function getNumericValueByDialog(textToDisplay) {
 function add_HTML_Event_example() {
     // <input type="text" id="txt1" onkeyup="showHint(this.value);" />
     //showHint(this.value) is the javascript method launched uppon the event
+    //
     //Another example:
     //<button type='button' onclick="ajax_request(this.innerHTML);">100</button>
+    //OR you can pass EVENT like
+    //<button type='button' onclick="ajax_request(*event*);">100</button>
 }
 
 /**

@@ -1,0 +1,21 @@
+
+SET BACKGROUND IMAGE DIV
+#container { 
+    background: url(images/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+CSS Transparency: background-color: rgba(0,0,255,0.3);
+
+USE CSS INSIDE HTML
+<style type="text/css"></style>
+
+USE JS INSIDE HTML
+< script language = "javascript" >
+    add_comment_form();
+< /script>
+
