@@ -6,32 +6,34 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Workshopv39</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Londrina+Solid|Titillium+Web" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="../../style/normalizeReset.css">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <script src="../js/bootstrap.min.js"></script>
         <link href="workshopv39v2.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-
-
+        <script src="scrollsmooth.js?snap"></script>
     </head>
+
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default" >
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#hot">Cafe Lorem</a>
+                    <a class="navbar-brand" href="#hotX">Cafe Lorem</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#" onclick="setNavBarActive(event)">Home</a></li>
-                    <li><a href="#hot" onclick="setNavBarActive(event)">Hot</a></li>
-                    <li><a href="#juicy" onclick="setNavBarActive(event)">Juicy</a></li>
-                    <li><a href="#cosy" onclick="setNavBarActive(event)">Cosy</a></li>
+                    <li class="active"><a href="#hotX" onclick="setNavBarActive(event)">Home</a></li>
+                    <li><a href="#hotX" onclick="setNavBarActive(event)">Hot</a></li>
+                    <li><a href="#juicyX" onclick="setNavBarActive(event)">Juicy</a></li>
+                    <li><a href="#cosyX" onclick="setNavBarActive(event)">Cosy</a></li>
                 </ul>
             </div>
         </nav>
+
+        <a name="hotX"></a>
 
         <script language = "javascript">
 
@@ -62,33 +64,33 @@ and open the template in the editor.
                 var elemntArray = $("." + "active").get();
 
                 for (i = 0; i < elemntArray.length; i++) {
-                   elemntArray[i].className = "none"; 
+                    elemntArray[i].className = "none";
                 }
             }
         </script>
 
+
         <div class="oneWhole" id="hot">
-            <a name="#hot"></a> 
             <div class="titleTextContainer">
                 <h1>Hot</h1>
                 <p class="marginLess">Hot freshly ground black coffee or a cup of exquisite tea?</p>
                 <br>
                 <p class="marginMax">We give you that perfect cup every time!</p>
             </div>
+            <a name="juicyX" style="position: absolute; left: 0; bottom: 0; display: inline-block">#</a>
         </div>
 
         <div class="oneWhole" id="juice">
-            <a name="#juicy"></a>
             <div class="titleTextContainer">
                 <h1>Juice</h1>
                 <p class="marginLess">Hot freshly ground black coffee or a cup of exquisite tea?</p>
                 <br>
                 <p class="marginMax">We give you that perfect cup every time!</p>
             </div>
+            <a name="cosyX" style="position: absolute; left: 0; bottom: 0; display: inline-block">#</a>
         </div>
 
         <div class="oneWhole" id="cosy">
-            <a name="#cosy"></a>
             <div class="titleTextContainer">
                 <h1>Cosy</h1>
                 <p class="marginLess">Hang around. Enjoy the settings.</p>
@@ -96,6 +98,6 @@ and open the template in the editor.
                 <p class="marginMax">Use our fast WiFi. Borrow a newspaper or a novel.</p>
             </div>
         </div>
-
+        
     </body>
 </html>

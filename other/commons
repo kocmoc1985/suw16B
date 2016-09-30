@@ -19,3 +19,10 @@ USE JS INSIDE HTML
     add_comment_form();
 < /script>
 
+
+MAKING ANCHORS:
+<li><a href="#Link1">LinkOne</a></li>   -----> Anchor is called from here
+<a name="Link1"></a>     --------------> placing the anchor note don't have "#"
+
+OBS! Now the anchors are linked to ID not to ANCHORS, linking to ANCHORS is deprecated
+

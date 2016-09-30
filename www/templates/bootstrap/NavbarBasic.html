@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+The basic template is taken from W3C and is named: BS-Navbar (http://www.w3schools.com/bootstrap/bootstrap_navbar.asp)
+-->
+<html>
+    <head>
+        <title>NavbarBasic</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <style type="text/css">
+            html,body{
+                height: 100%;
+                width: 100%;
+            }
+
+            .navbar, .navbar-default{
+                margin: 0;
+            }
+            
+            /*  To have it fixed /*
+            /*  .navbar, .navbar-default{
+                  margin: 0;
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  z-index: 10;
+             }*/ 
+
+            @media (max-width:750px){
+                .navbar, .navbar-default ul li{
+                    background-color: #f8f8f8;
+                }
+                
+                .navbar-header{
+                    background-color: #f8f8f8;
+                    border-style: solid;
+                    border-color: #f8f8f8 #f8f8f8 #999 #f8f8f8;
+                    border-width: 1px;
+                }
+                
+                .container-fluid{
+                    background-color: #f8f8f8;
+                }
+            }               
+        </style>
+    </head>
+    
+    <body>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Company Name</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" onclick="setNavBarActive(event)">Home</a></li>
+                    <li><a href="#" onclick="setNavBarActive(event)">Menu1</a></li>
+                    <li><a href="#" onclick="setNavBarActive(event)">Menu2</a></li>
+                    <li><a href="#" onclick="setNavBarActive(event)">Menu3</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div style="height: 30%;background-color: #999"></div>
+
+        <script language = "javascript">
+
+            function setNavBarActive(event) {
+                var targetElem = getEventTargetElement(event);
+                var parent = getParentElement(targetElem);
+                if (parent !== null) {
+                    resetAllActives();
+                    parent.className = "active";
+                }
+            }
+
+            function getEventTargetElement(eventObject) {
+                if (eventObject.target) { //DOM
+                    return eventObject.target;
+                } else if (eventObject.srcElement) { //IE
+                    return eventObject.srcElement;
+                } else {
+                    return null;
+                }
+            }
+
+            function getParentElement(element) {
+                return element.parentNode;
+            }
+
+            function resetAllActives() {
+                var elemntArray = $("." + "active").get();
+
+                for (i = 0; i < elemntArray.length; i++) {
+                    elemntArray[i].className = "none";
+                }
+            }
+        </script>
+    </body>
+</html>

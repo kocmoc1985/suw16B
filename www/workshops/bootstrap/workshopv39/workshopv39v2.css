@@ -14,8 +14,8 @@ body h1, body h2, body h3{
 /*No margin bottom*/
 .navbar, .navbar-default{
     margin: 0;
-    font-family: 'Londrina Solid', cursive;
     position: fixed;
+    height: 60px;
     top: 0;
     left: 0;
     right: 0;
@@ -33,6 +33,7 @@ body h1, body h2, body h3{
 }
 
 #hot{
+    margin-top: 60px;
     position: relative;
     background: url(http://mixcont.com/_files/_suw16_b/images/hot-cup.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -65,7 +66,7 @@ body h1, body h2, body h3{
     min-width: 50%;
     min-height: 30%;
     position: absolute;
-    top: 35%;
+    top: 20%;
     left: 25%;
 }
 
@@ -105,8 +106,19 @@ body h1, body h2, body h3{
         min-height: 30%;
         position: absolute;
         /*background-color: red;*/
-        bottom: 40px;
+        top: 20px;
         left: 0;
+    }
+    
+    #hot{
+        margin-top: 210px;
+    }
+
+    .navbar, .navbar-default ul li{
+        background-color: white;
+    }
+    
+    .nav, .navbar-nav{
     }
 }
 /*============================================================================*/

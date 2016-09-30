@@ -1,6 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 markera "large" om desktop-first och "small" om "mobile-first"
 
 en class ska ha 2 classer "lg-one-third" -> för desktop and "sm-full-width" -> för mobile
