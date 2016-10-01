@@ -19,8 +19,4 @@ body{
     font-size: 0;
 }
 
-//Tar bort mellanrum mellan <li> elementen
-<ul style="display:flex">
-    <li>ExampleOne</li>
-</ul>
 

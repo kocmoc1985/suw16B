@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Menu</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="menu.css" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <div class="menu-container">
+
+            <script language = "javascript" >
+                function fadeIn(element) {
+                    var parent = element.parentNode;
+                    var elemntArray = parent.childNodes;
+                    for (i = 0; i < elemntArray.length; i++) {
+                        if (elemntArray[i].tagName === "UL") {
+                            $(elemntArray[i]).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
+                        }
+                    }
+                }
+
+                function setActive(element) {
+                    resetAllActives();
+                    element.className = "activeLink";
+                }
+
+                function resetAllActives() {
+                    var elemntArray = $("." + "activeLink").get();
+
+                    for (i = 0; i < elemntArray.length; i++) {
+                        elemntArray[i].className = "none";
+                    }
+                }
+            </script>
+
+            <ul class="removeSpaceLi">
+                <li>
+                    <a href="#" class="menu-title">Company Name</a>
+                </li>
+                <li>
+                    <a href="#" onclick="setActive(this)">Link1</a>
+                </li>
+                <li>
+                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">Link2</a>
+                </li>
+                <li>
+                    <a href="#" onclick="setActive(this)">Link3</a>
+                </li>
+                <li>
+                    <a href="#" onclick="setActive(this)">Link4</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="example-container">
+
+        </div>
+
+    </body>
+</html>

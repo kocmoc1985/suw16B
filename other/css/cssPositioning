@@ -1,3 +1,23 @@
+================================================================================
+
+
+
+================================================================================
+CENTERING AN INLINE-BLOCK ELEMENT
+
+body {
+    background: #bbb;
+    text-align: center; -> OBS!
+}
+
+.wrap {
+    background: #aaa;
+    margin: 0 auto;
+    display: inline-block;
+    overflow: hidden;
+}
+
+================================================================================
 css position "static" the default position property. 
 Z-Index not working on statical elements
 
