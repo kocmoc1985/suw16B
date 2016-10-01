@@ -26,51 +26,64 @@ and open the template in the editor.
                         }
                     }
                 }
+
+                function setActive(element) {
+                    resetAllActives();
+                    element.className = "activeLink";
+                }
+
+                function resetAllActives() {
+                    var elemntArray = $("." + "activeLink").get();
+
+                    for (i = 0; i < elemntArray.length; i++) {
+                        elemntArray[i].className = "none";
+                    }
+                }
             </script>
 
-            <ul>
+            <ul style="display: flex">
                 <li>
-                    <a href="link1" class="menu-title">Company Name</a>
+                    <a href="#" class="menu-title">Company Name</a>
                 </li>
                 <li>
-                    <a href="link1">Link1</a>
+                    <a href="#" onclick="setActive(this)">Link1</a>
                 </li>
                 <li>
-                    <a href="link2" onmouseover="fadeIn(this)">Link2</a>
+                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">Link2</a>
                     <ul><!--Sub level one-->
                         <li>
-                            <a href="sub-link-1">Sub-Link 1</a>
+                            <a href="#">Sub-Link 1</a>
                         </li>
                         <li>
-                            <a href="sub-link-2" onmouseover="fadeIn(this)">Sub-Link 2</a>
+                            <a href="#" onmouseover="fadeIn(this)">Sub-Link 2</a>
                             <ul><!--Sub level two-->
                                 <li>
-                                    <a href="sub-link-1">Sub-Sub-Link 1</a>
+                                    <a href="#">Sub-Sub-Link 1</a>
                                 </li>
                                 <li>
-                                    <a href="sub-link-2">Sub-Sub-Link 2</a>
+                                    <a href="#">Sub-Sub-Link 2</a>
                                 </li>
                                 <li>
-                                    <a href="sub-link-3">Sub-Sub-Link 3</a>
+                                    <a href="#">Sub-Sub-Link 3</a>
                                 </li>
                                 <li>
-                                    <a href="sub-link-4">Sub-Sub-Link 4</a>
+                                    <a href="#">Sub-Sub-Link 4</a>
                                 </li>
                             </ul><!--/Sub level two-->
                         </li>
                         <li>
-                            <a href="sub-link-3">Sub-Link 3</a>
+                            <a href="#">Sub-Link 3</a>
                         </li>
                         <li>
-                            <a href="sub-link-4">Sub-Link 4</a>
+                            <a href="#">Sub-Link 4</a>
                         </li>
                     </ul><!--/Sub level one-->
                 </li>
                 <li>
-                    <a href="link3">Link3</a>
+                    <a href="#">Link3</a>
                 </li>
                 <li>
-                    <a href="link1">Link4</a>
+                    <a href="#">Link4</a>
                 </li>
             </ul>
         </div>

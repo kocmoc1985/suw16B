@@ -10,6 +10,7 @@ html,body{
 
 body{
     margin: 0px;
+    font-size: 0;
 }
 
 .menu-container{
@@ -55,7 +56,11 @@ body{
 }
 
 .menu-container ul li a:hover{
-    background-color: #ccccff;
+    background-color: #eaeaef;
+}
+
+.activeLink{
+    background-color:#e1e1e6 !important;
 }
 
 .menu-container ul ul{
