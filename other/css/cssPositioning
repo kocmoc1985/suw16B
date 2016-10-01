@@ -1,6 +1,8 @@
 ================================================================================
+REMOVING SPACE BETWEEN LI ELEMENTS
 
-
+The solution I had in my initial answer was to add font-size: 0 to the *parent* element,
+ and then declare a sensible font-size on the *children*.
 
 ================================================================================
 CENTERING AN INLINE-BLOCK ELEMENT
