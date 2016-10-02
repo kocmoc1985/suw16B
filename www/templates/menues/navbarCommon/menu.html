@@ -17,6 +17,15 @@ and open the template in the editor.
         <div class="menu-container">
 
             <script language = "javascript" >
+                function fadeIn(element) {
+                    var parent = element.parentNode;
+                    var elemntArray = parent.childNodes;
+                    for (i = 0; i < elemntArray.length; i++) {
+                        if (elemntArray[i].tagName === "UL") {
+                            $(elemntArray[i]).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
+                        }
+                    }
+                }
 
                 function setActive(element) {
                     resetAllActives();
@@ -32,7 +41,30 @@ and open the template in the editor.
                 }
             </script>
 
-            <ul>
+            <ul class="ul-mobile">
+                <li>
+                    <a href="#" class="menu-title">Company Name</a>
+                </li>
+                <li class="li-mobile-menu">
+                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">.....</a>
+                    <ul><!--Sub level one-->
+                        <li>
+                            <a href="#" onclick="setActive(this)">Sub-Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="setActive(this)">Sub-Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="setActive(this)">Sub-Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="setActive(this)">Sub-Link 4</a>
+                        </li>
+                    </ul><!--/Sub level one-->
+                </li>
+            </ul>
+
+            <ul class="ul-initial">
                 <li>
                     <a href="#" class="menu-title">Company Name</a>
                 </li>

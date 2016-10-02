@@ -66,6 +66,17 @@ body{
     background-color:#e1e1e6 !important;
 }
 
+/*============================================================================*/
+
+.menu-container ul ul{
+    position: absolute;
+    padding: 0;
+    left: 0;
+    right: 0;
+    background-color: #00ffff;
+    display: none;
+}
+
 
 .menu-container ul li:hover > ul{
     display: block;
@@ -73,6 +84,26 @@ body{
 
 /*============================================================================*/
 
+.ul-mobile{
+    display: none !important;
+
+}
+
+.li-mobile-menu{
+    margin-left: 50% !important;
+}
+
+/*mobile*/
+@media(max-width: 750px){ 
+    .ul-mobile{
+        display: block !important;
+    }
+    
+    .ul-initial{
+        display: none !important;
+    }
+    
+}
 
 
 
