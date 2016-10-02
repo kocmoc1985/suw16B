@@ -42,7 +42,17 @@ body{
     margin: 0;
     padding: 0;
     display: inline-block;
-    width: 50%;
+    /*width: 50%;*/
+}
+
+.ul-left{
+    width: 60%;
+    padding-left: 10% !important;
+}
+
+
+.ul-right{
+    width: 30%;
 }
 
 .spacing{
