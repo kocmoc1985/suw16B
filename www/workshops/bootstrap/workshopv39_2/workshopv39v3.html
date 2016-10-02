@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Workshopv39</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid|Titillium+Web" rel="stylesheet"> 
+        <link rel="stylesheet" type="text/css" href="../../style/normalizeReset.css">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <script src="../js/bootstrap.min.js"></script>
+        <link href="workshopv39v3.css" rel="stylesheet">
+        <link href="navbar.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="scrollsmooth.js?snap"></script>
+    </head>
+
+    <body>
+
+        <script language = "javascript">
+
+            //smooth scroll
+            $(function () {
+                $('a[href*="#"]:not([href="#"])').click(function () {
+                    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        if (target.length) {
+                            $('html, body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+
+            function fadeIn(element) {
+                var parent = element.parentNode;
+                var elemntArray = parent.childNodes;
+                for (i = 0; i < elemntArray.length; i++) {
+                    if (elemntArray[i].tagName === "UL") {
+                        $(elemntArray[i]).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
+                    }
+                }
+            }
+
+            function setActive(element) {
+                resetAllActives();
+                element.className = "activeLink";
+            }
+
+            function resetAllActives() {
+                var elemntArray = $("." + "activeLink").get();
+
+                for (i = 0; i < elemntArray.length; i++) {
+                    elemntArray[i].className = "none";
+                }
+            }
+        </script>
+
+        <div class="menu-container">
+
+            <ul class="ul-mobile">
+                <li>
+                    <a href="#hotX" class="menu-title">Cafe Lorem</a>
+                </li>
+                <li class="li-mobile-menu">
+                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">.....</a>
+                    <ul><!--Sub level one-->
+                        <li>
+                            <a href="#hotX" onclick="setActive(this)">Hot</a>
+                        </li>
+                        <li>
+                            <a href="#juicyX" onclick="setActive(this)">Juicy</a>
+                        </li>
+                        <li>
+                            <a href="#cosyX" onclick="setActive(this)">Cosy</a>
+                        </li>
+                    </ul><!--/Sub level one-->
+                </li>
+            </ul>
+
+            <ul class="ul-initial">
+                <li>
+                    <a href="#hotX" class="menu-title">Cafe Lorem</a>
+                </li>
+                <li>
+                    <a href="#hotX" onclick="setActive(this)">Hot</a>
+                </li>
+                <li>
+                    <a href="#juicyX" onclick="setActive(this)">Juicy</a>
+                </li>
+                <li>
+                    <a href="#cosyX" onclick="setActive(this)">Cosy</a>
+                </li>
+            </ul>
+
+        </div>>
+
+        <a name="hotX"></a>
+
+        <div class="oneWhole" id="hot">
+            <div class="titleTextContainer">
+                <h1>Hot</h1>
+                <p class="marginLess">Hot freshly ground black coffee or a cup of exquisite tea?</p>
+                <br>
+                <p class="marginMax">We give you that perfect cup every time!</p>
+            </div>
+            <a name="juicyX" style="position: absolute; left: 0; bottom: 0; display: inline-block">#</a>
+        </div>
+
+        <div class="oneWhole" id="juice">
+            <div class="titleTextContainer">
+                <h1>Juice</h1>
+                <p class="marginLess">Hot freshly ground black coffee or a cup of exquisite tea?</p>
+                <br>
+                <p class="marginMax">We give you that perfect cup every time!</p>
+            </div>
+            <a name="cosyX" style="position: absolute; left: 0; bottom: 0; display: inline-block">#</a>
+        </div>
+
+        <div class="oneWhole" id="cosy">
+            <div class="titleTextContainer">
+                <h1>Cosy</h1>
+                <p class="marginLess">Hang around. Enjoy the settings.</p>
+                <br>
+                <p class="marginMax">Use our fast WiFi. Borrow a newspaper or a novel.</p>
+            </div>
+        </div>
+
+    </body>
+</html>
