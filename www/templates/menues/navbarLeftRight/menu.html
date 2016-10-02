@@ -41,6 +41,29 @@ and open the template in the editor.
                 }
             </script>
 
+            <ul class="ul-mobile">
+                <li>
+                    <a href="#" class="menu-title">Company Name</a>
+                </li>
+                <li class="li-mobile-menu">
+                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">.....</a>
+                    <ul><!--Sub level one-->
+                        <li>
+                            <a href="#" onclick="setActive(this)">Sub-Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="setActive(this)">Sub-Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Sub-Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#">Sub-Link 4</a>
+                        </li>
+                    </ul><!--/Sub level one-->
+                </li>
+            </ul>
+
             <ul class="ul-left">
                 <li>
                     <a href="#" class="menu-title">Company</a>
@@ -59,7 +82,7 @@ and open the template in the editor.
                 </li>
             </ul>
 
-            
+
             <ul class="ul-right">
                 <li>
                     <a href="#" onclick="setActive(this)">Link1</a>
