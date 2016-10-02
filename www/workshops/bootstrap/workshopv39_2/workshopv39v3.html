@@ -23,7 +23,7 @@ and open the template in the editor.
         <script language = "javascript">
 
             $(window).load(function () {
-                adjustNavbarContainerHeight();
+                adjustNavBarFixedHeight();
             });
 
             //smooth scroll
@@ -42,11 +42,12 @@ and open the template in the editor.
                 });
             });
 
-            function adjustNavbarContainerHeight() {
+            function adjustNavBarFixedHeight() {
                 var height = $('#menu-link').outerHeight(true);
                 var menuContainer = document.getElementById('menu-container');
                 height = height + 6;
                 menuContainer.style.height = "" + height + "px";
+                document.getElementById('hot').style.marginTop = height + "px";
             }
 
             function fadeIn(element) {
