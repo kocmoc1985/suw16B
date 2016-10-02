@@ -16,12 +16,15 @@ and open the template in the editor.
         <link href="workshopv39v3.css" rel="stylesheet">
         <link href="navbar.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="scrollsmooth.js?snap"></script>
     </head>
 
     <body>
 
         <script language = "javascript">
+
+            $(window).load(function () {
+                adjustNavbarContainerHeight();
+            });
 
             //smooth scroll
             $(function () {
@@ -38,6 +41,13 @@ and open the template in the editor.
                     }
                 });
             });
+
+            function adjustNavbarContainerHeight() {
+                var height = $('#menu-link').outerHeight(true);
+                var menuContainer = document.getElementById('menu-container');
+                height = height + 6;
+                menuContainer.style.height = "" + height + "px";
+            }
 
             function fadeIn(element) {
                 var parent = element.parentNode;
@@ -63,7 +73,7 @@ and open the template in the editor.
             }
         </script>
 
-        <div class="menu-container">
+        <div class="menu-container" id="menu-container">
 
             <ul class="ul-mobile">
                 <li>
@@ -87,7 +97,7 @@ and open the template in the editor.
 
             <ul class="ul-initial">
                 <li>
-                    <a href="#hotX" class="menu-title">Cafe Lorem</a>
+                    <a href="#hotX" class="menu-title" id="menu-link">Cafe Lorem</a>
                 </li>
                 <li>
                     <a href="#hotX" onclick="setActive(this)">Hot</a>
