@@ -24,14 +24,14 @@ body{
 }
 
 /*CompanyName*/
-/*.menu-title{
+.menu-title{
     font-weight: 600;
     font-size: 12pt;
-}*/
+}
 
-/*.menu-container ul li a.menu-title{
+.menu-container ul li a.menu-title{
     padding: 12px 20px;
-}*/
+}
 
 .menu-container ul li a.menu-title:hover{
     background-color: #f8f8f8;
@@ -42,7 +42,6 @@ body{
     margin: 0;
     padding: 0;
     display: inline-block;
-    /*width: 50%;*/
 }
 
 .ul-left{
@@ -55,9 +54,6 @@ body{
     width: 30%;
 }
 
-.spacing{
-    
-}
 
 .menu-container > ul > li{
     display: inline-block;
@@ -85,6 +81,22 @@ body{
 .menu-container ul li:hover > ul{
     display: block;
 }
+
+/*============================================================================*/
+
+@media(max-width: 763px){
+    .ul-right{
+        width: 40%;
+        background-color: #00b3ee;
+    }
+
+    .ul-left{
+        width: 60%;
+        padding-left: 0px !important;
+    }
+
+}
+
 
 /*============================================================================*/
 
