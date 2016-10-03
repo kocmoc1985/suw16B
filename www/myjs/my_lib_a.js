@@ -20,7 +20,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES FIRTS OF ALL
      */
-    $(document).ready(function () {
+    $(document).ready(function() {
         go();
     });
 
@@ -28,7 +28,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES AFTER "doc.ready"
      */
-    $(window).load(function () {
+    $(window).load(function() {
         addTransitonToNavBarBtns();
     });
 }
@@ -70,6 +70,20 @@ function showMessageOwnWindow(message) {
 }
 
 /**
+ * 
+ * @returns {undefined}
+ */
+function arrayUsageExample() {
+    var parent = element.parentNode;
+    var elemntArray = parent.childNodes;
+    for (i = 0; i < elemntArray.length; i++) {
+        if (elemntArray[i].tagName === "UL") {
+            //Do something
+        }
+    }
+}
+
+/**
  * This works really nice can use with running:
  * "<a href="#" onclick="include('blog1.html')">Blog1</a>"
  * 
@@ -88,7 +102,7 @@ function showMessageOwnWindow(message) {
  * @returns {undefined}
  */
 function includeHtml(selector, html) {
-    $(function () {
+    $(function() {
         $(selector).load(html);
     });
 }
@@ -244,11 +258,11 @@ function addEventB(elemId, eventType, eventFunction) {
 }
 
 function addEvent_jquery_example() {
-    $("#test").click(function (event) {
+    $("#test").click(function(event) {
         //do something
     });
     ///==========OR===================
-    $("#test").hover()(function (event) {
+    $("#test").hover()(function(event) {
         //do something
     });
 }
@@ -359,7 +373,7 @@ function addEventToTheDocument(event, eventfunction) {
  * @returns {undefined}
  */
 function addHoverEventJquery(elem_id_or_tag_name) {
-    $(elem_id_or_tag_name).hover(function () {
+    $(elem_id_or_tag_name).hover(function() {
         $(this).hide();
     });
 }
@@ -379,6 +393,25 @@ function isScrolledIntoView(elem)
     var elemTop = $(elem).offset().top;
     var elemBottom = elemTop + $(elem).height();
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+
+/**
+ * Returns the display type: block, inline, inline-block.....
+ * @param {type} selector
+ * @returns {@exp;@call;$@call;css}
+ */
+function getDisplaySetting(selector){
+    return $(selector).css('display');
+}
+
+/**
+ * Returns position type: static, relative, fixed, absolute...
+ * @param {type} selector
+ * @returns {}
+ */
+function getPositionProperty(selector){
+   return $(selector).css("position");
 }
 
 /**
@@ -665,7 +698,7 @@ function getJsonFromUrlSync(url) {
  * @returns {nothing}
  */
 function getJsonFromUrlAsync(url) {
-     $.getJSON(url, function (data) { 
+     $.getJSON(url, function(data) { 
         ///
      });
 }
@@ -675,7 +708,7 @@ function getJsonFromUrlAsync(url) {
  * @returns {undefined}
  */
 function getJsonFromUrlEx() { 
-     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function (data) { 
+     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function(data) { 
         for (x in data) { 
             debugg("key:" + x + " value: " + data[x]);
          }
@@ -757,7 +790,7 @@ function node_client_SendPostRequestEx() {
         type: "POST",
         url: "http://localhost:3000/nodeTest",
         data: {param1: "Node.js", param2: "test successful"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         //toDo
         alert("Data Saved: " + msg);
     });
@@ -765,7 +798,7 @@ function node_client_SendPostRequestEx() {
 
 function node_server_RecievePostExample() {
     //
-    this.app.post('/nodeTest', function (req, res) {
+    this.app.post('/nodeTest', function(req, res) {
         //
         var param1 = req.body.param1;
         var param2 = req.body.param2;
@@ -820,7 +853,7 @@ function ajaxRequest(recieving_script, paramter_name, value_to_send, asynchron) 
  * @tags ajax, xmlhttp
  */
 function ajaxRequestReady(xmlhttp, function_to_execute) {
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             function_to_execute(xmlhttp.responseText);
         } else {
@@ -889,7 +922,7 @@ function ajaxRequestJQuerry() {
         type: "POST",
         url: "some.php",
         data: {name: "John", location: "Boston"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         alert("Data Saved: " + msg);
     });
 }
@@ -897,9 +930,9 @@ function ajaxRequestJQuerry() {
 function ajaxEventsExamples() {
 //
 //Super important event
-    $(document).ajaxStart(function () {
+    $(document).ajaxStart(function() {
         console.log("ajaxStart");
-    }).ajaxStop(function () {
+    }).ajaxStop(function() {
         console.log("ajaxStop");
     });
     //============================
@@ -917,7 +950,7 @@ function ajaxRequestJQuerryTest1() {
         type: "POST",
         url: "http://www.mixcont.com/index.php",
         data: {link: "_http_com", client: "901", param: "ip"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         alert("Ajax Data recieved: " + msg);
     });
 }
@@ -934,7 +967,7 @@ function ajaxRequestJQuerryTest2() {
         async: true, //is true by default
         type: "GET",
         url: "https://api.ipify.org?format=json"
-    }).done(function (jsonStr) {
+    }).done(function(jsonStr) {
         alert("Ajax Data recieved: " + jsonStr["ip"]);
     });
 }
@@ -952,7 +985,7 @@ function getWidth(element_id_class_tag) {
 }
 
 /*
- * Get height of an element
+ * Get height of an element, OBS! without taking into account: padding, border, margin
  * @tested: yes
  * @uses: jquery-1.9.1
  * @Param element_id_class_tag - this should be the name of the element not the element it self
@@ -960,6 +993,33 @@ function getWidth(element_id_class_tag) {
 function getHeight(element_id_class_tag) {
     var height = $(element_id_class_tag).height();
     return height;
+}
+
+/**
+ * get height of the element: elements-height + padding
+ * @param {type} selector
+ * @returns {@exp;@call;$@call;InnerHeight}
+ */
+function getInnerHeight(selector) {
+    return $(selector).innerHeight();
+}
+
+/**
+ * get height of the element: elements-height + padding + border
+ * @param {type} selector
+ * @returns {@exp;@call;$@call;outerHeight}
+ */
+function getOuterHeight(selector) {
+    return $(selector).outerHeight();
+}
+
+/**
+ * Get elements total height: elements-height + padding + border + margin
+ * @param {type} selector
+ * @returns {@exp;@call;$@call;outerHeight}
+ */
+function getTotalHeight(selector) {
+    return $(selector).outerHeight(true);
 }
 
 /*
@@ -992,27 +1052,30 @@ function setWidthByElementInProcent(element, procent) {
     element.style.width = "" + procent + "%";
 }
 
-/**
- * Set height by sending "div id" as parameter
- * @tested: yes
- * @uses: jquery-1.9.1
- * @param {String} elementID
- * @param {int} height
- * @returns {undefined}
- */
-function setHeightById(elementID, height) {
-    $("#" + elementID).css({'height': height});
+
+function setHeightById(selector, height) {
+    $(selector).css({'height': height});
 }
 
 
 /**
- * 
+ * Use FadeInB() method
  * @tags fadeIn, fade, dimIn, fadeOut
- * @param {Element} element
+ * @param {Element} selector
  * @returns {undefined}
  */
-function fadeIn(element) {
-    $(element).fadeIn(2000);
+function fadeInA(selector) {
+    $(selector).fadeIn(2000);
+}
+
+
+/**
+ * Use this
+ * @param {type} selector
+ * @returns {undefined}
+ */
+function fadeInB(selector) {
+    $(selector).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
 }
 
 /**
@@ -1054,7 +1117,7 @@ function slideSideWards(elemIdTagOrClass, width, millis) {
  * @returns {undefined}
  */
 function blinkA(idElemClass, intervall) {
-    var intervalID = setInterval(function () {
+    var intervalID = setInterval(function() {
         blinkB(idElemClass);
     }, intervall);
     //This one is to stop the "Thread"
@@ -1070,16 +1133,37 @@ function blinkB(idElemClass) {
     $(idElemClass).fadeOut(1000);
     $(idElemClass).fadeIn(1000);
 }
+
+/**
+ * Just call this function in the very begenning.
+ * @tested
+ * @returns {undefined}
+ */
+function smoothScroll() {
+    $(function() {
+        $('a[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+}
 //============================================
 
 /**
  * @tags forEach, all elements, do something for all
- * @param {type} element_id_class_tag
+ * @param {type} selector
  * @returns {undefined}
  */
-function forEachElement(element_id_class_tag) {
-    $(element_id_class_tag).each(function (index, item) {
-//Do something
+function forEachElement(selector) {
+    $(selector).each(function(index, item) {
         $(item).slideUp(); // $(item).remove();
     });
 }
@@ -1537,7 +1621,7 @@ function validateEmailPrimitive(formId, emailFieldId) {
  * @returns {undefined}
  */
 function removeDefaultEventClick(elementOrItsID) {
-    $(elementOrItsID).click(function (event) {
+    $(elementOrItsID).click(function(event) {
         event.preventDefault();
     });
 }
@@ -1818,7 +1902,7 @@ function setCheckedForCheckBox(elem_id, checked) {
 }
 
 function includeHtml(htmlToInclude, elementId) {
-    $(function () {
+    $(function() {
         $("#" + elementId).load(htmlToInclude);
     });
 }

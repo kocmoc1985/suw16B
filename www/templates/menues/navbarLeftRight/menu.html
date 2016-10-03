@@ -14,51 +14,89 @@ and open the template in the editor.
     </head>
     <body>
 
-        <div class="menu-container">
 
-            <script language = "javascript" >
-                function fadeIn(element) {
-                    var parent = element.parentNode;
-                    var elemntArray = parent.childNodes;
-                    for (i = 0; i < elemntArray.length; i++) {
-                        if (elemntArray[i].tagName === "UL") {
-                            $(elemntArray[i]).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
-                        }
+
+        <script language = "javascript" >
+
+            $(document).ready(function() {
+                navBarFixedPositionFix("menu-container", "example-container");
+            });
+
+            /**
+             * This one is needed if you want to have "fixed" position for the NavBar
+             * @param {type} navBarContainerId - the id of the container
+             * @param {type} elemToSetMarginTopOn - id of the element which is direct under the navbar
+             * @returns {unresolved}
+             */
+            function navBarFixedPositionFix(navBarContainerId, elemToSetMarginTopOn) {
+                //
+                var pos = $("#" + navBarContainerId).css("position");
+                //
+                console.log("css-position: " + pos);
+                //
+                if (pos === "fixed" === false) {
+                    return;
+                }
+                //
+                var height = $("#" + navBarContainerId).outerHeight();
+                var elemMarginTop = document.getElementById(elemToSetMarginTopOn);
+                elemMarginTop.style.marginTop = height + "px";
+            }
+
+
+            function fadeIn(element) {
+                var parent = element.parentNode;
+                var elemntArray = parent.childNodes;
+                for (i = 0; i < elemntArray.length; i++) {
+                    if (elemntArray[i].tagName === "UL") {
+                        $(elemntArray[i]).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
                     }
                 }
+            }
 
-                function setActive(element) {
-                    resetAllActives();
-                    element.className = "activeLink";
+            function setActive(element) {
+                resetAllActives();
+                element.className = "activeLink";
+            }
+
+            function resetAllActives() {
+                var elemntArray = $("." + "activeLink").get();
+
+                for (i = 0; i < elemntArray.length; i++) {
+                    elemntArray[i].className = "none";
                 }
+            }
+        </script>
 
-                function resetAllActives() {
-                    var elemntArray = $("." + "activeLink").get();
-
-                    for (i = 0; i < elemntArray.length; i++) {
-                        elemntArray[i].className = "none";
-                    }
-                }
-            </script>
+        <div class="menu-container" id="menu-container">
 
             <ul class="ul-mobile">
                 <li>
                     <a href="#" class="menu-title">Company Name</a>
                 </li>
                 <li class="li-mobile-menu">
-                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">.....</a>
+                    <a href="#" onmouseover="fadeIn(this);" onclick="setActive(this);">.....</a>
                     <ul><!--Sub level one-->
                         <li>
-                            <a href="#" onclick="setActive(this)">Sub-Link 1</a>
+                            <a href="#" onclick="setActive(this);">Left-Link1</a>
                         </li>
                         <li>
-                            <a href="#" onclick="setActive(this)">Sub-Link 2</a>
+                            <a href="#" onclick="setActive(this);">Left-Link2</a>
                         </li>
                         <li>
-                            <a href="#" onclick="setActive(this)">Sub-Link 3</a>
+                            <a href="#" onclick="setActive(this);">Left-Link3</a>
                         </li>
                         <li>
-                            <a href="#" onclick="setActive(this)">Sub-Link 4</a>
+                            <a href="#" onclick="setActive(this);">Left-Link4</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="setActive(this);">Right-Link1</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="setActive(this);">Right-Link2</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="setActive(this);">Right-Link3</a>
                         </li>
                     </ul><!--/Sub level one-->
                 </li>
@@ -69,35 +107,35 @@ and open the template in the editor.
                     <a href="#" class="menu-title">Company Name</a>
                 </li>
                 <li>
-                    <a href="#" onclick="setActive(this)">Link1</a>
+                    <a href="#" onclick="setActive(this);">L-Link1</a>
                 </li>
                 <li>
-                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">Link2</a>
+                    <a href="#" onclick="setActive(this);">L-Link2</a>
                 </li>
                 <li>
-                    <a href="#" onclick="setActive(this)">Link3</a>
+                    <a href="#" onclick="setActive(this);">L-Link3</a>
                 </li>
                 <li>
-                    <a href="#" onclick="setActive(this)">Link4</a>
+                    <a href="#" onclick="setActive(this);">L-Link4</a>
                 </li>
             </ul>
 
 
             <ul class="ul-right">
                 <li>
-                    <a href="#" onclick="setActive(this)">Link1</a>
+                    <a href="#" onclick="setActive(this);">R-Link1</a>
                 </li>
                 <li>
-                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">Link2</a>
+                    <a href="#" onclick="setActive(this);">R-Link2</a>
                 </li>
                 <li>
-                    <a href="#" onclick="setActive(this)">Link3</a>
+                    <a href="#" onclick="setActive(this);">R-Link3</a>
                 </li>
             </ul>
         </div>
 
-        <div class="example-container">
-
+        <div class="example-container" id="example-container">
+            #
         </div>
 
     </body>

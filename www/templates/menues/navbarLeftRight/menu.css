@@ -5,6 +5,7 @@ html,body{
 .example-container{
     background-color: lightgrey;
     height: 30%;
+    font-size: 14pt;
 }
 
 
@@ -17,7 +18,7 @@ body{
     background-color: #f8f8f8;
     display: block;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    /*    position: fixed;
+/*       position: fixed;
         left: 0;
         top: 0;
         right: 0;*/
