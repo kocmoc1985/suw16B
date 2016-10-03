@@ -378,6 +378,27 @@ function addHoverEventJquery(elem_id_or_tag_name) {
     });
 }
 
+/**
+ * Super Nice
+ * Calculates the space/offset between the right side of the element to the right
+ * side of the window: (element) []---offset--->](window, right side)
+ * @tags offset right,offset_right, rightOffset, spacToRight
+ * @param {type} element
+ * @param {type} limit
+ * @returns {Boolean}
+ */
+function enoughSpaceToTheRight(element, limit) {
+    var rightOffset = ($(window).width() - ($(element).offset().left + $(element).outerWidth()));
+    //
+    //console.log("right-offset: " + rightOffset);
+    //
+    if (rightOffset > (limit + 10)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 /**
  * Defines if the element is visible with current scroll.
@@ -401,7 +422,7 @@ function isScrolledIntoView(elem)
  * @param {type} selector
  * @returns {@exp;@call;$@call;css}
  */
-function getDisplaySetting(selector){
+function getDisplaySetting(selector) {
     return $(selector).css('display');
 }
 
@@ -410,8 +431,8 @@ function getDisplaySetting(selector){
  * @param {type} selector
  * @returns {}
  */
-function getPositionProperty(selector){
-   return $(selector).css("position");
+function getPositionProperty(selector) {
+    return $(selector).css("position");
 }
 
 /**

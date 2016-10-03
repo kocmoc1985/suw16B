@@ -88,12 +88,17 @@ body{
 /*sub-level-two, has also pos = absolute. Note absolute relative the nearest "relative" or "absolute"
 parent  or to viewport if others missing*/
 .menu-container ul ul ul{
-    left: 200px;
+    /****left or right is now set from "javaScript" -> method: checkSpace(...)****/
+    /*left: 200px;*/
     top: 0px;
     width: 200px;
 }
-
 /*============================================================================*/
+
+/*mobile*/
+@media(max-width: 750px){ 
+   
+}
 
 
 

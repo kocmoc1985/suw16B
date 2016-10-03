@@ -41,6 +41,41 @@ and open the template in the editor.
                 elemMarginTop.style.marginTop = height + "px";
             }
 
+            /**
+             * This function checks if there is enough space to display the submenu to the 
+             * right of it's parent. If there is not enough space it will show the menu to the 
+             * left
+             * @param {type} element
+             * @param {int} elemWidth
+             * @returns {undefined}
+             */
+            function checkSpace(element, elemWidth) {
+                var parent = element.parentNode.parentNode.parentNode;
+                var elemntArray = parent.childNodes;
+                for (i = 0; i < elemntArray.length; i++) {
+                    if (elemntArray[i].tagName === "UL") {
+                        if (enoughSpaceToTheRight(elemntArray[i], elemWidth) === false) {
+                            $(".menu-container ul ul ul").css({left: -elemWidth});
+                        } else {
+                            $(".menu-container ul ul ul").css({left: elemWidth});
+                        }
+                    }
+                }
+            }
+
+            function enoughSpaceToTheRight(element, limit) {
+                var rightOffset = ($(window).width() - ($(element).offset().left + $(element).outerWidth()));
+                //
+                //console.log("right-offset: " + rightOffset);
+                //
+                if (rightOffset > (limit + 10)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+
             function fadeIn(element) {
                 var parent = element.parentNode;
                 var elemntArray = parent.childNodes;
@@ -66,7 +101,6 @@ and open the template in the editor.
         </script>
 
         <div class="menu-container" id="menu-container">
-
             <ul>
                 <li>
                     <a href="#" class="menu-title">Company Name</a>
@@ -76,13 +110,14 @@ and open the template in the editor.
                 </li>
                 <li>
                     <a href="#" onmouseover="fadeIn(this);" onclick="setActive(this);">Link2</a>
-                    <ul><!--Sub level one-->
+                    <ul><!--Sub level one Link2-->
                         <li>
                             <a href="#" onclick="setActive(this);">Sub-Link 1</a>
                         </li>
                         <li>
-                            <a href="#" onmouseover="fadeIn(this);" onclick="setActive(this);">Sub-Link 2</a>
-                            <ul><!--Sub level two-->
+                            <a href="#" onmouseover="fadeIn(this);
+                checkSpace(this, 200);" onclick="setActive(this);">Sub-Link 2</a>
+                            <ul><!--Sub level two Sub-Link 2-->
                                 <li>
                                     <a href="#">Sub-Sub-Link 1</a>
                                 </li>
@@ -95,7 +130,7 @@ and open the template in the editor.
                                 <li>
                                     <a href="#">Sub-Sub-Link 4</a>
                                 </li>
-                            </ul><!--/Sub level two-->
+                            </ul><!--/Sub level two Sub-Link 2-->
                         </li>
                         <li>
                             <a href="#">Sub-Link 3</a>
@@ -103,7 +138,7 @@ and open the template in the editor.
                         <li>
                             <a href="#">Sub-Link 4</a>
                         </li>
-                    </ul><!--/Sub level one-->
+                    </ul><!--/Sub level one Link2-->
                 </li>
                 <li>
                     <a href="#" onclick="setActive(this);">Link3</a>
