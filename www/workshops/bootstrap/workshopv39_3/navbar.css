@@ -99,6 +99,14 @@ body{
     .ul-initial{
         display: none !important;
     }
+    
+}
+
+@media(max-width: 500px){ 
+    .li-mobile-menu{
+    margin-left: 30% !important;
+}
+    
 }
 
 
