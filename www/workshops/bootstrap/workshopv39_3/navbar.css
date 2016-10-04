@@ -11,7 +11,7 @@ body{
     margin: 0px;
     font-size: 0;
 }
-
+/*The easiest way to change the width of the container is to adjust -> .menu-container ul li a{ -> font-size*/
 .menu-container{
     background-color: #f8f8f8;
     display: block;

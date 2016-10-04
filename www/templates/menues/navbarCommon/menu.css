@@ -20,6 +20,7 @@ img[src='Error.src']{
     display: none;
 }
 
+/*The easiest way to change the width of the container is to adjust -> .menu-container ul li a{ -> font-size*/
 .menu-container{
     background-color: #f8f8f8;
     display: block;
@@ -27,7 +28,8 @@ img[src='Error.src']{
     /*    position: fixed;
         left: 0;
         top: 0;
-        right: 0;*/
+        right: 0;
+    z-index:10 */
 }
 
 .menu-title{
