@@ -32,7 +32,7 @@ and open the template in the editor.
                 </li>
                 <li class="li-mobile-menu">
                     <a href="#" class="a-mobile-onclick-expand"><img onerror="imageNotFound(this)" src='http://www.mixcont.com/_files/_suw16_b/images/menu-mobile-light-grey.png'></a>
-                    
+
                     <ul><!--Sub level one-->
                         <li>
                             <a href="#" class="a-can-be-active">Sub-Link 1</a>
@@ -72,9 +72,15 @@ and open the template in the editor.
         <div class="example-container" id="example-container">
 
         </div>
-        
+
         <div class="footer-container-main">
         </div>
+
+        <script language = "javascript">
+            $(function () {
+                $(".footer-container-main").load("footerCommon.html");
+            });
+        </script>
 
     </body>
 </html>
