@@ -54,7 +54,7 @@ body h1, body h2, body h3{
     min-width: 50%;
     min-height: 30%;
     position: absolute;
-    top: 20%;
+    top: 5%;
     left: 25%;
 }
 
@@ -102,12 +102,22 @@ body h1, body h2, body h3{
     .titleTextContainer h1{
         font-size: 38pt;
     }
-    
+
     .titleTextContainer p{
         font-size: 11pt;
+        padding: 20px;
     }
 
+    .marginLess{
+        margin-left: 2%;
+    }
+
+    .marginMax{
+        margin-left: 45%;
+    }
 }
+
+
 /*============================================================================*/
 
 

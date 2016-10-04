@@ -83,12 +83,13 @@ body{
 
 .ul-mobile{
     display: none !important;
-
 }
 
 .li-mobile-menu{
     margin-left: 50% !important;
 }
+
+/*============================================================================*/
 
 /*mobile*/
 @media(max-width: 750px){ 
@@ -99,15 +100,16 @@ body{
     .ul-initial{
         display: none !important;
     }
-    
+
 }
 
 @media(max-width: 500px){ 
     .li-mobile-menu{
-    margin-left: 30% !important;
+        margin-left: 40% !important;
+    }
 }
-    
-}
+
+/*============================================================================*/
 
 
 

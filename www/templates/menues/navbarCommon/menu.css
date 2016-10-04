@@ -105,7 +105,7 @@ img[src='Error.src']{
     margin-left: 50% !important;
 }
 
-/*mobile*/
+/*============================================================================*/
 @media(max-width: 750px){ 
     .ul-mobile{
         display: block !important;
@@ -120,6 +120,13 @@ img[src='Error.src']{
     }
 
 }
+
+@media(max-width: 500px){ 
+    .li-mobile-menu{
+        margin-left: 40% !important;
+    }
+}
+/*============================================================================*/
 
 
 
