@@ -24,7 +24,25 @@ and open the template in the editor.
             //Executes first
             $(document).ready(function() {
                 navBarFixedPositionFix("menu-container", "hot");
+                addEventsToLinks();
             });
+
+            function addEventsToLinks() {
+                var elemntArray = $(".a-mobile-onclick-expand").get();
+                for (i = 0; i < elemntArray.length; i++) {
+                    $(elemntArray[i]).click(function(event) {
+                        event.preventDefault();
+                        fadeIn(this);
+                    });
+                }
+                //
+                var elemntArray = $(".a-can-be-active").get();
+                for (i = 0; i < elemntArray.length; i++) {
+                    $(elemntArray[i]).click(function(event) {
+                        setActive(this);
+                    });
+                }
+            }
 
             /**
              * This one is needed if you want to have "fixed" position for the NavBar
@@ -45,6 +63,42 @@ and open the template in the editor.
                 elemMarginTop.style.marginTop = height + "px";
             }
 
+            function fadeIn(element) {
+                var parent = element.parentNode;
+                var elemntArray = parent.childNodes;
+                for (i = 0; i < elemntArray.length; i++) {
+                    if (elemntArray[i].tagName === "UL") {
+                        if ($(elemntArray[i]).is(':visible') === false) {
+                            $(elemntArray[i]).css("display", "block");
+                            $(elemntArray[i]).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
+                        } else {
+                            $(elemntArray[i]).fadeOut();
+                        }
+                    }
+                }
+            }
+
+            function setActive(element) {
+                //
+                resetAllActives();
+                element.className = "activeLink";
+                //
+                hideMenuIfMobile(element);
+            }
+
+            function hideMenuIfMobile(element) {
+                if ($(".li-mobile-menu").is(':visible')) {
+                    $(element).parent().parent().fadeOut();
+                }
+            }
+
+            function resetAllActives() {
+                var elemntArray = $("." + "activeLink").get();
+                for (i = 0; i < elemntArray.length; i++) {
+                    elemntArray[i].className = "none";
+                }
+            }
+
             //smooth scroll
             $(function() {
                 $('a[href*="#"]:not([href="#"])').click(function() {
@@ -61,29 +115,13 @@ and open the template in the editor.
                 });
             });
 
-            function fadeIn(element) {
-                var parent = element.parentNode;
-                var elemntArray = parent.childNodes;
-                for (i = 0; i < elemntArray.length; i++) {
-                    if (elemntArray[i].tagName === "UL") {
-                        $(elemntArray[i]).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
-                    }
-                }
+            function imageNotFound(imgElement) {
+                var parent = imgElement.parentNode;
+                parent.removeChild(imgElement);
+                $(parent).css("font-size", "14pt");
+                $(parent).text(".....");
             }
 
-            function setActive(element) {
-                resetAllActives();
-                element.className = "activeLink";
-            }
-
-            function resetAllActives() {
-                //
-                var elemntArray = $("." + "activeLink").get();
-                //
-                for (i = 0; i < elemntArray.length; i++) {
-                    elemntArray[i].className = "none";
-                }
-            }
         </script>
 
         <div class="menu-container" id="menu-container">
@@ -93,16 +131,16 @@ and open the template in the editor.
                     <a href="#hotX" class="menu-title" id="menu-link-mobile">Cafe Lorem</a>
                 </li>
                 <li class="li-mobile-menu">
-                    <a href="#" onmouseover="fadeIn(this)" onclick="setActive(this)">.....</a>
+                    <a href="#" class="a-mobile-onclick-expand"><img onerror="imageNotFound(this)" src='http://www.mixcont.com/_files/_suw16_b/images/menu-mobile-light-grey.png'></a>
                     <ul><!--Sub level one-->
                         <li>
-                            <a href="#hotX" onclick="setActive(this)">Hot</a>
+                            <a href="#hotX" class="a-can-be-active">Hot</a>
                         </li>
                         <li>
-                            <a href="#juicyX" onclick="setActive(this)">Juicy</a>
+                            <a href="#juicyX" class="a-can-be-active">Juicy</a>
                         </li>
                         <li>
-                            <a href="#cosyX" onclick="setActive(this)">Cosy</a>
+                            <a href="#cosyX" class="a-can-be-active">Cosy</a>
                         </li>
                     </ul><!--/Sub level one-->
                 </li>
@@ -113,13 +151,13 @@ and open the template in the editor.
                     <a href="#hotX" class="menu-title" id="menu-link-desktop">Cafe Lorem</a>
                 </li>
                 <li>
-                    <a href="#hotX" onclick="setActive(this)">Hot</a>
+                    <a href="#hotX" class="a-can-be-active">Hot</a>
                 </li>
                 <li>
-                    <a href="#juicyX" onclick="setActive(this)">Juicy</a>
+                    <a href="#juicyX" class="a-can-be-active">Juicy</a>
                 </li>
                 <li>
-                    <a href="#cosyX" onclick="setActive(this)">Cosy</a>
+                    <a href="#cosyX" class="a-can-be-active">Cosy</a>
                 </li>
             </ul>
 

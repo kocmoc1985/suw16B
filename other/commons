@@ -1,4 +1,4 @@
-
+================================================================================
 SET BACKGROUND IMAGE DIV
 #container { 
     background: url(images/bg.jpg) no-repeat center center fixed; 
@@ -7,22 +7,28 @@ SET BACKGROUND IMAGE DIV
     -o-background-size: cover;
     background-size: cover;
 }
+================================================================================
 
+Call JS function on error loading image
+<img onerror="imageNotFound(this)" src="http://..">
 
+================================================================================
 CSS Transparency: background-color: rgba(0,0,255,0.3);
+================================================================================
+
 
 USE CSS INSIDE HTML
 <style type="text/css"></style>
-
+================================================================================
 USE JS INSIDE HTML
 < script language = "javascript" >
     add_comment_form();
 < /script>
-
+================================================================================
 
 MAKING ANCHORS:
 <li><a href="#Link1">LinkOne</a></li>   -----> Anchor is called from here
 <a name="Link1"></a>     --------------> placing the anchor note don't have "#"
 
 OBS! Now the anchors are linked to ID not to ANCHORS, linking to ANCHORS is deprecated
-
+================================================================================

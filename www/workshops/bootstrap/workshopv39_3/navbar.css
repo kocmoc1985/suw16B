@@ -7,7 +7,6 @@ html,body{
     height: 30%;
 }
 
-
 body{
     margin: 0px;
     font-size: 0;
@@ -76,10 +75,9 @@ body{
     display: none;
 }
 
-
-.menu-container ul li:hover > ul{
+/*.menu-container ul li:hover > ul{
     display: block;
-}
+}*/
 
 /*============================================================================*/
 
@@ -101,7 +99,6 @@ body{
     .ul-initial{
         display: none !important;
     }
-
 }
 
 

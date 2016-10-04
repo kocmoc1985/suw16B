@@ -5,6 +5,9 @@ html,body{
 .example-container{
     background-color: lightgrey;
     height: 30%;
+    font-size: 14pt;
+    padding-left: 10px;
+    padding-top: 20px;
 }
 
 
@@ -13,14 +16,18 @@ body{
     font-size: 0;
 }
 
+img[src='Error.src']{
+    display: none;
+}
+
 .menu-container{
     background-color: #f8f8f8;
     display: block;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-/*    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;*/
+    /*    position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;*/
 }
 
 .menu-title{
@@ -77,15 +84,21 @@ body{
 }
 
 
-.menu-container ul li:hover > ul{
+/*.menu-container ul li:hover > ul{
     display: block;
-}
+}*/
 
+/*============================================================================*/
+/*Desktop*/
+@media(min-width: 750px){ 
+    .desktop-hide{
+        display:none !important;
+    } 
+}
 /*============================================================================*/
 
 .ul-mobile{
     display: none !important;
-
 }
 
 .li-mobile-menu{
@@ -100,6 +113,10 @@ body{
 
     .ul-initial{
         display: none !important;
+    }
+
+    .mobile-hide{
+        display:none !important;
     }
 
 }

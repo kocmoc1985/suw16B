@@ -183,10 +183,6 @@ function getIfUndefined(enything) {
 }
 
 /*
- * Generic function to attach an eventlistner to an element.
- * This one is needed to launch the script.
- * Is placed in the end of the document
- * The most important use: <h1>addEvent(window, "load", go)</h1>
  * <ul>Possible mouse event types
  * <li>click
  * <li>mousedown
@@ -215,7 +211,6 @@ function getIfUndefined(enything) {
  * @Param eventFunction = the function to be executed
  */
 function addEvent(elemToAddTo, eventType, eventFunction) {
-
     try {
         if (elemToAddTo.addEventListener) {
             //Detta �r mozilla!
@@ -262,7 +257,7 @@ function addEvent_jquery_example() {
         //do something
     });
     ///==========OR===================
-    $("#test").hover()(function(event) {
+    $("#test").hover(function(event) {
         //do something
     });
 }
@@ -437,11 +432,11 @@ function getPositionProperty(selector) {
 
 /**
  * Element visible
- * @param {String} elementId
+ * @param {String} selector
  * @returns {@exp;@call;$@call;is}
  */
-function isVisible(elementId) {
-    return $("#" + elementId).is(':visible');
+function isVisible(selector) {
+    return $(selector).is(':visible');
 }
 
 /**
@@ -1227,13 +1222,13 @@ function getFontColor(element) {
 
 /**
  * 
- * @param {String} element_id_class_tag
+ * @param {String} selector
  * @param {String} property_name
  * @param {String} value
  * @returns {undefined}
  */
-function setCSSProperty(element_id_class_tag, property_name, value) {
-    $(element_id_class_tag).css(property_name, value);
+function setCSSProperty(selector, property_name, value) {
+    $(selector).css(property_name, value);
 }
 
 
