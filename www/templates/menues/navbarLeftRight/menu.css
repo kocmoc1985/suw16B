@@ -6,6 +6,8 @@ html,body{
     background-color: lightgrey;
     height: 30%;
     font-size: 14pt;
+    padding-left: 10px;
+    padding-top: 20px;
 }
 
 
@@ -14,20 +16,21 @@ body{
     font-size: 0;
 }
 
+/*The easiest way to change the width of the container is to adjust -> .menu-container ul li a{ -> font-size*/
 .menu-container{
     background-color: #f8f8f8;
     display: block;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-/*       position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;*/
+    /*       position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;*/
 }
 
 /*CompanyName*/
 .menu-title{
     font-weight: 600;
-    font-size: 12pt;
+    font-size: 14pt;
 }
 
 .menu-container ul li a.menu-title{
@@ -62,7 +65,7 @@ body{
 }
 
 .menu-container ul li a{
-    font-size: 11pt;
+    font-size: 13pt;
     padding: 15px 20px;
     display: block;
     background-color: #f8f8f8;
@@ -89,9 +92,9 @@ body{
     display: none;
 }
 
-.menu-container ul li:hover > ul{
+/*.menu-container ul li:hover > ul{
     display: block;
-}
+}*/
 
 /*============================================================================*/
 
@@ -103,35 +106,57 @@ body{
 .li-mobile-menu{
     margin-left: 50% !important;
 }
-
-/*mobile*/
-@media(max-width: 750px){ 
-    .ul-mobile{
-        display: block !important;
-    }
-    
-    .ul-left{
-        display: none !important;
-    }
-    
-    .ul-right{
-        display: none !important;
-    }
-}
-
+/*============================================================================*/
 /*small screen*/
-@media(max-width: 850px){ 
+@media(max-width: 1250px){ 
     .ul-right{
-        width: 40%;
+        width: 35%;
     }
 
     .ul-left{
-        width: 60%;
+        width: 65%;
         padding-left: 0px !important;
     }
 
 }
 
+/*mobile*/
+@media(max-width: 960px){ 
+    .ul-mobile{
+        display: block !important;
+    }
+
+    .ul-left{
+        display: none !important;
+    }
+
+    .ul-right{
+        display: none !important;
+    }
+
+    .mobile-hide{
+        display:none !important;
+    }
+
+    .li-mobile-menu{
+        margin-left: 60% !important;
+    }
+}
+
+
+/*mobile*/
+@media(max-width: 570px){ 
+    .li-mobile-menu{
+        margin-left: 45% !important;
+    }
+}
+
+/*mobile*/
+@media(max-width: 371px){ 
+    .li-mobile-menu{
+        margin-left: 25% !important;
+    }
+}
 
 /*============================================================================*/
 
