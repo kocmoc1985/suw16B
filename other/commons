@@ -8,6 +8,18 @@ SET BACKGROUND IMAGE DIV
     background-size: cover;
 }
 ================================================================================
+MAKE DIV SAME SIZE AS IT'S PARENT
+
+img{
+postion:absolute; -> don't forget to make the parent "relative"
+width:100%;
+height:100%;
+top:0;
+left0;
+}
+
+
+================================================================================
 
 Call JS function on error loading image
 <img onerror="imageNotFound(this)" src="http://..">

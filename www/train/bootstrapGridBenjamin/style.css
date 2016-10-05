@@ -1,0 +1,71 @@
+body {
+  font-family: "Titillium Web";
+  font-size: 4vmin;
+  color:#eee;
+  /*text-shadow: 4px 4px 8px #000000;*/
+  background-color: #900;
+}
+
+header, h1 {
+  font-family: "Londrina Solid";
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+
+header{
+  height:60px;
+  background-color: #00c;
+}
+
+
+section{
+  height: calc(100vh - 60px);
+}
+
+.anchor-pad{
+  height:60px;
+}
+
+.image1{
+  background-size: cover;
+  background-image: url(http://mixcont.com/_files/_suw16_b/images/hot-cup.jpg);
+}
+
+.image2{
+  background-size: cover;
+  background-image: url(http://mixcont.com/_files/_suw16_b/images/orange-quarters.jpg);
+}
+
+.image3{
+  background-size: cover;
+  background-image: url(http://mixcont.com/_files/_suw16_b/images/cosy-cafe.jpg);
+}
+
+.content{
+
+}
+
+.content h1 {
+  font-size:20vmin;
+  margin-bottom:5vmin;
+  color:#900;
+  margin-left:20%;
+
+  text-shadow:
+    -4px -4px 0 #aaa,
+     4px -4px 0 #aaa,
+    -4px 4px 0 #aaa,
+     4px 4px 0 #aaa;
+}
+
+.content p {
+  line-height:140%;
+  margin-bottom:1.5vmax;
+  padding:1vmax;
+  background-color:#900;
+  opacity:0.8;
+  width:80%;
+}
