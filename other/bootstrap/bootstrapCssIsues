@@ -1,0 +1,8 @@
+================================================================================
+When using bootstrap css-library (bootstrap.min.css) it overides the:
+
+body{
+font-size: 0; so have "!important" to avoid it
+}
+================================================================================
+
