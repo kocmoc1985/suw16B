@@ -1727,15 +1727,6 @@ function getStringByDialog(textToDisplay) {
 
 
 
-/**
- * 
- * @param {Array} array
- * @returns {@exp;array@pro;length}
- */
-function arrayGetLength(array) {
-    return array.length;
-}
-
 function arrayIndexExists(array, index) {
     if (array[index] === undefined) {
         return false;

@@ -8,10 +8,9 @@ $(document).ready(function () {
 function dynamicNavbar() {
     var eTop = $('#menu-container').offset().top; //get the offset top of the element
     var rst = eTop - $(window).scrollTop();
-    
+//    console.log($(window).scrollTop()); //position of the ele w.r.t windowDF
     //
-    if (rst < 0 && rst < -5) {
-        console.log($(window).scrollTop()); //position of the ele w.r.t windowDF
+    if (rst < 0) {
         $("#menu-container").css("position", "fixed");
         $("#menu-container").css("top", "0");
         $("#menu-container").css("background-color", "#f8f8f8");
@@ -76,7 +75,7 @@ function navBarFixedPositionFix(navBarContainerId, elemToSetMarginTopOn) {
     //
     var height = $("#" + navBarContainerId).outerHeight();
     var elemMarginTop = document.getElementById(elemToSetMarginTopOn);
-    elemMarginTop.style.marginTop = height + "px";
+    elemMarginTop.style.marginTop = (height+50) + "px";
 }
 
 function fadeIn(element) {
