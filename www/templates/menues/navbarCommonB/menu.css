@@ -38,7 +38,7 @@ body{
 }
 
 .menu-container ul li a.menu-title:hover{
-    background-color: #f8f8f8;
+    background-color: transparent !important;
 }
 
 .menu-container ul{
@@ -58,11 +58,11 @@ body{
     display: block;
     background-color: transparent;/*#f8f8f8*/
     text-decoration: none;
-    color: #827c7c;
+    color: #827c7c;/*#827c7c*/
 }
 
 .menu-container ul li a:hover{
-    background-color: #eaeaef;
+    background-color: #eaeaef !important;
 }
 
 .activeLink{
