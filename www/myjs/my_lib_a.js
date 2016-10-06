@@ -84,6 +84,17 @@ function arrayUsageExample() {
 }
 
 /**
+ * 
+ * @param {type} arr
+ * @param {type} index
+ * @tags poll, arrayPoll, pollArray
+ * @returns {unresolved}
+ */
+function arrayGetAndRemove(arr,index){
+    return arr.splice(index,1).pop();
+}
+
+/**
  * This works really nice can use with running:
  * "<a href="#" onclick="include('blog1.html')">Blog1</a>"
  * 
