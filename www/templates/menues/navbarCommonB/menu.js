@@ -8,18 +8,28 @@ $(document).ready(function () {
 function dynamicNavbar() {
     var eTop = $('#menu-container').offset().top; //get the offset top of the element
     var rst = eTop - $(window).scrollTop();
-    console.log(rst); //position of the ele w.r.t windowDF
+    console.log($(window).scrollTop()); //position of the ele w.r.t windowDF
     //
     if (rst <= 0) {
         $("#menu-container").css("position", "fixed");
         $("#menu-container").css("top", "0");
+        $("#menu-container").css("background-color", "#f8f8f8");
+        $(".menu-container ul li a").css("background-color", "#f8f8f8");
         navBarFixedPositionFix("menu-container", "example-container");
+
     }
-//    if (rst === 0) {
-//        $("#menu-container").css("position", "absolute");
-//        $("#menu-container").css("top", "20");
-//    }
     //
+    if ($(window).scrollTop() === 0) {
+        $("#menu-container").css("position", "absolute");
+        $("#menu-container").css("top", "40px");
+        //
+        var elemMarginTop = document.getElementById("example-container");
+        elemMarginTop.style.marginTop = 0 + "px";
+        //
+        $("#menu-container").css("background-color", "transparent");
+        $(".menu-container ul li a").css("background-color", "transparent");
+    }
+
 }
 
 function includeNavbar(selector, htmlDoc) {
