@@ -2,13 +2,22 @@ $(document).ready(function() {
     //
     navBarFixedPositionFix("menu-container", "example-container");
     //
-    addEventsToLinks();
+    includeNavbar("#menu-container", "navbar.html");
+    //
 });
+
+function includeNavbar(selector, htmlDoc) {
+    $(selector).load(htmlDoc, function () {
+        //
+        addEventsToLinks();
+        //
+    });
+}
 
 function addEventsToLinks() {
     var elemntArray = $(".a-mobile-onclick-expand").get();
     for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function(event) {
+        $(elemntArray[i]).click(function (event) {
             event.preventDefault();
             fadeIn(this);
         });
@@ -16,7 +25,7 @@ function addEventsToLinks() {
     //
     var elemntArray = $(".a-can-be-active").get();
     for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function(event) {
+        $(elemntArray[i]).click(function (event) {
             setActive(this);
         });
     }
@@ -78,9 +87,9 @@ function resetAllActives() {
     }
 }
 
-function imageNotFound(imgElement){
+function imageNotFound(imgElement) {
     var parent = imgElement.parentNode;
     parent.removeChild(imgElement);
-    $(parent).css("font-size","14pt");
+    $(parent).css("font-size", "14pt");
     $(parent).text(".....");
 }
