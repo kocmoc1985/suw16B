@@ -1,49 +1,16 @@
-$(document).ready(function () {
+$(document).ready(function() {
     //
-    includeNavbar("#menu-container", "navbar.html");
+    navBarFixedPositionFix("menu-container", "introduction");
     //
-    document.addEventListener("scroll", dynamicNavbar, false);
+    includeNavbar("#menu-container", "navbar/navbar.html");
+    //
 });
-
-function dynamicNavbar() {
-//    var eTop = $('#menu-container').offset().top; //get the offset top of the element
-//    var rst = eTop - $(window).scrollTop();
-//    console.log($(window).scrollTop()); //position of the ele w.r.t windowDF
-    //
-    var offset = offsetWindow("#menu-container");
-    //
-    if (offset < 0) {
-        $("#menu-container").css("position", "fixed");
-        $("#menu-container").css("top", "0");
-        $("#menu-container").css("background-color", "#f8f8f8");//#f8f8f8
-        $(".menu-container ul li a").css("background-color", "#f8f8f8");//#f8f8f8
-        $(".menu-container ul li a").css("color", "#827c7c");
-        navBarFixedPositionFix("menu-container", "example-container");
-    }
-    //
-    if ($(window).scrollTop() === 0) {
-        $("#menu-container").css("position", "absolute");
-        $("#menu-container").css("top", "40px");
-        //
-        var elemMarginTop = document.getElementById("example-container");
-        elemMarginTop.style.marginTop = 0 + "px";
-        //
-        $("#menu-container").css("background-color", "transparent");
-        $(".menu-container ul li a").css("background-color", "transparent");
-    }
-}
-
-function offsetWindow(selector) {
-    var eTop = $(selector).offset().top; //get the offset top of the element
-    return eTop - $(window).scrollTop();
-}
 
 function includeNavbar(selector, htmlDoc) {
     $(selector).load(htmlDoc, function () {
         //
         addEventsToLinks();
         //
-        navBarFixedPositionFix("menu-container", "example-container");
     });
 }
 
@@ -80,10 +47,8 @@ function navBarFixedPositionFix(navBarContainerId, elemToSetMarginTopOn) {
     }
     //
     var height = $("#" + navBarContainerId).outerHeight();
-//    var windowOffsetHeight = Math.abs(offsetWindow("#" + elemToSetMarginTopOn));
-//    console.log("offset:" + windowOffsetHeight);
     var elemMarginTop = document.getElementById(elemToSetMarginTopOn);
-    elemMarginTop.style.marginTop = (height+100) + "px";
+    elemMarginTop.style.marginTop = height + "px";
 }
 
 function fadeIn(element) {

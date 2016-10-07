@@ -62,7 +62,7 @@ var cardsArr = createCards();
 
 function play(randomCard, randomOrFirst) {
     shuffle(cardsArr);
-    var card = cardsArr.splice(randomCard,1).pop();
+    var card = cardsArr.splice(randomCard,1);
     console.log("taken card: " + card.type + " / " + card.x + "  " + randomOrFirst);
     addCard(card);
     showTakenCards();

@@ -2,6 +2,7 @@ var winNumber = Math.floor((Math.random() * 6) + 1);
 throwTarning(winNumber);
 
 function throwTarning(winNumber){
+    //
     var rst = Math.floor((Math.random() * 6) + 1); 
     //
     console.log("throw:" + rst);

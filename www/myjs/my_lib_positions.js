@@ -1,3 +1,11 @@
+/**
+ * IMPORTANT
+ * Helps to now where the scroll is 
+ * @returns {jQuery}
+ */
+function getScrollPosition(){
+    return $(window).scrollTop();
+}
 
 /**
  * Super important!
