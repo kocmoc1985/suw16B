@@ -1,18 +1,35 @@
-$(document).ready(function() {
+$(document).ready(function () {
     //
-    navBarFixedPositionFix("menu-container", "introduction");
-    //
-    includeNavbar("#menu-container", "navbar/navbar.html");
+    includeNavbar();
     //
 });
 
-function includeNavbar(selector, htmlDoc) {
-    $(selector).load(htmlDoc, function () {
+function includeNavbar() {
+    $("#menu-container").load("navbar/navbar.html", function () {
         //
         addEventsToLinks();
         //
+        includeContent();
+        //
+        navBarFixedPositionFix("menu-container", "introduction");
     });
 }
+
+function includeContent() {
+    $("#introduction").load("content/about.html", function () {
+         icludeFooter();
+    });
+}
+
+function icludeFooter(){
+     $("#footer-container-main").load("footer/footer.html", function () {
+        
+    });
+}
+
+
+
+//===============================NAVBAR=========================================
 
 function addEventsToLinks() {
     var elemntArray = $(".a-mobile-onclick-expand").get();
@@ -48,7 +65,7 @@ function navBarFixedPositionFix(navBarContainerId, elemToSetMarginTopOn) {
     //
     var height = $("#" + navBarContainerId).outerHeight();
     var elemMarginTop = document.getElementById(elemToSetMarginTopOn);
-    elemMarginTop.style.marginTop = height + "px";
+    elemMarginTop.style.marginTop = (height) + "px";
 }
 
 function fadeIn(element) {
@@ -93,3 +110,5 @@ function imageNotFound(imgElement) {
     $(parent).css("font-size", "14pt");
     $(parent).text(".....");
 }
+
+//===============================NAVBAR=========================================

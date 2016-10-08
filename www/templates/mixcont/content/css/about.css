@@ -1,7 +1,8 @@
 
 .introduction{
+    position: relative;
     height: 100%;
-    background: url(http://mixcont.com/_files/_suw16_b/mixcontWebbpage/backgrounds/about_high_tech_background.jpg) no-repeat center center fixed; 
+    background: url(http://mixcont.com/_files/_suw16_b/mixcontWebbpage/backgrounds/hight_tech_background_3.png) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -9,11 +10,13 @@
 }
 
 
-.introductionB{
-    height: 100%;
-    background: url(http://mixcont.com/_files/_suw16_b/mixcontWebbpage/backgrounds/hight_tech_background_2.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.splashTitle{
+    position: absolute;
+    width:40%;
+    bottom: 100px;
+    left: 40px;
+    font-size: 8vmin;
+    font-weight: bold;
+    color:white;
+    
 }
