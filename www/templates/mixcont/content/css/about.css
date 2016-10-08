@@ -12,11 +12,13 @@
 
 .splashTitle{
     position: absolute;
-    width:40%;
+    width:50%;
     bottom: 100px;
     left: 40px;
-    font-size: 8vmin;
+}
+
+.splashTitle p{
+    font-size: 7vmin;
     font-weight: bold;
     color:white;
-    
 }

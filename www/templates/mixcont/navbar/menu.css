@@ -7,18 +7,10 @@ body{
     font-size: 0;
 }
 
-.example-container{
-    background-color: lightgrey;
-    height: 75%;
-    font-size: 14pt;
-    padding-left: 10px;
-    padding-top: 20px;
-}
-
 
 /*The easiest way to change the width of the container is to adjust -> .menu-container ul li a{ -> font-size*/
 .menu-container{
-    background-color: #f8f8f8;
+    background-color: #f8f8f8;/*#f8f8f8*/
     display: block;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     position: fixed;
@@ -56,9 +48,9 @@ body{
     font-size: 11pt;
     padding: 15px 20px;
     display: block;
-    background-color: #f8f8f8;
+    background-color: #f8f8f8;/*#f8f8f8*/
     text-decoration: none;
-    color: #827c7c;
+    color: #827c7c;/*#827c7c*/
 }
 
 .menu-container ul li a:hover{

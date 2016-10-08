@@ -17,6 +17,12 @@ function includeNavbar() {
 
 function includeContent() {
     $("#introduction").load("content/about.html", function () {
+         icludeCustomers();
+    });
+}
+
+function icludeCustomers(){
+    $("#customers-show").load("content/customers.html", function () {
          icludeFooter();
     });
 }
