@@ -10,41 +10,68 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="navbar/menu.css" type="text/css"/>
-        <link rel="stylesheet" href="content/css/about.css" type="text/css"/>
-        <link rel="stylesheet" href="content/css/customers.css" type="text/css"/>
         <link rel="stylesheet" href="css/bootGrids.css" type="text/css"/>
-        <link rel="stylesheet" href="footer/footer.css" type="text/css"/>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="css/forAll.css" type="text/css"/>
+        <link rel="stylesheet" href="navbar/menu.css" type="text/css"/>
+        
+        <script src="navbar/navbar.js"></script>
 
     </head>
 
     <body> 
 
         <script language = "javascript">
-            function displayViewPortWidthHeight(elementId) {
-                document.getElementById(elementId).innerHTML = "width:" + $(document).width() + "<br>" + "height: " + $(document).height();
+            $(document).ready(function() {
+                //
+                includeNavbar();
+                //
+            });
+
+            function includeNavbar() {
+                $("#menu-container").load("navbar/navbar.html", function() {
+                    //
+                    addEventsToLinks();
+                    //
+                    addClickEventsToNavBar();
+                    //
+                    includeContent();
+                    //
+                    navBarFixedPositionFix("menu-container", "splash-screen");
+                });
             }
+
+            function includeContent() {
+                $("#splash-screen").load("content/splash.html", function() {
+                    icludeCustomers();
+                });
+            }
+
+            function icludeCustomers() {
+                $("#customers-show").load("content/customers.html", function() {
+                    icludeFooter();
+                });
+            }
+
+            function icludeFooter() {
+                $("#footer-container-main").load("footer/footer.html", function() {
+
+                });
+            }
+
         </script>
 
 
         <div class="menu-container" id="menu-container">
-            <!--inserted from navbar/menu.js-->
         </div>
 
 
-        <div class="introduction" id="introduction">
-            <!--inserted from js/include.js-->
+        <div class="splash-screen" id="splash-screen">
         </div>
-        
+
         <div class="customers-show" id="customers-show">
-            
         </div>
 
         <div class="footer-container-main" id="footer-container-main">
-
         </div>
 
     </body>

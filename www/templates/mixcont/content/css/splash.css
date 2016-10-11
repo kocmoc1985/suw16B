@@ -1,5 +1,4 @@
-
-.introduction{
+.splash-screen{
     position: relative;
     height: 100%;
     /*http://mixcont.com/_files/_suw16_b/mixcontWebbpage/backgrounds/hight_tech_background_3.jpg*/
@@ -9,7 +8,6 @@
     -o-background-size: cover;
     background-size: cover;
 }
-
 
 .splashTitle{
     position: absolute;
