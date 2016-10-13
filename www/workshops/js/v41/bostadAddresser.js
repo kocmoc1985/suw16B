@@ -10,7 +10,6 @@ function create() {
     }
 }
 
-
 function randomType() {
     var random = Math.floor(Math.random() * bostadsTyper.length);
     console.log("random: " + random);
@@ -40,7 +39,6 @@ function deleteBy(type, addr) {
             }
         }
     }
-
 }
 
 function deleteByB(key, value) {
