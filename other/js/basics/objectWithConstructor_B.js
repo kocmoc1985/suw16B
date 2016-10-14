@@ -5,7 +5,10 @@ function Hus(byggar) {
     this.addVaning = function (vaning) {
         this.vaningar.push(vaning);
     };
+
+   
 }
+
 
 function Vaning(floor) {
     this.floor = floor;
@@ -48,6 +51,4 @@ hus.addVaning(vaningTwo);
 
 //=======================
 
-var jsonStr = JSON.stringify(hus);
-
-console.log(jsonStr);
+console.log(hus);

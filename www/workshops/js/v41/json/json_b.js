@@ -15,7 +15,6 @@ function Vaning(floor) {
     this.addRoom = function (room) {
         this.rooms.push(room);
     };
-
 }
 
 function Room(type, ytterDoor, trappa, area) {
