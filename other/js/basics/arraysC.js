@@ -39,10 +39,57 @@ function printArr(arr) {
     }
 }
 
-var obj = getObject("name", "Lök");
+function printArrWithObjects(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        printObject(arr[i]);
+    }
+}
+//==============================================================================
+//var obj = getObject("name", "Lök");
 
 //printObject(obj);
-deleteObject("name","Lök");
-deleteObject("name","Bob");
-printArr(arr);
+//deleteObject("name", "Lök");
+//deleteObject("name", "Bob");
+//printArr(arr);
+//==============================================================================
+
+
+var depth = 0;
+var returArr = [];
+searchObjRecursion(arr, "born", 1965, returArr);
+printArrWithObjects(returArr);
+
+
+function searchObjRecursion(object, keyIn, valueIn, returArr) {
+    for (var key in object) {
+        //
+        var value = object[key];
+        //
+        console.log(key + ":::");
+        console.log(value);
+        //
+        if (keyIn === key && value === valueIn) {
+            returArr.push(object);
+        }
+        //
+        if (typeof value === "object") {
+            depth++;
+//            console.log("step in: " + depth);
+            searchObjRecursion(value, keyIn, valueIn, returArr);
+        }
+        //
+    }
+    //
+    depth--;
+//    console.log("step out: " + depth);
+    //
+    if (depth === -1) {
+        return returArr;
+    }
+    //
+}
+
+//==============================================================================
+
+
 

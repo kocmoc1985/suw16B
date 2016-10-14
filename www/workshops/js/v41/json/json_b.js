@@ -32,6 +32,7 @@ var vaningOne = new Vaning("ett");
 vaningOne.addRoom(new Room("hall", true, true, 25));
 vaningOne.addRoom(new Room("kök", false, false, 15));
 vaningOne.addRoom(new Room("vardagsrum", false, false, 30));
+vaningOne.addRoom(new Room("vardagsrum", false, false, 35));
 vaningOne.addRoom(new Room("wc", false, false, 5));
 
 //======================
@@ -42,6 +43,7 @@ vaningTwo.addRoom(new Room("wc", false, false, 3));
 vaningTwo.addRoom(new Room("sovrum", false, false, 15));
 vaningTwo.addRoom(new Room("sovrum", false, false, 15));
 vaningTwo.addRoom(new Room("sovrum", false, false, 15));
+vaningTwo.addRoom(new Room("sovrum", false, false, 20));
 
 //======================
 
@@ -49,20 +51,18 @@ var hus = new Hus(1976);
 hus.addVaning(vaningOne);
 hus.addVaning(vaningTwo);
 
-//=======================
+//==============================================================================
 
 var jsonStr = JSON.stringify(hus);
 
 console.log(jsonStr);
 
-//=======================
+//==============================================================================
 
-var parsed = JSON.parse(jsonStr);
+var parsedObj = JSON.parse(jsonStr);
 
-console.log("");
-
+//==============================================================================
 //iterateParsedJson(parsed);
-
 
 function iterateParsedJson(parsed) {
     for (var key in parsed) {
@@ -79,9 +79,14 @@ function iterateParsedJson(parsed) {
     }
 }
 
-searchParsedJson(parsed,"type","kök");
+//==============================================================================
+var depth = 0;
+var returArr = [];
+searchParsedJson(parsedObj, "floor", "ett", returArr);
+console.log("ready: " + returArr.toString());
 
-function searchParsedJson(parsed, keyIn, valueIn) {
+
+function searchParsedJson(parsed, keyIn, valueIn, returArr) {
     for (var key in parsed) {
         //
         var value = parsed[key];
@@ -89,18 +94,29 @@ function searchParsedJson(parsed, keyIn, valueIn) {
         console.log(key + ":::");
         console.log(value);
         //
-//        console.log(keyIn + " / " + key);
-        //
         if (keyIn === key && value === valueIn) {
-            console.log("AAAAAAA");
+            returArr.push(parsed);
         }
         //
         if (typeof value === "object") {
-            searchParsedJson(value,keyIn,valueIn);
+            depth++;
+//            console.log("step in: " + depth);
+            searchParsedJson(value, keyIn, valueIn, returArr);
         }
         //
     }
+    //
+    depth--;
+//    console.log("step out: " + depth);
+    //
+    if (depth === -1) {
+        return returArr;
+    }
+    //
 }
+
+//==============================================================================
+
 
 var hus = {
     "byggar": 1976,
