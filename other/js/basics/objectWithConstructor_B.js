@@ -6,7 +6,6 @@ function Hus(byggar) {
         this.vaningar.push(vaning);
     };
 
-   
 }
 
 

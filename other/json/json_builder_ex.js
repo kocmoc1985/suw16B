@@ -15,7 +15,6 @@ function Vaning(floor) {
     this.addRoom = function (room) {
         this.rooms.push(room);
     };
-
 }
 
 function Room(type, ytterDoor, trappa, area) {
@@ -91,20 +90,23 @@ function searchParsedJson(parsed, keyIn, valueIn, returArr) {
         //
         var value = parsed[key];
         //
+        console.log(key + ":::");
+        console.log(value);
+        //
         if (keyIn === key && value === valueIn) {
             returArr.push(parsed);
         }
         //
         if (typeof value === "object") {
             depth++;
-            console.log("step in: " + depth);
+//            console.log("step in: " + depth);
             searchParsedJson(value, keyIn, valueIn, returArr);
         }
         //
     }
     //
     depth--;
-    console.log("step out: " + depth);
+//    console.log("step out: " + depth);
     //
     if (depth === -1) {
         return returArr;
@@ -113,7 +115,6 @@ function searchParsedJson(parsed, keyIn, valueIn, returArr) {
 }
 
 //==============================================================================
-
 
 
 var hus = {
