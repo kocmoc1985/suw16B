@@ -27,8 +27,14 @@ function removeFromListByName(name) {
     return removeFromListByIndex(todoList.indexOf(name));
 }
 
-function removeFromListAndAddToDone(name) {
-    doneList.push(removeFromListByName(name));
+//function removeFromListAndAddToDone(name) {
+//    doneList.push(removeFromListByName(name));
+//    return doneList;
+//}
+
+function removeFromListAndAddToDone(index) {
+    var entry = removeFromListByIndex(index);
+    doneList.push(entry);
     return doneList;
 }
 
@@ -70,7 +76,83 @@ function moveUp(name) {
     todoList.splice(newIndex, 0, moveUpElem);
 }
 
-addToTopOfList("todo one");
-addToTopOfList("todo two");
-addToTopOfList("todo three");
-moveUp("todo two");
+//==============================================================================
+
+$(document).ready(function () {
+    addEventToSubmitBtn();
+    showToDoList();
+});
+
+function addEventToSubmitBtn() {
+    $("form input").click(function (event) {
+        event.preventDefault();
+        var todoStr = $("textarea").val();
+        addToList(todoStr);
+        showToDoList();
+        $("textarea").val("");
+        //
+    });
+}
+
+
+function showToDoList() {
+    //
+    $(".todo").empty();
+    //
+    for (var i = 0; i < todoList.length; i++) {
+        $(".todo").append(buildToDoEntry(todoList[i], i));
+    }
+    //
+    addEventToRemoveBtns();
+    addEventToDoneBtns();
+}
+
+
+function buildToDoEntry(todoStr, index) {
+    var html =
+            "<div class='todo-entry'>"
+            + "<div class='hidden'>" + index + "</div>"
+            + "<p>" + todoStr + "</p>"
+            + "<button type='button' class='remove'>Remove</button>"
+            + "<button type='button' class='done'>Done</button>"
+            + "<button type='button'>Top</button>"
+            + "<button type='button'>Bottom</button>"
+            + "<button type='button'>Up</button>"
+            + "<button type='button'>Down</button>"
+            + "</div>";
+
+    return html;
+}
+
+function addEventToDoneBtns() {
+    $(".done").click(function () {
+        var btn = $(this);
+        var index = getIndex(btn);
+        console.log("index: " + index);
+        removeFromListAndAddToDone(index);
+        console.log(doneList.toString());
+        showToDoList();
+    });
+}
+
+function addEventToRemoveBtns() {
+    $(".remove").click(function () {
+        var btn = $(this);
+        var index = getIndex(btn);
+        removeFromListByIndex(index);
+        showToDoList();
+    });
+}
+
+function getIndex(button) {
+    //
+    var parent = $(button).parent();
+    var children = parent.children();
+    //
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].className === "hidden") {
+            return index = $(children[i]).text();
+        }
+    }
+    return -1;
+}
