@@ -2,6 +2,10 @@ html, body{
     height: 100%;
 }
 
+body{
+    background-color:#f9f8f8
+}
+
 .submit{
     width: 50%;
     height: 30%;
@@ -42,12 +46,14 @@ html, body{
     background-color: #00ee00;
     float: left;
     margin: 0;
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 .todo-entry button{
-   float: left;
-   height: 100%;
-   width: 8.333333%;
+    float: left;
+    height: 100%;
+    width: 8.333333%;
 }
 
 .todo-entry .hidden{
@@ -56,10 +62,12 @@ html, body{
 
 /*============================================================================*/
 
-
-.done-container{
-    width: 50%;
-    min-height: 50%;
-    float:left;
-    background-color: lightpink;
+.done{
+    background-color: lightsalmon;
 }
+
+.done p{
+    width: 100%;
+}
+
+

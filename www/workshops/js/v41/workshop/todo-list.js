@@ -38,14 +38,14 @@ function removeFromListAndAddToDone(index) {
     return doneList;
 }
 
-function moveToTop(name) {
-    var todo = removeFromListByName(name);
+function moveToTop(index) {
+    var todo = removeFromListByIndex(index);
     addToTopOfList(todo);
     return todoList;
 }
 
-function moveToBottom(name) {
-    var todo = removeFromListByName(name);
+function moveToBottom(index) {
+    var todo = removeFromListByIndex(index);
     addToList(todo);
     return todoList;
 }
@@ -97,14 +97,37 @@ function addEventToSubmitBtn() {
 
 function showToDoList() {
     //
-    $(".todo").empty();
+    $("#todo").empty();
     //
     for (var i = 0; i < todoList.length; i++) {
-        $(".todo").append(buildToDoEntry(todoList[i], i));
+        $("#todo").append(buildToDoEntry(todoList[i], i));
     }
+    //
+    showDoneList();
     //
     addEventToRemoveBtns();
     addEventToDoneBtns();
+    addEventToTopBtns();
+}
+
+function showDoneList() {
+    //
+    $("#done").empty();
+    //
+    for (var i = 0; i < doneList.length; i++) {
+        $("#done").append(buildDoneEntry(doneList[i], i));
+    }
+    //
+}
+
+function buildDoneEntry(todoStr, index) {
+    var html =
+            "<div class='todo-entry'>"
+            + "<div class='hidden'>" + index + "</div>"
+            + "<p>" + todoStr + "</p>"
+            + "</div>";
+
+    return html;
 }
 
 
@@ -114,8 +137,8 @@ function buildToDoEntry(todoStr, index) {
             + "<div class='hidden'>" + index + "</div>"
             + "<p>" + todoStr + "</p>"
             + "<button type='button' class='remove'>Remove</button>"
-            + "<button type='button' class='done'>Done</button>"
-            + "<button type='button'>Top</button>"
+            + "<button type='button' class='done-btn'>Done</button>"
+            + "<button type='button' class='top-btn'>Top</button>"
             + "<button type='button'>Bottom</button>"
             + "<button type='button'>Up</button>"
             + "<button type='button'>Down</button>"
@@ -124,8 +147,19 @@ function buildToDoEntry(todoStr, index) {
     return html;
 }
 
+
+function addEventToTopBtns() {
+    $(".top-btn").click(function () {
+        var btn = $(this);
+        var index = getIndex(btn);
+        moveToBottom(index); // it's right having it "Bottom"
+        showToDoList();
+    });
+}
+
+
 function addEventToDoneBtns() {
-    $(".done").click(function () {
+    $(".done-btn").click(function () {
         var btn = $(this);
         var index = getIndex(btn);
         console.log("index: " + index);
