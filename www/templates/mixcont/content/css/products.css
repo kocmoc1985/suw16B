@@ -1,5 +1,5 @@
 .products-main{
-    height: 70vh;
+    height: 100vh;
     background-color: thistle;
     /*padding: 15px;*/
     /*background: url("../../images/hight_tech_background_2_alpha.png") no-repeat center center fixed;*/
@@ -27,6 +27,7 @@
     bottom: 20px;
     left: 20%;
     font-size: 4vmin;
+    color: white;
 }
 
 .product-short-descr{

@@ -9,11 +9,13 @@ and open the template in the editor.
         <title>Menu</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="stylesheet" href="css/bootGrids.css" type="text/css"/>
         <link rel="stylesheet" href="css/forAll.css" type="text/css"/>
         <link rel="stylesheet" href="navbar/menu.css" type="text/css"/>
-        
+
         <script src="navbar/navbar.js"></script>
 
     </head>
@@ -21,40 +23,56 @@ and open the template in the editor.
     <body> 
 
         <script language = "javascript">
-            $(document).ready(function() {
-                //
-                includeNavbar();
-                //
+
+            $(document).ready(function () {
+                initialize();
             });
 
-            function includeNavbar() {
-                $("#menu-container").load("navbar/navbar.html", function() {
-                    //
-                    addEventsToLinks();
-                    //
-                    addClickEventsToNavBar();
-                    //
-                    includeContent();
-                    //
-                    navBarFixedPositionFix("menu-container", "splash-screen");
-                });
+            function initialize() {
+                //
+                includeHtml("navbar/navbar.html", "#menu-container");
+                //
+                navBarFixedPositionFix("menu-container", "content");
+                //
+                addEventsToNavBarBtns();
+                //
+                addEventsToLinks();
+                //
+                includeHtml("content/splash.html", "#content");
+                //
+                includeHtml("content/customers.html", "#customers-show");
+                //
+                includeHtml("footer/footer.html", "#footer-container-main");
             }
 
-            function includeContent() {
-                $("#splash-screen").load("content/splash.html", function() {
-                    icludeCustomers();
-                });
+            function addEventsToNavBarBtns() {
+                addClickEventToNavBarBtn("#products-link", productsLinkClicked);
             }
 
-            function icludeCustomers() {
-                $("#customers-show").load("content/customers.html", function() {
-                    icludeFooter();
-                });
+            function productsLinkClicked() {
+                $("#customers-show").remove();
+                $("#content").empty();
+                includeHtmlAsync("content/products/products_overview.html", "#content");
             }
 
-            function icludeFooter() {
-                $("#footer-container-main").load("footer/footer.html", function() {
+            function includeHtml(url, parentId) {
+                //
+                var html = $.ajax({
+                    url: url,
+                    dataType: 'text',
+                    async: false
+                }).responseText;
+                //
+                $(parentId).append(html);
+            }
 
+            function includeHtmlAsync(url, parentId) {
+                $.ajax({
+                    url: url,
+                    dataType: 'text',
+                    async: false
+                }).done(function (msg) {
+                    $(parentId).append(msg);
                 });
             }
 
@@ -64,11 +82,12 @@ and open the template in the editor.
         <div class="menu-container" id="menu-container">
         </div>
 
-
-        <div class="splash-screen" id="splash-screen">
-        </div>
+        <div id="content">
+            
+        </div>   
 
         <div class="customers-show" id="customers-show">
+            
         </div>
 
         <div class="footer-container-main" id="footer-container-main">

@@ -1,20 +1,19 @@
 
 //===============================NAVBAR=========================================
 
-function addClickEventsToNavBar(){
-    var elemntArray = $(".products").get();
-    for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function(event) {
-//            event.preventDefault();
-        });
-    }
-    //
+
+function addClickEventToNavBarBtn(id, functionToExecute) {
+    $(id).click(function (event) {
+        event.preventDefault();
+        functionToExecute();
+    });
 }
+
 
 function addEventsToLinks() {
     var elemntArray = $(".a-mobile-onclick-expand").get();
     for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function(event) {
+        $(elemntArray[i]).click(function (event) {
             event.preventDefault();
             fadeIn(this);
         });
@@ -22,7 +21,7 @@ function addEventsToLinks() {
     //
     var elemntArray = $(".a-can-be-active").get();
     for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function(event) {
+        $(elemntArray[i]).click(function (event) {
             setActive(this);
         });
     }
