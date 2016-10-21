@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.height-auto{
+    height: auto;
+}
+
 .col-xs-2,.col-xs-12,.col-xs-8,.col-xs-4, .col-xs-6, .col-sm-4, .col-sm-6,.col-sm-3{
     background-color: transparent;
     border-style: solid;

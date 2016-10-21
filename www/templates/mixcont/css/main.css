@@ -14,7 +14,7 @@ html,body{
 
 .splash-screen{
     position: relative;
-    height: 900px;
+    height: 100%;
     /*http://mixcont.com/_files/_suw16_b/mixcontWebbpage/backgrounds/hight_tech_background_3.jpg*/
     background: url("../images/hight_tech_background_3_low.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -40,20 +40,17 @@ html,body{
 
 .customers-show{
     padding: 10px;
-    height: 80px;
 }
 
 .customers-show .row{
     height: 40px;
 }
 
-.customers-show .col-sm-2, .customers-show .col-xs-3{
-    margin-top: 10px;
-}
 
-@media(max-width: 768px){ 
-    .customers-show{
-        /*height: 14%;*/
+@media(max-width: 1200px){ 
+    .customers-show .col-lg-1{
+       margin-bottom: 15px;
     }
 }
 
+/*============================================================================*/

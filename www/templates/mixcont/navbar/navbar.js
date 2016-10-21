@@ -3,7 +3,7 @@
 
 
 function addClickEventToNavBarBtn(selector, functionToExecute) {
-    $(selector).click(function (event) {
+    $(selector).click(function(event) {
         event.preventDefault();
         functionToExecute();
     });
@@ -11,20 +11,20 @@ function addClickEventToNavBarBtn(selector, functionToExecute) {
 
 
 function addEventsToLinks() {
-    var elemntArray = $(".a-mobile-onclick-expand").get();
-    for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function (event) {
-            event.preventDefault();
-            fadeIn(this);
-        });
-    }
-    //
-    var elemntArray = $(".a-can-be-active").get();
-    for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function (event) {
-            setActive(this);
-        });
-    }
+    $(".a-mobile-onclick-expand").click(function(event) {
+        event.preventDefault();
+        fadeIn(this);
+    });
+
+
+    $(".a-can-be-active").click(function() {
+        setActive(this);
+    });
+
+    //Hiding mobile menu if clicked on Menu/Company title
+    $(".ul-mobile .menu-title").click(function() {
+        $(".ul-mobile ul").hide();
+    });
 }
 
 
@@ -65,7 +65,8 @@ function fadeIn(element) {
 function setActive(element) {
     //
     resetAllActives();
-    element.className = "activeLink";
+    //
+    $(element).addClass("activeLink");
     //
     hideMenuIfMobile(element);
 }
@@ -77,10 +78,7 @@ function hideMenuIfMobile(element) {
 }
 
 function resetAllActives() {
-    var elemntArray = $("." + "activeLink").get();
-    for (i = 0; i < elemntArray.length; i++) {
-        elemntArray[i].className = "none";
-    }
+    $(".activeLink").removeClass("activeLink");
 }
 
 function imageNotFound(imgElement) {

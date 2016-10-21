@@ -70,18 +70,44 @@ function showMessageOwnWindow(message) {
 }
 
 /**
- * 
+ * @tags getTitleCurrDoc, get title, get document title
+ * @returns {@exp;@call;$@pro;find@call;@call;text}
+ */
+function getDocumentTitle() {
+    return $(document).find("title").text();
+}
+
+/**
+ * Opens the link in the same window
+ * @param {String} link
  * @returns {undefined}
  */
-function arrayUsageExample() {
-    var parent = element.parentNode;
-    var elemntArray = parent.childNodes;
-    for (i = 0; i < elemntArray.length; i++) {
-        if (elemntArray[i].tagName === "UL") {
-            //Do something
-        }
-    }
+function openLinkInTheSameWindow(link) {
+//for HTML use: target="_self"
+    window.open(link, "_self");
 }
+
+/**
+ * Opens the link in the new window
+ * @param {String} link
+ * @returns {undefined}
+ */
+function openLinkInNewWindow(link) {
+    window.open(link);
+}
+
+/**
+ * 
+ * @param {String} link
+ * @returns {undefined}
+ */
+function openLinkInNewTab(link) {
+//for HTML use: target="_blank"
+    window.open(link, "_blank");
+}
+
+
+
 
 function includeHtml(url, selector, addType) {
     //
@@ -137,24 +163,9 @@ function getNumericValueByDialog(textToDisplay) {
     return tal;
 }
 
-/**
- * OBS! OBS! OBS! SEE THIS!
- * Search with "HTML Event Attributes" to find all available 
- * html events on w3c
- * @returns {undefined}
- */
-function add_HTML_Event_example() {
-    // <input type="text" id="txt1" onkeyup="showHint(this.value);" />
-    //showHint(this.value) is the javascript method launched uppon the event
-    //
-    //Another example:
-    //<button type='button' onclick="ajax_request(this.innerHTML);">100</button>
-    //OR you can pass EVENT like
-    //<button type='button' onclick="ajax_request(*event*);">100</button>
-}
 
 /**
- * @tags: automatically click button
+ * @tags: automatically click button, click button auto
  * @param {String} element_id
  * @returns {undefined}
  */
@@ -199,6 +210,16 @@ function getIfUndefined(enything) {
     }
 }
 
+function addEvent_jquery_example() {
+    $("#test").click(function(event) {
+        //do something
+    });
+    ///==========OR===================
+    $("#test").hover(function(event) {
+        //do something
+    });
+}
+
 
 function addEventB(elemId, eventType, eventFunction) {
     //
@@ -222,98 +243,8 @@ function addEventB(elemId, eventType, eventFunction) {
     }
 }
 
-function addEvent_jquery_example() {
-    $("#test").click(function(event) {
-        //do something
-    });
-    ///==========OR===================
-    $("#test").hover(function(event) {
-        //do something
-    });
-}
-
-/**
- * Add event to all elements with given className inside a parent element
- * @param {String} parentId
- * @param {String} className
- * @param {String} eventType
- * @param {String} methodToExecuteOnEvent
- * @returns {undefined}
- */
-function addEventToClassesInsideParentElement(parentId, className, eventType, methodToExecuteOnEvent) {
-    var parent_elem = document.getElementById(parentId);
-    var elemntArray = getAllChildrenOfAnElement(parent_elem);
-    for (i = 0; i < elemntArray.length; i++) {
-        var curr_elem = elemntArray[i];
-        if (curr_elem.className === className) {
-            addEvent(curr_elem, eventType, methodToExecuteOnEvent);
-        }
-    }
-}
 
 
-/**
- * Adds event to all Elements with className X
- * see the events list in "addEvent" method 
- * @param {String} className
- * @param {String} eventType - Example: "click", "mouseover", "load"
- * @param {NOT a String} methodToExecuteOnEvent - As written not as String with "", write just functionname
- * @returns {undefined}
- */
-function addEventToAllElementsWithGivenClassName(className, eventType, methodToExecuteOnEvent) {
-    var elemntArray = document.getElementsByClassName(className);
-    for (i = 0; i < elemntArray.length; i++) {
-        var elem = elemntArray[i];
-        addEvent(elem, eventType, methodToExecuteOnEvent);
-    }
-}
-
-/**
- * Add event to all elements with given tagname inside an element with given classname
- * @param {String} className
- * @param {String} tagName
- * @param {String} eventType
- * @param {NOT a String} methodToExecuteOnEvent
- * @returns {undefined}
- */
-function addEventToElementsInsideGivenClass(className, tagName, eventType, methodToExecuteOnEvent) {
-    var elemntArray = document.getElementsByClassName(className);
-    for (i = 0; i < elemntArray.length; i++) {
-        var elem = elemntArray[i];
-        var tagElemArr = elem.getElementsByTagName(tagName);
-        var tagElem = tagElemArr[0];
-        addEvent(tagElem, eventType, methodToExecuteOnEvent);
-    }
-}
-
-
-
-/**
- * Add an event to all elements with specific tagname inside parent element with given id
- * @param {String} div_id
- * @param {String} tagName
- * @param {String} eventType
- * @param {NOT a String} methodToExecuteOnEvent
- * @returns {undefined}
- */
-function addEventToAllElementsInsideParentElementWithGivenTagName_2(div_id, tagName, eventType, methodToExecuteOnEvent) {
-    var element = document.getElementById(div_id);
-    var elemntArray = getAllChildrenOfAnElement(element);
-    for (i = 0; i < elemntArray.length; i++) {
-        var curr_elem = elemntArray[i];
-
-        if (curr_elem.tagName === "DIV") {
-            var arr = getAllChildrenOfAnElement(curr_elem);
-
-            for (x = 0; x < arr.length; x++) {
-                var tagInUppCase = "" + tagName.toUpperCase();
-                if (arr[x].tagName === tagInUppCase) {
-                    addEvent(arr[x], eventType, methodToExecuteOnEvent);
-                }
-            }
-        }
-    }
-}
 
 
 /**
@@ -330,17 +261,6 @@ function addEventToTheDocument(event, eventfunction) {
     addEvent(document, event, eventfunction);
 }
 
-
-/**
- * 
- * @param {String} elem_id_or_tag_name
- * @returns {undefined}
- */
-function addHoverEventJquery(elem_id_or_tag_name) {
-    $(elem_id_or_tag_name).hover(function() {
-        $(this).hide();
-    });
-}
 
 /**
  * Super Nice
@@ -417,24 +337,15 @@ function isHidden(elementId) {
     return $("#" + elementId).is(':hidden');
 }
 
-/**
- * 
- * @param {String} elementId
- * @param {String} tag - ex. "div"
- * @returns {Boolean}
- */
-function isTagOfType(elementId, tag) {
-    return $("#" + elementId).is(tag);
-}
 
 /**
  * 
- * @param {Element} element
- * @param {String} tag - ex. "div"
- * @returns {Boolean}
+ * @param {type} selector
+ * @param {type} tag
+ * @returns {@exp;@call;$@call;is}
  */
-function isTagOfTypeB(element, tag) {
-    return $(element).is(tag);
+function isTagOfTypeB(selector, tag) {
+    return $(selector).is(tag);
 }
 
 /**
@@ -458,108 +369,28 @@ function elementExists(elementId) {
  * @returns {Boolean}
  */
 function classExists(className) {
-    if ($('.' + "" + className).length) {
+    if ($('.' + className).length) {
         return true;
     } else {
         return false;
     }
 }
 
-
-
-/**
- * This is an extreamly important method, you can use it 
- * for posting links without a user can se it. This method can 
- * replace the usage of "a" tag.
- * @example POST("index.php","link","column_2_products");
- * @tags {post,automatic post, post a link without using form, post link}
- * @param {String} action - is the link: index.php
- * @param {String} name - The name of the paramter to which the value belongs
- * @param {String} value - The value which corresponds to the name
- * @returns {undefined}
- */
-function POST(action, name, value) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", action);
-    //
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", name);
-    hiddenField.setAttribute("value", value);
-    form.appendChild(hiddenField);
-    //
-    document.body.appendChild(form);
-    form.submit();
-}
-
-function POST_2(action, name, value, name_2, value_2) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", action);
-    //
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", name);
-    hiddenField.setAttribute("value", value);
-
-    var hiddenField_2 = document.createElement("input");
-    hiddenField_2.setAttribute("type", "hidden");
-    hiddenField_2.setAttribute("name", name_2);
-    hiddenField_2.setAttribute("value", value_2);
-
-    form.appendChild(hiddenField);
-    form.appendChild(hiddenField_2);
-    //
-    document.body.appendChild(form);
-    form.submit();
-}
-
-/**
- * The same as POST but uses GET
- * @param {String} action
- * @param {String} name
- * @param {String} value
- * @returns {undefined}
- */
-function GET(action, name, value) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "get");
-    form.setAttribute("action", action);
-    //
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", name);
-    hiddenField.setAttribute("value", value);
-    form.appendChild(hiddenField);
-    //
-    document.body.appendChild(form);
-    form.submit();
-}
-
-function GET_2(action, name, value, name_2, value_2) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "get");
-    form.setAttribute("action", action);
-    //
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", name);
-    hiddenField.setAttribute("value", value);
-
-    var hiddenField_2 = document.createElement("input");
-    hiddenField_2.setAttribute("type", "hidden");
-    hiddenField_2.setAttribute("name", name_2);
-    hiddenField_2.setAttribute("value", value_2);
-
-    form.appendChild(hiddenField);
-    form.appendChild(hiddenField_2);
-    //
-    document.body.appendChild(form);
-    form.submit();
-}
-
 //=======================================DATE===================================
+var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var formatYYY_mm_dd = "#year-#month-#day";
+var formatDD_mm_YYYY = "#day/#month/#year";
+function getDateFlex(date, format) {
+    var d = new Date(date);
+    return format.replace("#year", d.getFullYear()).replace("#month", months[d.getMonth()]).replace("#day", d.getDate());
+}
+console.log(getDateFlex("2016-10-06", formatDD_mm_YYYY));
+
+
+function date_getCurrentDate() {
+    return new Date().getDate();
+}
 
 function date_getNrDaysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
@@ -576,21 +407,6 @@ function date_getCurrentMonth() {
 }
 
 
-function date_getDayOrMonthCorrected(dayOrMonth) {
-    if (dayOrMonth < 10) {
-        return "0" + dayOrMonth;
-    } else {
-        return dayOrMonth;
-    }
-}
-
-
-function date_getCurrentDate() {
-    return new Date().getDate();
-}
-
-
-
 function date_validateFormat_mm_dd_yyyy(dateString) {
     if (dateString.match(/^(?:(0[1-9]|1[012])[\- \/.](0[1-9]|[12][0-9]|3[01])[\- \/.](19|20)[0-9]{2})$/)) {
         return true;
@@ -604,31 +420,6 @@ function date_validateFormat_yyyy_mm_dd(dateString) {
     return dateString.match(regEx) !== null;
 }
 
-function date_getMonthNameEng(month) {
-    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-    return monthNames[(month - 1)];
-}
-
-function date_getMonthsNamesSwe() {
-    var months = ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun",
-        "Jul", "Aug", "Sept", "Okt", "Nov", "Dec"];
-    return months;
-}
-
-function date_find_month_nr_by_name(month_name) {
-    var array = date_get_months_names_arr();
-    for (i = 0; i < array.length; i++) {
-        if (array[i] === month_name) {
-            return (i + 1);
-        }
-    }
-}
-
-function date_find_month_name_by_nr(month_nr) {
-    var array = date_get_months_names_arr();
-    return array[month_nr - 1];
-}
 //=================================<JSON>=======================================
 
 function JSONbasics() {
@@ -1142,16 +933,7 @@ function smoothScroll() {
 }
 //============================================
 
-/**
- * @tags forEach, all elements, do something for all
- * @param {type} selector
- * @returns {undefined}
- */
-function forEachElement(selector) {
-    $(selector).each(function(index, item) {
-        $(item).slideUp(); // $(item).remove();
-    });
-}
+
 
 /**
  * This is a very important method(Example method)!
@@ -1220,11 +1002,7 @@ function getClassName(element) {
     return element.className;
 }
 
-/**
- * @tags get_attribute, attribute
- * @param {Element} element
- * @returns {String}
- */
+
 
 /**
  * @tags get_attribute, attribute
@@ -1378,51 +1156,9 @@ function getAllChildrenOfAnElement(element) {
     return element.childNodes;
 }
 
-/**
- * Returns the first child of an element 
- * with element id x
- * @param {String} element_id
- * @returns {@exp;@call;$@pro;children@call;@call;first}
- */
-function getFirstChildOfAnElement(element_id) {
-    return $("#" + element_id).children().first();
-}
 
-/**
- * @tags getTitleCurrDoc, get title, get document title
- * @returns {@exp;@call;$@pro;find@call;@call;text}
- */
-function getDocumentTitle() {
-    return $(document).find("title").text();
-}
-
-/**
- * Opens the link in the same window
- * @param {String} link
- * @returns {undefined}
- */
-function openLinkInTheSameWindow(link) {
-//for HTML use: target="_self"
-    window.open(link, "_self");
-}
-
-/**
- * Opens the link in the new window
- * @param {String} link
- * @returns {undefined}
- */
-function openLinkInNewWindow(link) {
-    window.open(link);
-}
-
-/**
- * 
- * @param {String} link
- * @returns {undefined}
- */
-function openLinkInNewTab(link) {
-//for HTML use: target="_blank"
-    window.open(link, "_blank");
+function getFirstChildOfAnElement(selector) {
+    return $(selector).children().first();
 }
 
 
@@ -1877,12 +1613,6 @@ function setCheckedForCheckBox(elem_id, checked) {
     $("#" + elem_id).prop('checked', checked);
 }
 
-function includeHtml(htmlToInclude, elementId) {
-    $(function() {
-        $("#" + elementId).load(htmlToInclude);
-    });
-}
-
 /**
  *This method is useful when you have for example a button
  *and when you press it the action uppon pressing the button
@@ -2031,42 +1761,20 @@ function setTitleDynamiclyExample() {
 //    </head>
 }
 
-/**
- * Hides an element only visually!
- * Properties = "visible|hidden|collapse|inherit" 
- * @param {String} elementId
- * @param {String} property
- * @returns {undefined}
- */
-function hideElement(elementId, property) {
-    document.getElementById(elementId).style.visibility = property;
+
+function hideElementsByAnything(selector) {
+    $(selector).hide();
+}
+
+function unhideElementsByAnything(selector) {
+    $(selector).show();
 }
 
 
-function hideElementsByAnything(element_id_tag_class) {
-    $(element_id_tag_class).hide();
+function cloneElement(selector, selector2) {
+    var clone = $(selector).clone();
+    $(selector2).append(clone);
 }
-
-function unhideElementsByAnything(element_id_tag_class) {
-    $(element_id_tag_class).show();
-}
-
-
-
-
-
-/**
- * @tags clone element, copy element
- * @param {type} class_to_clone
- * @param {type} id_of_elem_to_append_to
- * @returns {undefined}
- */
-function cloneElement(class_to_clone, id_of_elem_to_append_to) {
-    var clone = $("." + class_to_clone).clone();
-    $("#" + id_of_elem_to_append_to).append(clone);
-}
-
-
 
 /**
  * @tag create element, create_element, new element
@@ -2077,20 +1785,6 @@ function createElement(tag) {
     return document.createElement(tag);
 }
 
-/**
- * 
- * @tag settext,setvalue, set text, set value, elementSetText
- * @param {String} elementID
- * @param {String} text
- * @returns {undefined}
- */
-function setText(elementID, text) {
-    document.getElementById(elementID).innerHTML = text;
-}
-
-function setTextB(element, text) {
-    element.innerHTML = text;
-}
 
 /**
  * 
@@ -2114,27 +1808,6 @@ function removeElement(parent_id, element_to_remove) {
         parent.removeChild(element_to_remove);
     }
 }
-
-/**
- * 
- * @tag delete, erase
- * @param {type} element_id
- * @returns {undefined}
- */
-function removeElementById(element_id) {
-    $('#' + element_id).remove();
-}
-
-/**
- * Remove all elements with given className
- * @tested
- * @param {type} className
- * @returns {undefined}
- */
-function removeClass(className) {
-    $('.' + className).remove();
-}
-
 
 /**
  * Removes all the children for a parent
@@ -2167,6 +1840,185 @@ function getRandomInt(betweenA, betweenB) {
  */
 function getRandomNumber() {
     return Math.floor((Math.random() * 100) + 1);
+}
+
+
+
+//==============================================================================
+
+/**
+ * Add event to all elements with given className inside a parent element
+ * @param {String} parentId
+ * @param {String} className
+ * @param {String} eventType
+ * @param {String} methodToExecuteOnEvent
+ * @returns {undefined}
+ */
+function addEventToClassesInsideParentElement(parentId, className, eventType, methodToExecuteOnEvent) {
+    var parent_elem = document.getElementById(parentId);
+    var elemntArray = getAllChildrenOfAnElement(parent_elem);
+    for (i = 0; i < elemntArray.length; i++) {
+        var curr_elem = elemntArray[i];
+        if (curr_elem.className === className) {
+            addEvent(curr_elem, eventType, methodToExecuteOnEvent);
+        }
+    }
+}
+
+
+/**
+ * Adds event to all Elements with className X
+ * see the events list in "addEvent" method 
+ * @param {String} className
+ * @param {String} eventType - Example: "click", "mouseover", "load"
+ * @param {NOT a String} methodToExecuteOnEvent - As written not as String with "", write just functionname
+ * @returns {undefined}
+ */
+function addEventToAllElementsWithGivenClassName(className, eventType, methodToExecuteOnEvent) {
+    var elemntArray = document.getElementsByClassName(className);
+    for (i = 0; i < elemntArray.length; i++) {
+        var elem = elemntArray[i];
+        addEvent(elem, eventType, methodToExecuteOnEvent);
+    }
+}
+
+/**
+ * Add event to all elements with given tagname inside an element with given classname
+ * @param {String} className
+ * @param {String} tagName
+ * @param {String} eventType
+ * @param {NOT a String} methodToExecuteOnEvent
+ * @returns {undefined}
+ */
+function addEventToElementsInsideGivenClass(className, tagName, eventType, methodToExecuteOnEvent) {
+    var elemntArray = document.getElementsByClassName(className);
+    for (i = 0; i < elemntArray.length; i++) {
+        var elem = elemntArray[i];
+        var tagElemArr = elem.getElementsByTagName(tagName);
+        var tagElem = tagElemArr[0];
+        addEvent(tagElem, eventType, methodToExecuteOnEvent);
+    }
+}
+
+
+
+/**
+ * Add an event to all elements with specific tagname inside parent element with given id
+ * @param {String} div_id
+ * @param {String} tagName
+ * @param {String} eventType
+ * @param {NOT a String} methodToExecuteOnEvent
+ * @returns {undefined}
+ */
+function addEventToAllElementsInsideParentElementWithGivenTagName_2(div_id, tagName, eventType, methodToExecuteOnEvent) {
+    var element = document.getElementById(div_id);
+    var elemntArray = getAllChildrenOfAnElement(element);
+    for (i = 0; i < elemntArray.length; i++) {
+        var curr_elem = elemntArray[i];
+
+        if (curr_elem.tagName === "DIV") {
+            var arr = getAllChildrenOfAnElement(curr_elem);
+
+            for (x = 0; x < arr.length; x++) {
+                var tagInUppCase = "" + tagName.toUpperCase();
+                if (arr[x].tagName === tagInUppCase) {
+                    addEvent(arr[x], eventType, methodToExecuteOnEvent);
+                }
+            }
+        }
+    }
+}
+
+/**
+ * This is an extreamly important method, you can use it 
+ * for posting links without a user can se it. This method can 
+ * replace the usage of "a" tag.
+ * @example POST("index.php","link","column_2_products");
+ * @tags {post,automatic post, post a link without using form, post link}
+ * @param {String} action - is the link: index.php
+ * @param {String} name - The name of the paramter to which the value belongs
+ * @param {String} value - The value which corresponds to the name
+ * @returns {undefined}
+ */
+function POST(action, name, value) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", action);
+    //
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", name);
+    hiddenField.setAttribute("value", value);
+    form.appendChild(hiddenField);
+    //
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function POST_2(action, name, value, name_2, value_2) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", action);
+    //
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", name);
+    hiddenField.setAttribute("value", value);
+
+    var hiddenField_2 = document.createElement("input");
+    hiddenField_2.setAttribute("type", "hidden");
+    hiddenField_2.setAttribute("name", name_2);
+    hiddenField_2.setAttribute("value", value_2);
+
+    form.appendChild(hiddenField);
+    form.appendChild(hiddenField_2);
+    //
+    document.body.appendChild(form);
+    form.submit();
+}
+
+/**
+ * The same as POST but uses GET
+ * @param {String} action
+ * @param {String} name
+ * @param {String} value
+ * @returns {undefined}
+ */
+function GET(action, name, value) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "get");
+    form.setAttribute("action", action);
+    //
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", name);
+    hiddenField.setAttribute("value", value);
+    form.appendChild(hiddenField);
+    //
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function GET_2(action, name, value, name_2, value_2) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "get");
+    form.setAttribute("action", action);
+    //
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", name);
+    hiddenField.setAttribute("value", value);
+
+    var hiddenField_2 = document.createElement("input");
+    hiddenField_2.setAttribute("type", "hidden");
+    hiddenField_2.setAttribute("name", name_2);
+    hiddenField_2.setAttribute("value", value_2);
+
+    form.appendChild(hiddenField);
+    form.appendChild(hiddenField_2);
+    //
+    document.body.appendChild(form);
+    form.submit();
 }
 
 
