@@ -2,8 +2,8 @@
 //===============================NAVBAR=========================================
 
 
-function addClickEventToNavBarBtn(id, functionToExecute) {
-    $(id).click(function (event) {
+function addClickEventToNavBarBtn(selector, functionToExecute) {
+    $(selector).click(function (event) {
         event.preventDefault();
         functionToExecute();
     });

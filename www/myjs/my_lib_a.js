@@ -20,7 +20,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES FIRTS OF ALL
      */
-    $(document).ready(function () {
+    $(document).ready(function() {
         go();
     });
 
@@ -28,7 +28,7 @@ function windowLoad() {
     /**
      * THIS ONE EXECUTES AFTER "doc.ready"
      */
-    $(window).load(function () {
+    $(window).load(function() {
         addTransitonToNavBarBtns();
     });
 }
@@ -83,24 +83,7 @@ function arrayUsageExample() {
     }
 }
 
-/**
- * 
- * @param {type} arr
- * @param {type} index
- * @tags poll, arrayPoll, pollArray
- * @returns {unresolved}
- */
-function arrayGetAndRemove(arr, index) {
-    return arr.splice(index, 1).pop();
-}
-
-/**
- * This one is very good, use this.
- * @param {type} url
- * @param {type} parentId
- * @returns {undefined}
- */
-function includeHtml(url, parentId) {
+function includeHtml(url, selector, addType) {
     //
     var html = $.ajax({
         url: url,
@@ -108,18 +91,36 @@ function includeHtml(url, parentId) {
         async: false
     }).responseText;
     //
-    $(parentId).append(html);
+    if (addType === "append") {
+        $(selector).append(html);
+    } else if (addType === "prepend") {
+        $(selector).prepend(html);
+    } else if (addType === "after") {
+        $(selector).after(html);
+    } else if (addType === "before") {
+        $(selector).before(html);
+    } else {
+        $(selector).append(html);
+    }
 }
 
-/**
- * I don't like this really because it's async
- * @param {type} selector
- * @param {type} html
- * @returns {undefined}
- */
-function includeHtmlAsync(selector, html) {
-    $(function () {
-        $(selector).load(html);
+function includeHtmlAsync(url, selector, addType) {
+    $.ajax({
+        url: url,
+        dataType: 'text',
+        async: false
+    }).done(function(msg) {
+        if (addType === "append") {
+            $(selector).append(msg);
+        } else if (addType === "prepend") {
+            $(selector).prepend(msg);
+        } else if (addType === "after") {
+            $(selector).after(msg);
+        } else if (addType === "before") {
+            $(selector).before(msg);
+        } else {
+            $(selector).append(msg);
+        }
     });
 }
 
@@ -198,53 +199,6 @@ function getIfUndefined(enything) {
     }
 }
 
-/*
- * <ul>Possible mouse event types
- * <li>click
- * <li>mousedown
- * <li>mouseup
- * <li>mouseover
- * <li>mousemove
- * <li>mouseout
- * </ul>
- * 
- * <ul>Window event types
- * <li>load
- * <li>unload
- * <li>abort
- * <li>error
- * <li>select
- * <li>change
- * <li>submit
- * <li>reset
- * <li>focus
- * <li>blur
- * <li>resize
- * <li>scroll
- * </ul>
- * @Param elemToAddTo = the element to which the listener is attached
- * @Param eventType = click, blur 
- * @Param eventFunction = the function to be executed
- */
-function addEvent(elemToAddTo, eventType, eventFunction) {
-    try {
-        if (elemToAddTo.addEventListener) {
-            //Detta �r mozilla!
-            elemToAddTo.addEventListener(eventType, eventFunction, false);
-            return true;
-        } else if (elemToAddTo.attachEvent) {
-            //Detta �r IE!
-            var returnval = elemToAddTo.attachEvent("on" + eventType, eventFunction);
-            return returnval;
-        } else {
-            return false;
-        }
-    } catch (err) {
-//        console.log("err = " + err.toString() + "  eventType = " + eventType + "    eventFunction = " + eventFunction);
-        return false;
-    }
-}
-
 
 function addEventB(elemId, eventType, eventFunction) {
     //
@@ -269,11 +223,11 @@ function addEventB(elemId, eventType, eventFunction) {
 }
 
 function addEvent_jquery_example() {
-    $("#test").click(function (event) {
+    $("#test").click(function(event) {
         //do something
     });
     ///==========OR===================
-    $("#test").hover(function (event) {
+    $("#test").hover(function(event) {
         //do something
     });
 }
@@ -291,7 +245,6 @@ function addEventToClassesInsideParentElement(parentId, className, eventType, me
     var elemntArray = getAllChildrenOfAnElement(parent_elem);
     for (i = 0; i < elemntArray.length; i++) {
         var curr_elem = elemntArray[i];
-//        alert(curr_elem.className);
         if (curr_elem.className === className) {
             addEvent(curr_elem, eventType, methodToExecuteOnEvent);
         }
@@ -384,7 +337,7 @@ function addEventToTheDocument(event, eventfunction) {
  * @returns {undefined}
  */
 function addHoverEventJquery(elem_id_or_tag_name) {
-    $(elem_id_or_tag_name).hover(function () {
+    $(elem_id_or_tag_name).hover(function() {
         $(this).hide();
     });
 }
@@ -730,7 +683,7 @@ function getJsonFromUrlSync(url) {
  * @returns {nothing}
  */
 function getJsonFromUrlAsync(url) {
-     $.getJSON(url, function (data) { 
+     $.getJSON(url, function(data) { 
         ///
      });
 }
@@ -740,7 +693,7 @@ function getJsonFromUrlAsync(url) {
  * @returns {undefined}
  */
 function getJsonFromUrlEx() { 
-     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function (data) { 
+     $.getJSON('http://freegeoip.net/json/' + getIpJson(), function(data) { 
         for (x in data) { 
             debugg("key:" + x + " value: " + data[x]);
          }
@@ -822,7 +775,7 @@ function node_client_SendPostRequestEx() {
         type: "POST",
         url: "http://localhost:3000/nodeTest",
         data: {param1: "Node.js", param2: "test successful"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         //toDo
         alert("Data Saved: " + msg);
     });
@@ -830,7 +783,7 @@ function node_client_SendPostRequestEx() {
 
 function node_server_RecievePostExample() {
     //
-    this.app.post('/nodeTest', function (req, res) {
+    this.app.post('/nodeTest', function(req, res) {
         //
         var param1 = req.body.param1;
         var param2 = req.body.param2;
@@ -885,7 +838,7 @@ function ajaxRequest(recieving_script, paramter_name, value_to_send, asynchron) 
  * @tags ajax, xmlhttp
  */
 function ajaxRequestReady(xmlhttp, function_to_execute) {
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             function_to_execute(xmlhttp.responseText);
         } else {
@@ -954,7 +907,7 @@ function ajaxRequestJQuerry() {
         type: "POST",
         url: "some.php",
         data: {name: "John", location: "Boston"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         alert("Data Saved: " + msg);
     });
 }
@@ -962,9 +915,9 @@ function ajaxRequestJQuerry() {
 function ajaxEventsExamples() {
 //
 //Super important event
-    $(document).ajaxStart(function () {
+    $(document).ajaxStart(function() {
         console.log("ajaxStart");
-    }).ajaxStop(function () {
+    }).ajaxStop(function() {
         console.log("ajaxStop");
     });
     //============================
@@ -982,7 +935,7 @@ function ajaxRequestJQuerryTest1() {
         type: "POST",
         url: "http://www.mixcont.com/index.php",
         data: {link: "_http_com", client: "901", param: "ip"}
-    }).done(function (msg) {
+    }).done(function(msg) {
         alert("Ajax Data recieved: " + msg);
     });
 }
@@ -999,7 +952,7 @@ function ajaxRequestJQuerryTest2() {
         async: true, //is true by default
         type: "GET",
         url: "https://api.ipify.org?format=json"
-    }).done(function (jsonStr) {
+    }).done(function(jsonStr) {
         alert("Ajax Data recieved: " + jsonStr["ip"]);
     });
 }
@@ -1149,7 +1102,7 @@ function slideSideWards(elemIdTagOrClass, width, millis) {
  * @returns {undefined}
  */
 function blinkA(idElemClass, intervall) {
-    var intervalID = setInterval(function () {
+    var intervalID = setInterval(function() {
         blinkB(idElemClass);
     }, intervall);
     //This one is to stop the "Thread"
@@ -1172,8 +1125,8 @@ function blinkB(idElemClass) {
  * @returns {undefined}
  */
 function smoothScroll() {
-    $(function () {
-        $('a[href*="#"]:not([href="#"])').click(function () {
+    $(function() {
+        $('a[href*="#"]:not([href="#"])').click(function() {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -1195,7 +1148,7 @@ function smoothScroll() {
  * @returns {undefined}
  */
 function forEachElement(selector) {
-    $(selector).each(function (index, item) {
+    $(selector).each(function(index, item) {
         $(item).slideUp(); // $(item).remove();
     });
 }
@@ -1653,7 +1606,7 @@ function validateEmailPrimitive(formId, emailFieldId) {
  * @returns {undefined}
  */
 function removeDefaultEventClick(elementOrItsID) {
-    $(elementOrItsID).click(function (event) {
+    $(elementOrItsID).click(function(event) {
         event.preventDefault();
     });
 }
@@ -1925,7 +1878,7 @@ function setCheckedForCheckBox(elem_id, checked) {
 }
 
 function includeHtml(htmlToInclude, elementId) {
-    $(function () {
+    $(function() {
         $("#" + elementId).load(htmlToInclude);
     });
 }

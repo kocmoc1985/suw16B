@@ -4,18 +4,66 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-6">
-                <div class="product-short-descr">
-                    <div class="product-title">Future of control mixing systems</div>
-                </div>
-            </div>
-            <div class="col-xs-6">
-                <div class="product-short-descr">
-                    <div class="product-title">Future of control mixing systems</div>
-                </div>
-            </div>
-        </div>
 
+            <div class="col-xs-6">
+                <div class="row rowHalf">
+                    <a href="#mccontrol">
+                        <div class="col-xs-12">
+                            A
+                        </div>
+                    </a>
+                    <a href="#labor">
+                        <div class="col-xs-12">
+                            B
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="row rowHalf">
+                    <div class="col-xs-12">
+                        C
+                    </div>
+                    <div class="col-xs-12">
+                        D
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </div>
+
+<a name="mccontrol"></a>
+
+<div class="product-page mccontrol-background"></div>
+
+
+<a name="labor"></a>
+
+<div class="product-page labor-background"></div>
+
+
+
+
+
+<script language = "javascript">
+    //smooth scroll
+    $(function() {
+        $('a[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+

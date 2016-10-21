@@ -14,13 +14,21 @@ function initialize() {
     //
     includeHtml("content/splash.html", "#content");
     //
-    includeHtml("content/customers.html", "#content","after");
+    includeHtml("content/customers.html", "#content", "after");
     //
     includeHtml("footer/footer.html", "#footer-container-main");
 }
 
 function addEventsToNavBarBtns() {
-    addClickEventToNavBarBtn("#products-link", productsLinkClicked);
+    addClickEventToNavBarBtn(".products-link", productsLinkClicked);
+    addClickEventToNavBarBtn(".menu-title", navBarTitleClicked);
+}
+
+function navBarTitleClicked(){
+    $("#content").empty();
+    $("#customers-show").remove();
+    includeHtml("content/splash.html", "#content");
+    includeHtml("content/customers.html", "#content", "after");
 }
 
 function productsLinkClicked() {
@@ -69,3 +77,6 @@ function includeHtmlAsync(url, selector, addType) {
         }
     });
 }
+
+
+
