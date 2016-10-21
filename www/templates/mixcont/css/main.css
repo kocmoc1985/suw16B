@@ -1,0 +1,59 @@
+/*============================================================================*/
+
+html,body{
+    height: 100%;
+}
+
+#content{
+    min-height: 100%;
+    background-color: grey;
+    color: white;
+}
+
+/*============================================================================*/
+
+.splash-screen{
+    position: relative;
+    height: 900px;
+    /*http://mixcont.com/_files/_suw16_b/mixcontWebbpage/backgrounds/hight_tech_background_3.jpg*/
+    background: url("../images/hight_tech_background_3_low.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.splashTitle{
+    position: absolute;
+    width:50%;
+    bottom: 100px;
+    left: 40px;
+}
+
+.splashTitle p{
+    font-size: 6vmin;
+    font-weight: bold;
+    color:white;
+}
+
+/*============================================================================*/
+
+.customers-show{
+    padding: 10px;
+    height: 80px;
+}
+
+.customers-show .row{
+    height: 40px;
+}
+
+.customers-show .col-sm-2, .customers-show .col-xs-3{
+    margin-top: 10px;
+}
+
+@media(max-width: 768px){ 
+    .customers-show{
+        /*height: 14%;*/
+    }
+}
+

@@ -1,97 +1,27 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>Menu</title>
+        <title>MixCont</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="stylesheet" href="css/bootGrids.css" type="text/css"/>
         <link rel="stylesheet" href="css/forAll.css" type="text/css"/>
         <link rel="stylesheet" href="navbar/menu.css" type="text/css"/>
-
+        <link rel="stylesheet" href="css/main.css" type="text/css"/>
         <script src="navbar/navbar.js"></script>
-
+        <script src="js/main.js"></script>
     </head>
 
     <body> 
 
-        <script language = "javascript">
+        <div class="menu-container" id="menu-container"></div>
 
-            $(document).ready(function () {
-                initialize();
-            });
+        <div id="content"></div>   
 
-            function initialize() {
-                //
-                includeHtml("navbar/navbar.html", "#menu-container");
-                //
-                navBarFixedPositionFix("menu-container", "content");
-                //
-                addEventsToNavBarBtns();
-                //
-                addEventsToLinks();
-                //
-                includeHtml("content/splash.html", "#content");
-                //
-                includeHtml("content/customers.html", "#customers-show");
-                //
-                includeHtml("footer/footer.html", "#footer-container-main");
-            }
-
-            function addEventsToNavBarBtns() {
-                addClickEventToNavBarBtn("#products-link", productsLinkClicked);
-            }
-
-            function productsLinkClicked() {
-                $("#customers-show").remove();
-                $("#content").empty();
-                includeHtmlAsync("content/products/products_overview.html", "#content");
-            }
-
-            function includeHtml(url, parentId) {
-                //
-                var html = $.ajax({
-                    url: url,
-                    dataType: 'text',
-                    async: false
-                }).responseText;
-                //
-                $(parentId).append(html);
-            }
-
-            function includeHtmlAsync(url, parentId) {
-                $.ajax({
-                    url: url,
-                    dataType: 'text',
-                    async: false
-                }).done(function (msg) {
-                    $(parentId).append(msg);
-                });
-            }
-
-        </script>
-
-
-        <div class="menu-container" id="menu-container">
-        </div>
-
-        <div id="content">
-            
-        </div>   
-
-        <div class="customers-show" id="customers-show">
-            
-        </div>
-
-        <div class="footer-container-main" id="footer-container-main">
-        </div>
+        <div class="footer-container-main" id="footer-container-main"></div>
 
     </body>
+    
 </html>
