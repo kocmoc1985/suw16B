@@ -95,7 +95,7 @@ function addEventToSubmitBtn() {
 }
 
 
-function showToDoList() {
+    function showToDoList() {
     //
     $("#todo").empty();
     //
