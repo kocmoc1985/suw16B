@@ -1,0 +1,12 @@
+settingsConstr.js -> LessWatch: 
+
+app.js -> new g.classes.LessWatch();
+
+less/all.less
+
+less/main.less
+
+//==============================================================================
+
+Overide Bootstrap - > copy a .less file from "node_modules/bootstrap/less/xxx.less" 
+to "less folder". Add this file to import in "all.less" after bootstrap import
