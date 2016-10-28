@@ -5,3 +5,37 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+.hide{
+    visibility: hidden;
+}
+
+.show{
+    visibility: visible;
+}
+
+.drop-shadow-a{
+    -webkit-box-shadow: 0px 5px 5px 0px #444;
+    -moz-box-shadow: 0px 5px 5px 0px #444;
+    box-shadow: 0px 5px 5px 0px #444;
+}
+
+.drop-shadow-b{
+    -webkit-box-shadow: 0px 0px 5px 0px #444;
+    -moz-box-shadow: 0px 0px 5px 0px #444;
+    box-shadow: 0px 0px 5px 0px #444;
+}
+
+.round-corners-med{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -khtml-border-radius: 5px;
+}
+
+.round-three-corners{
+    -moz-border-radius: 0px 10px 10px 10px;
+    -webkit-border-radius: 0px 10px 10px 10px;
+    -khtml-border-radius: 0px 10px 10px 10px;
+    border-radius: 0px 10px 10px 10px;
+}

@@ -1,31 +1,12 @@
-//var arr = [1,2,3,4,5,6,7,8,9];
-//
-//function udda(arr) {
-//    var newArr = [];
-//
-//    for (i = arr.length; i >= 0; i--) {
-//        if (arr[i] % 2 === 1) {
-//            newArr.unshift(arr[i]);
-//        }
-//    }
-//    return newArr;
-//}
-//
-//
-//console.log(udda(arr).toString());
-var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var formatYYY_mm_dd = "#year-#month-#day";
+var formatDD_mm_YYYY = "#day/#month/#year";
 
-var newArr = [];
-
-function udda() {
-    var num = arr.pop();
-    if (num % 2 === 1) {
-        newArr.unshift(num);
-    }
+function getDateFlex(format) {
+    var d = new Date();
+    console.log(d);
+    return format.replace("#year", d.getFullYear()).replace("#month", months[d.getMonth()]).replace("#day", d.getDate());
 }
 
-while (arr.length > 0) {
-    udda();
-}
-
-console.log(newArr.toString());
+console.log(getDateFlex(formatYYY_mm_dd));

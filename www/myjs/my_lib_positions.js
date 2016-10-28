@@ -3,7 +3,7 @@
  * Helps to now where the scroll is 
  * @returns {jQuery}
  */
-function getScrollPosition(){
+function getScrollPosition() {
     return $(window).scrollTop();
 }
 
@@ -64,6 +64,14 @@ function isScrolledIntoView(elem) {
     var elemTop = $(elem).offset().top;
     var elemBottom = elemTop + $(elem).height();
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+function scrollIntoView(selector) {
+    if (isScrolledIntoView(selector) === false) {
+        $('html, body').animate({
+            scrollTop: $(selector).offset().top - 20
+        }, 1000);
+    }
 }
 
 /**
