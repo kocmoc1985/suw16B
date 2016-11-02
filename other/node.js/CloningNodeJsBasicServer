@@ -1,0 +1,6 @@
+1. Team -> Git -> Clone "https://github.com/kocmoc1985/NodeJsServerBasic.git"
+2. Open project folder add delete ".git" folder and ".gitignore" file
+3. In Netbeans -> Versioning -> Initialize Git repository
+
+4. Create a new repository on https://github.com 
+5. Now you can synchronize your new project without affecting the "https://github.com/kocmoc1985/NodeJsServerBasic.git"

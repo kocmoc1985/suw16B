@@ -1,6 +1,6 @@
 settingsConstr.js -> LessWatch: 
 
-app.js -> new g.classes.LessWatch();
+app.js -> new g.classes.LessWatch(); this must be uncomented
 
 less/all.less
 

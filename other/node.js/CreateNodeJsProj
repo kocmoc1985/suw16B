@@ -1,4 +1,12 @@
 Node.js proj
-1. Create new project "HTML5/JS Application"
-2. Copy all files from ready node.app server
-3. Run Npm install from Netbeans
+1. Create new project "Node.js Application"
+2. Copy all files from "ready node.app server"
+3. Change name in package.json file
+4. Run Npm install from Netbeans
+5. Make changes to Project - > Properties -> Run : 
+Run as "Node.js Application",
+Start file "/xx/xx/xx/app.js",
+Run Browser "true",
+Project URL "http://localhost:3000/"
+
+OBS! If all is done correct you can start the node.js server directly from netbeans

@@ -1,4 +1,3 @@
-
 //===============================NAVBAR=========================================
 
 
@@ -26,8 +25,6 @@ function addEventsToLinks() {
         $(".ul-mobile ul").hide();
     });
 }
-
-
 /**
  * This one is needed if you want to have "fixed" position for the NavBar
  * @param {type} navBarContainerId - the id of the container
@@ -86,6 +83,27 @@ function imageNotFound(imgElement) {
     parent.removeChild(imgElement);
     $(parent).css("font-size", "14pt");
     $(parent).text(".....");
+}
+
+function includeHtml(url, selector, addType) {
+    //
+    var html = $.ajax({
+        url: url,
+        dataType: 'text',
+        async: false
+    }).responseText;
+    //
+    if (addType === "append") {
+        $(selector).append(html);
+    } else if (addType === "prepend") {
+        $(selector).prepend(html);
+    } else if (addType === "after") {
+        $(selector).after(html);
+    } else if (addType === "before") {
+        $(selector).before(html);
+    } else {
+        $(selector).append(html);
+    }
 }
 
 //===============================NAVBAR=========================================
