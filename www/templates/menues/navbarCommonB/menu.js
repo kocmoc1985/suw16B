@@ -1,24 +1,23 @@
 $(document).ready(function () {
     //
-    includeNavbar("#menu-container", "navbar.html");
+    includeHtml("navbar.html","#menu-container");
     //
     document.addEventListener("scroll", dynamicNavbar, false);
 });
 
 function dynamicNavbar() {
-//    var eTop = $('#menu-container').offset().top; //get the offset top of the element
-//    var rst = eTop - $(window).scrollTop();
-//    console.log($(window).scrollTop()); //position of the ele w.r.t windowDF
     //
     var offset = offsetWindow("#menu-container");
     //
     if (offset < 0) {
+        //
         $("#menu-container").css("position", "fixed");
         $("#menu-container").css("top", "0");
-        $("#menu-container").css("background-color", "#f8f8f8");//#f8f8f8
-        $(".menu-container ul li a").css("background-color", "#f8f8f8");//#f8f8f8
+        $("#menu-container").css("background-color", "#f8f8f8");
+        $(".menu-container ul li a").css("background-color", "#f8f8f8");
         $(".menu-container ul li a").css("color", "#827c7c");
-        navBarFixedPositionFix("menu-container", "example-container");
+        //
+        navBarFixedPositionFix("menu-container");
     }
     //
     if ($(window).scrollTop() === 0) {
@@ -38,40 +37,33 @@ function offsetWindow(selector) {
     return eTop - $(window).scrollTop();
 }
 
-function includeNavbar(selector, htmlDoc) {
-    $(selector).load(htmlDoc, function () {
-        //
-        addEventsToLinks();
-        //
-        navBarFixedPositionFix("menu-container", "example-container");
-    });
-}
 
 function addEventsToLinks() {
-    var elemntArray = $(".a-mobile-onclick-expand").get();
-    for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function (event) {
-            event.preventDefault();
-            fadeIn(this);
-        });
-    }
-    //
-    var elemntArray = $(".a-can-be-active").get();
-    for (i = 0; i < elemntArray.length; i++) {
-        $(elemntArray[i]).click(function (event) {
-            setActive(this);
-        });
-    }
+    
+     $(".a-mobile-onclick-expand").click(function(event) {
+        event.preventDefault();
+        fadeIn(this);
+    });
+
+    $(".a-can-be-active").click(function(event) {
+        event.preventDefault();
+        setActive(this);
+    });
+
+    //Hiding mobile menu if clicked on Menu/Company title
+    $(".ul-mobile .menu-title").click(function() {
+        $(".ul-mobile ul").hide();
+    });
+      
 }
 
 
 /**
  * This one is needed if you want to have "fixed" position for the NavBar
  * @param {type} navBarContainerId - the id of the container
- * @param {type} elemToSetMarginTopOn - id of the element which is direct under the navbar
  * @returns {unresolved}
  */
-function navBarFixedPositionFix(navBarContainerId, elemToSetMarginTopOn) {
+function navBarFixedPositionFix(navBarContainerId) {
     //
     var pos = $("#" + navBarContainerId).css("position");
     //
@@ -80,10 +72,8 @@ function navBarFixedPositionFix(navBarContainerId, elemToSetMarginTopOn) {
     }
     //
     var height = $("#" + navBarContainerId).outerHeight();
-//    var windowOffsetHeight = Math.abs(offsetWindow("#" + elemToSetMarginTopOn));
-//    console.log("offset:" + windowOffsetHeight);
-    var elemMarginTop = document.getElementById(elemToSetMarginTopOn);
-    elemMarginTop.style.marginTop = (height+100) + "px";
+    $("#" + navBarContainerId).next().css('margin-top', (height + 100) + "px");
+    ;
 }
 
 function fadeIn(element) {
@@ -104,7 +94,8 @@ function fadeIn(element) {
 function setActive(element) {
     //
     resetAllActives();
-    element.className = "activeLink";
+    //
+    $(element).addClass("activeLink");
     //
     hideMenuIfMobile(element);
 }
@@ -116,10 +107,7 @@ function hideMenuIfMobile(element) {
 }
 
 function resetAllActives() {
-    var elemntArray = $("." + "activeLink").get();
-    for (i = 0; i < elemntArray.length; i++) {
-        elemntArray[i].className = "none";
-    }
+     $(".activeLink").removeClass("activeLink");
 }
 
 function imageNotFound(imgElement) {
@@ -127,4 +115,45 @@ function imageNotFound(imgElement) {
     parent.removeChild(imgElement);
     $(parent).css("font-size", "14pt");
     $(parent).text(".....");
+}
+
+function includeHtml(url, selector, addType) {
+    //
+    var html = $.ajax({
+        url: url,
+        dataType: 'text',
+        async: false
+    }).responseText;
+    //
+    if (addType === "append") {
+        $(selector).append(html);
+    } else if (addType === "prepend") {
+        $(selector).prepend(html);
+    } else if (addType === "after") {
+        $(selector).after(html);
+    } else if (addType === "before") {
+        $(selector).before(html);
+    } else {
+        $(selector).append(html);
+    }
+}
+
+function includeHtmlAsync(url, selector, addType) {
+    $.ajax({
+        url: url,
+        dataType: 'text',
+        async: true
+    }).done(function (msg) {
+        if (addType === "append") {
+            $(selector).append(msg);
+        } else if (addType === "prepend") {
+            $(selector).prepend(msg);
+        } else if (addType === "after") {
+            $(selector).after(msg);
+        } else if (addType === "before") {
+            $(selector).before(msg);
+        } else {
+            $(selector).append(msg);
+        }
+    });
 }
