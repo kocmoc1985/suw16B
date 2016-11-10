@@ -108,48 +108,6 @@ function openLinkInNewTab(link) {
 
 
 
-
-function includeHtml(url, selector, addType) {
-    //
-    var html = $.ajax({
-        url: url,
-        dataType: 'text',
-        async: false
-    }).responseText;
-    //
-    if (addType === "append") {
-        $(selector).append(html);
-    } else if (addType === "prepend") {
-        $(selector).prepend(html);
-    } else if (addType === "after") {
-        $(selector).after(html);
-    } else if (addType === "before") {
-        $(selector).before(html);
-    } else {
-        $(selector).append(html);
-    }
-}
-
-function includeHtmlAsync(url, selector, addType) {
-    $.ajax({
-        url: url,
-        dataType: 'text',
-        async: false
-    }).done(function(msg) {
-        if (addType === "append") {
-            $(selector).append(msg);
-        } else if (addType === "prepend") {
-            $(selector).prepend(msg);
-        } else if (addType === "after") {
-            $(selector).after(msg);
-        } else if (addType === "before") {
-            $(selector).before(msg);
-        } else {
-            $(selector).append(msg);
-        }
-    });
-}
-
 /**
  * 1.Prompts to type a value.
  * 2.Tries to parse the String value into numeric
@@ -589,6 +547,22 @@ function node_server_RecievePostExample() {
 
 //=============================<AJAX>===========================================
 
+/**
+ * Example of using jquerry for "AJAX"
+ * @returns {undefined}
+ */
+function ajaxPost() {
+    $.ajax({
+        async: "true", //is true by default
+        type: "POST",
+        url: "some.php",
+        data: {name: "John", location: "Boston"}
+    }).done(function(msg) {
+        alert("Data Saved: " + msg);
+    });
+}
+
+
 //#1. Synchronius calls are not so good to use in AJAX as i understand
 
 /**
@@ -689,20 +663,7 @@ function ajaxAddResponseAppendAsIs(element_id_to_add_to, response) {
     appendOneElementToAnother(element_id_to_add_to, response);
 }
 
-/**
- * Example of using jquerry for "AJAX"
- * @returns {undefined}
- */
-function ajaxRequestJQuerry() {
-    $.ajax({
-        async: "true", //is true by default
-        type: "POST",
-        url: "some.php",
-        data: {name: "John", location: "Boston"}
-    }).done(function(msg) {
-        alert("Data Saved: " + msg);
-    });
-}
+
 
 function ajaxEventsExamples() {
 //
@@ -714,39 +675,6 @@ function ajaxEventsExamples() {
     });
     //============================
     //============================
-}
-
-/**
- *  Not working due to  - Reason: CORS header 'Access-Control-Allow-Origin' missing
- * Example of using jquerry for "AJAX"
- * @returns {undefined}
- */
-function ajaxRequestJQuerryTest1() {
-    $.ajax({
-        async: true, //is true by default
-        type: "POST",
-        url: "http://www.mixcont.com/index.php",
-        data: {link: "_http_com", client: "901", param: "ip"}
-    }).done(function(msg) {
-        alert("Ajax Data recieved: " + msg);
-    });
-}
-
-
-
-/**
- * 
- * This one was tested and is working
- * @returns {undefined} 
- */
-function ajaxRequestJQuerryTest2() {
-    $.ajax({
-        async: true, //is true by default
-        type: "GET",
-        url: "https://api.ipify.org?format=json"
-    }).done(function(jsonStr) {
-        alert("Ajax Data recieved: " + jsonStr["ip"]);
-    });
 }
 
 //=============================</AJAX>==========================================
