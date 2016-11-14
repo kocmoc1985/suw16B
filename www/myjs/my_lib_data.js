@@ -4,9 +4,9 @@
  * "side-bar-entries" to be able to retrieve them later
  * @returns {undefined}
  */
-function addDataToElement(){
+function addDataToElement() {
     //
-    $(".aclass").data("index",1); // setting the data
+    $(".aclass").data("index", 1); // setting the data
     //
     // Iam using this because iam simulating a click on a element
     var index = $(this).data("index");
@@ -38,7 +38,7 @@ function includeHtmlAsync(url, selector, addType) {
         url: url,
         dataType: 'text',
         async: false
-    }).done(function(msg) {
+    }).done(function (msg) {
         if (addType === "append") {
             $(selector).append(msg);
         } else if (addType === "prepend") {
@@ -53,6 +53,20 @@ function includeHtmlAsync(url, selector, addType) {
     });
 }
 
+function convertStringToHtmlExample() {
+    //
+    var html = "<div id='convert'><h1><p></p></h1></div>";
+    //
+    var htmlConverted = $.parseHTML(html);
+    //
+    $(htmlConverted).find("p").text("Try convert");
+}
+
+/**
+ * To convert the rcieved html string into jquery object use: var obj = $.parseHTML(responseText)
+ * @param {type} url
+ * @returns {jqXHR.responseText}
+ */
 function loadHtml(url) {
     //
     var html = $.ajax({

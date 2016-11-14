@@ -26,6 +26,13 @@ arr_x.splice(start,insertIndex,insertObj);
 arr = ["one", "two", "three", "four"];
 arr2 = [1, 2, 3, 4];
 
+function sortArrayByDate(blogsArray) {
+    blogsArray.sort(function (a, b) {
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
+}
+
+
 //Random between 0 and arr.length
 function getRandom(arr) {
     return Math.floor(Math.random() * arr.length);
