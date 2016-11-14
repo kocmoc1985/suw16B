@@ -1,3 +1,17 @@
+
+/**
+ * Very important when assigning index to elements like 
+ * "side-bar-entries" to be able to retrieve them later
+ * @returns {undefined}
+ */
+function addDataToElement(){
+    //
+    $(".aclass").data("index",1); // setting the data
+    //
+    // Iam using this because iam simulating a click on a element
+    var index = $(this).data("index");
+}
+
 function includeHtml(url, selector, addType) {
     //
     var html = $.ajax({
