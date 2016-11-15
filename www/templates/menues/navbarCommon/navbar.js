@@ -1,52 +1,22 @@
-$(document).ready(function () {
-    //
-    includeHtml("navbar.html","#menu-container");
-    //
-    document.addEventListener("scroll", dynamicNavbar, false);
-});
+//===============================NAVBAR=========================================
 
-function dynamicNavbar() {
-    //
-    var offset = offsetWindow("#menu-container");
-    //
-    if (offset < 0) {
-        //
-        $("#menu-container").css("position", "fixed");
-        $("#menu-container").css("top", "0");
-        $("#menu-container").css("background-color", "#f8f8f8");
-        $(".menu-container ul li a").css("background-color", "#f8f8f8");
-        $(".menu-container ul li a").css("color", "#827c7c");
-        //
-        navBarFixedPositionFix("menu-container");
-    }
-    //
-    if ($(window).scrollTop() === 0) {
-        $("#menu-container").css("position", "absolute");
-        $("#menu-container").css("top", "40px");
-        //
-        var elemMarginTop = document.getElementById("example-container");
-        elemMarginTop.style.marginTop = 0 + "px";
-        //
-        $("#menu-container").css("background-color", "transparent");
-        $(".menu-container ul li a").css("background-color", "transparent");
-    }
-}
 
-function offsetWindow(selector) {
-    var eTop = $(selector).offset().top; //get the offset top of the element
-    return eTop - $(window).scrollTop();
+function addClickEventToNavBarBtn(selector, functionToExecute) {
+    $(selector).click(function(event) {
+        event.preventDefault();
+        functionToExecute();
+    });
 }
 
 
-function addEventsToLinks() {
-    
-     $(".a-mobile-onclick-expand").click(function(event) {
+function addEventsNavbar() {
+    $(".a-mobile-onclick-expand").click(function(event) {
         event.preventDefault();
         fadeIn(this);
     });
 
-    $(".a-can-be-active").click(function(event) {
-        event.preventDefault();
+
+    $(".a-can-be-active").click(function() {
         setActive(this);
     });
 
@@ -54,7 +24,6 @@ function addEventsToLinks() {
     $(".ul-mobile .menu-title").click(function() {
         $(".ul-mobile ul").hide();
     });
-      
 }
 
 
@@ -72,7 +41,7 @@ function navBarFixedPositionFix(navBarContainerId) {
     }
     //
     var height = $("#" + navBarContainerId).outerHeight();
-    $("#" + navBarContainerId).next().css('margin-top', (height + 100) + "px");
+    $("#" + navBarContainerId).next().css('margin-top',height + "px");;
 }
 
 function fadeIn(element) {
@@ -106,7 +75,7 @@ function hideMenuIfMobile(element) {
 }
 
 function resetAllActives() {
-     $(".activeLink").removeClass("activeLink");
+    $(".activeLink").removeClass("activeLink");
 }
 
 function imageNotFound(imgElement) {
@@ -156,3 +125,5 @@ function includeHtmlAsync(url, selector, addType) {
         }
     });
 }
+
+//===============================NAVBAR=========================================
