@@ -83,45 +83,6 @@ function getWidth(element_id_class_tag) {
     return $(element_id_class_tag).width();
 }
 
-
-function sameHightAsParent(selector) {
-    var parentHeight = $(selector).parent().height();
-    $(selector).height(parentHeight);
-}
-
-function sameHeightAs(toSetOn, template) {
-    $(toSetOn).height($(template).height());
-}
-
-function sameHeightSameClasses(class_) {
-    var elemsArr = $(class_);
-    //
-    var max;
-    //
-    for (var i = 0; i < elemsArr.length; i++) {
-        //
-        var currHeight = $(elemsArr[i]).height();
-        //
-        if (currHeight > max) {
-            max = currHeight;
-        }
-    }
-    //
-    for (var i = 0; i < elemsArr.length; i++) {
-        $(elemsArr[i]).height(max);
-    }
-    //
-}
-
-function sameHeightSameClassesB(class_, heightAndUnits) {
-    var elemsArr = $(class_);
-    //
-    for (var i = 0; i < elemsArr.length; i++) {
-        $(elemsArr[i]).height(heightAndUnits);
-    }
-    //
-}
-
 /*
  * Get height of an element, OBS! without taking into account: padding, border, margin
  * @tested: yes
