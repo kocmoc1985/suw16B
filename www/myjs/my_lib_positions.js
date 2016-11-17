@@ -50,6 +50,31 @@ function enoughSpaceToTheRight(element, limit) {
     }
 }
 
+function sameHightAsParent(selector) {
+    var parentHeight = $(selector).parent().height();
+    $(selector).height(parentHeight);
+}
+
+function sameHeightSameClasses(class_) {
+    var elemsArr = $(class_);
+    //
+    var max = 0;
+    //
+    for (var i = 0; i < elemsArr.length; i++) {
+        //
+        var currHeight = $(elemsArr[i]).height();
+        //
+        if (currHeight > max) {
+            max = currHeight;
+        }
+    }
+    //
+    for (var i = 0; i < elemsArr.length; i++) {
+        $(elemsArr[i]).height(max);
+    }
+    //
+}
+
 
 /**
  * Defines if the element is visible with current scroll.
