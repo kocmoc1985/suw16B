@@ -1,4 +1,28 @@
 /**
+ * Very useful
+ * @param {type} selectorCut
+ * @param {type} selectorPaste
+ * @param {type} addType
+ * @returns {undefined}
+ */
+function cutFromPasteTo(selectorCut, selectorPaste, addType) {
+    //
+    var cutObj = $(selectorCut).detach();
+    //
+    if (addType === "append") {
+        $(selectorPaste).append(cutObj);
+    } else if (addType === "prepend") {
+        $(selectorPaste).prepend(cutObj);
+    } else if (addType === "after") {
+        $(selectorPaste).after(cutObj);
+    } else if (addType === "before") {
+        $(selectorPaste).before(cutObj);
+    } else {
+        $(selectorPaste).append(cutObj);
+    }
+}
+
+/**
  * IMPORTANT
  * Helps to now where the scroll is 
  * @returns {jQuery}
