@@ -1,3 +1,4 @@
+set url=http://localhost:3000/index.html
 cd..
 cd..
 cd..
@@ -5,7 +6,7 @@ cd..
 c:
 cd program files
 cd Mozilla Firefox
-firefox.exe http://localhost:3000/index.html
+firefox.exe %url%
 cd..
 cd..
 cd..
