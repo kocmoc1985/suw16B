@@ -18,18 +18,12 @@ html,body{
     float: right;
 }
 
-.dice-container{
-    padding: 5px;
-    width: 80%;
-    height:17%;
-    background-color: #00ffff;
-    margin-left: auto;
-    margin-right: auto;
+
+.dice-img{
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto;
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-.dice-container img{
-    width: 100px;
-    height: 100px;
 }

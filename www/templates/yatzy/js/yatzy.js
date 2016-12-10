@@ -24,13 +24,25 @@ function makeThrow(arr) {
     //
     var i = 0;
     //
-    $(".dice-container").each(function () {
-        $(this).find("img").attr("src", "images/dice_" + arr[i].result + ".png");
-        $(this).data("result", arr[i].result);
-        $(this).data("closed", arr[i].closed);
-        i++;
+    $(".dice-img").each(function () {
+
+        $(this).fadeOut(100, function () {
+            $(this).attr("src", "images/dice_" + arr[i].result + ".png");
+            $(this).data("result", arr[i].result);
+            $(this).data("closed", arr[i].closed);
+            $(this).delay(400 * i).fadeIn(500);
+            i++;
+        });
     });
     //
+}
+
+function wait(millis) {
+    var date = new Date();
+    var curDate = null;
+    do {
+        curDate = new Date();
+    } while (curDate - date < millis);
 }
 
 function DiceSet() {
@@ -109,7 +121,7 @@ function DiceSet() {
     };
 
     this.toString = function () {
-        return "throws: " + this.throws 
+        return "throws: " + this.throws
                 + "\n isRuleOnes: " + this.isRuleOneToSix(1)
                 + "\n isRuleYatzy: " + this.isRuleYatzy();
     };
