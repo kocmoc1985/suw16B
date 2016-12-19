@@ -1,10 +1,10 @@
 //
-var DICE_SET = new DiceSet();
-var DICES_ARR = DICE_SET.dices;
+//var DICE_SET = new DiceSet();
+//var DICES_ARR = DICE_SET.dices;
 //
 //
 $(document).ready(function () {
-    go();
+//    go();
 });
 
 function go() {
@@ -37,13 +37,6 @@ function makeThrow(arr) {
     //
 }
 
-function wait(millis) {
-    var date = new Date();
-    var curDate = null;
-    do {
-        curDate = new Date();
-    } while (curDate - date < millis);
-}
 
 function DiceSet() {
     this.dices = [];

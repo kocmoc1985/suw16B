@@ -1,0 +1,24 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+.col-selected{
+    background-color: lightblue;
+}
+
+.col-special{
+    background-color: lightgreen;
+}
+
+.empty-th{
+    border-top: 1px none black;
+    border-left: 1px none black;
+}
+
+.active-player{
+   background-color: lightpink;
+}
+
+.possible-alternative{
+    background-color: lightyellow;
+}
