@@ -48,18 +48,26 @@ function Player(playerName) {
     this.setActive = function () {
         this.active = true;
         $(this.TH).addClass('active-player');
-        this.paintPlayersColumn();
+        this.togglePaintPlayersColumn();
     };
 
-    this.paintPlayersColumn = function () {
-        for (var i = 0; i < this.scoreCells.length; i++) {
-            $(this.scoreCells[i].TD).addClass("active-player-col");
+    this.togglePaintPlayersColumn = function () {
+        if (this.active) {
+            for (var i = 0; i < this.scoreCells.length; i++) {
+                $(this.scoreCells[i].TD).addClass("active-player-col");
+            }
+        } else {
+            for (var i = 0; i < this.scoreCells.length; i++) {
+                $(this.scoreCells[i].TD).removeClass("active-player-col");
+            }
         }
+
     };
 
     this.setInactive = function () {
-        this.active = true;
+        this.active = false;
         $(this.TH).removeClass('active-player');
+        this.togglePaintPlayersColumn();
     };
 
     this.setTH = function (TH) {
@@ -121,7 +129,7 @@ function Player(playerName) {
 
     this.createScoreCells = function () {
         for (var i = 0; i < ruleNames.length; i++) {
-            var scoreCell = new ScoreCell(this,this.playerName, ruleNames[i]);
+            var scoreCell = new ScoreCell(this, this.playerName, ruleNames[i]);
             this.scoreCells.push(scoreCell);
         }
     };
@@ -169,13 +177,33 @@ function ScoreCell(player, playerName, type) {
         this.TD = TD;
     };
 
+    this.acceptScore = function () {
+        if (this.player.active === false || this.possibleAlternative === false) {
+            return;
+        }
+        //
+        this.toggleSelected();
+        this.score = $(this.TD).text() / 1;
+        this.player.calcAndShowSumm();
+        this.player.calcAndShowTotal();
+        var thiS = this;
+        setTimeout(function () {
+            thiS.toggleSelected();
+            thiS.resetPossibleAlternative();
+            DICE_SET.reset();
+            spelPlan.nextPlayer();
+        }, 2000);
+
+    };
+
     this.toggleSelected = function () {
         //
-        if (this.player.active === false) {
+        if (this.player.active === false || this.possibleAlternative === false) {
             return;
         }
         //
         if (this.selected === false) {
+            removeAllClassesX("col-selected");
             $(this.TD).addClass("col-selected");
             this.selected = true;
         } else {
@@ -206,6 +234,24 @@ function Spelplan() {
     this.addPlayer = function (player) {
         player.setPlayerNr(this.players.length);
         this.players.push(player);
+    };
+
+    this.nextPlayer = function () {
+        var activePlayer = this.getActivePlayerNr();
+        this.players[activePlayer].setInactive();
+        if (activePlayer !== this.players.length) {
+            activePlayer++;
+        }
+        this.players[activePlayer].setActive();
+    };
+
+    this.getActivePlayerNr = function () {
+        for (var i = 0; i < this.players.length; i++) {
+            if (this.players[i].active) {
+                return i;
+            }
+        }
+        return -1;
     };
 
     this.getActivePlayer = function () {
@@ -319,6 +365,12 @@ function Spelplan() {
         }
         return false;
     };
+}
+
+function removeAllClassesX(class_) {
+    $("." + class_).each(function () {
+        $(this).removeClass(class_);
+    });
 }
 
 //$(document).ready(function () {

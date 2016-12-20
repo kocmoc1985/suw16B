@@ -3,7 +3,7 @@ table, th, td {
 }
 
 .col-selected{
-    background-color: lightblue !important;
+    border: 3px solid blue;
 }
 
 .col-special{
@@ -23,13 +23,17 @@ table, th, td {
     background-color: lightyellow !important;
 }
 
+.possible-alternative:hover{
+    cursor: pointer;
+}
+
 .active-player-col{
     background-color: lightgreen;
 }
 
-.active-player-col:not(.col-special):hover{
+/*.active-player-col:not(.col-special):hover{
     cursor: pointer;
-}
+}*/
 
 .name-col-special, .col-special{
     border: 2px solid black;

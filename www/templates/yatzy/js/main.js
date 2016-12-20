@@ -33,7 +33,7 @@ function addEventTestBtn() {
 function addEventCommonCellCliked() {
     $("body").on('click', '.common-cell', function () {
         var cellObj = $(this).data("cellObj");
-        cellObj.toggleSelected();
+        cellObj.acceptScore();
     });
 }
 
