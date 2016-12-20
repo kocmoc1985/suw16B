@@ -1,46 +1,7 @@
-//
-//var DICE_SET = new DiceSet();
-//var DICES_ARR = DICE_SET.dices;
-//
-//
-$(document).ready(function () {
-//    go();
-});
-
-function go() {
-    addEventTestBtn();
-}
-
-function addEventTestBtn() {
-    $("#testBtn").click(function () {
-        makeThrow(DICES_ARR);
-        console.log(DICE_SET.toString());
-    });
-}
-
-function makeThrow(arr) {
-    //
-    DICE_SET.throw();
-    //
-    var i = 0;
-    //
-    $(".dice-img").each(function () {
-
-        $(this).fadeOut(100, function () {
-            $(this).attr("src", "images/dice_" + arr[i].result + ".png");
-            $(this).data("result", arr[i].result);
-            $(this).data("closed", arr[i].closed);
-            $(this).delay(400 * i).fadeIn(500);
-            i++;
-        });
-    });
-    //
-}
-
-
 function DiceSet() {
     this.dices = [];
     this.throws = 0;
+    this.waitForScore = false;
 
     this.createDices = function () {
         for (var i = 0; i < 5; i++) {
@@ -61,11 +22,17 @@ function DiceSet() {
         return sum;
     };
 
-    this.throw = function () {
-
-        if (this.throws === 3) {
-            this.reset();
+    this.toThrow = function () {
+        var toThrow = 0;
+        for (var i = 0; i < this.dices.length; i++) {
+            if (this.dices[i].locked === false) {
+                toThrow++;
+            }
         }
+        return toThrow;
+    };
+
+    this.throw = function () {
 
         for (var i = 0; i < this.dices.length; i++) {
             if (this.dices[i].locked === false) {
@@ -73,10 +40,36 @@ function DiceSet() {
             }
         }
         this.throws++;
+
+        if (this.throws === 3) {
+            this.waitForScore = true;
+        }
+
     };
 
+    this.allLocked = function () {
+        var locked = 0;
+        for (var i = 0; i < this.dices.length; i++) {
+            if (this.dices[i].locked) {
+                locked++;
+            }
+        }
+
+        if (locked === 5) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    this.removeLockedIcons = function () {
+        for (var i = 0; i < this.dices.length; i++) {
+            this.dices[i].removeLockedIcon();
+        }
+    };
 
     this.reset = function () {
+        this.waitForScore = false;
         for (var i = 0; i < this.dices.length; i++) {
             this.dices[i].reset();
         }
@@ -89,34 +82,10 @@ function DiceSet() {
         }
     };
 
-    this.isRuleOneToSix = function (oneToSix) {
-        for (var i = 0; i < this.dices.length; i++) {
-            if (this.dices[i].result !== oneToSix) {
-                return false;
-            }
-        }
-        return true;
-    };
-
-    this.isRuleYatzy = function () {
-        var firstVal;
-
-        for (var i = 0; i < this.dices.length; i++) {
-            if (i === 0) {
-                firstVal = this.dices[i].result;
-            } else {
-                if (this.dices[i].result !== firstVal) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    };
 
     this.toString = function () {
-        return "throws: " + this.throws
-                + "\n isRuleOnes: " + this.isRuleOneToSix(1)
-                + "\n isRuleYatzy: " + this.isRuleYatzy();
+        return "throws: " + this.throws +
+                "\nwaitForScore: " + this.waitForScore;
     };
 
 }
@@ -125,10 +94,27 @@ function Dice(nr) {
     this.nr = nr;
     this.result = 0;
     this.locked = false;
+    this.lockedIcon;
+
+    this.setLockedIcon = function (lockedIcon) {
+        this.lockedIcon = lockedIcon;
+    };
+
+    this.removeLockedIcon = function () {
+        $(this.lockedIcon).remove();
+    };
 
     this.throw = function () {
         this.result = Math.ceil(Math.random() * 6);
         return this.result;
+    };
+
+    this.toggleLock = function () {
+        if (this.locked === true) {
+            this.locked = false;
+        } else if (this.locked === false) {
+            this.locked = true;
+        }
     };
 
     this.lock = function () {
@@ -148,6 +134,7 @@ function Dice(nr) {
         return "nr: " + nr + " / result: " + this.result + " / locked: " + this.locked;
     };
 }
+
 
 
 

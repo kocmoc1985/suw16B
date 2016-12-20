@@ -68,15 +68,14 @@ function Player(playerName) {
     };
 
     this.showPossibleAlternativesAfterThrow = function () {
-        var isEttor = true;
+        var ettor = checkScore.One();
         var isTvaor = true;
 
         for (var i = 0; i < this.scoreCells.length; i++) {
-            if (isEttor) {
+            if (ettor > 0) {
                 if (this.scoreCells[i].type === 'Ettor') {
-                    this.scoreCells[i].highlightPossibleAlternative();
+                    this.scoreCells[i].highlightPossibleAlternative(ettor);
                 }
-
             }
         }
     };
@@ -133,7 +132,6 @@ function ScoreCell(playerName, type) {
     this.score = 0;
     this.isCalcSummCol = false;
     //
-    //
     this.isSpecialColumn = false;
     this.isSumm = false;
     this.isTotal = false;
@@ -148,8 +146,9 @@ function ScoreCell(playerName, type) {
         $(this.TD).removeClass("possible-alternative");
     };
 
-    this.highlightPossibleAlternative = function () {
+    this.highlightPossibleAlternative = function (value) {
         this.possibleAlternative = true;
+        $(this.TD).text(value);
         $(this.TD).addClass("possible-alternative");
     };
 
@@ -185,14 +184,18 @@ function ScoreCell(playerName, type) {
 function Spelplan() {
     this.players = [];
 
-    $("body").on('click', '.common-cell', function () {
-        var cellObj = $(this).data("cellObj");
-        cellObj.setSelected();
-    });
-
     this.addPlayer = function (player) {
         player.setPlayerNr(this.players.length);
         this.players.push(player);
+    };
+
+    this.getActivePlayer = function () {
+        for (var i = 0; i < this.players.length; i++) {
+            if (this.players[i].active) {
+                return this.players[i];
+            }
+        }
+        return null;
     };
 
     this.createTable = function () {
@@ -249,13 +252,13 @@ function Spelplan() {
     };
 
     this.createTableHeaders = function (table) {
+        //
         var tr_for_th = $.parseHTML("<tr></tr>");
         //
         for (var i = -1; i < this.players.length; i++) {
             //
-
-            //
             var th = $.parseHTML("<th></th>");
+            //
             if (i === -1) {
                 $(th).text("");
                 $(th).addClass("empty-th");
@@ -275,6 +278,7 @@ function Spelplan() {
         }
     };
 
+
     this.checkIfSpecialCol = function (colName) {
         for (var i = 0; i < specialCols.length; i++) {
             if (specialCols[i] === colName) {
@@ -292,27 +296,26 @@ function Spelplan() {
         }
         return false;
     };
-
 }
 
-$(document).ready(function () {
-    var player1 = new Player("Player 1");
-    var player2 = new Player("Player 2");
-
-    var spelPlan = new Spelplan();
-    spelPlan.addPlayer(player1);
-    spelPlan.addPlayer(player2);
-    spelPlan.createTable();
-
-    player1.setActive();
-    player1.showPossibleAlternativesAfterThrow();
-
-    //============
-    addEventTestBtn();
-    function addEventTestBtn() {
-        $("#testBtn").click(function () {
-            player1.resetPossibleAlternatives();
-        });
-    }
-});
+//$(document).ready(function () {
+//    var player1 = new Player("Player 1");
+//    var player2 = new Player("Player 2");
+//
+//    var spelPlan = new Spelplan();
+//    spelPlan.addPlayer(player1);
+//    spelPlan.addPlayer(player2);
+//    spelPlan.createTable();
+//
+//    player1.setActive();
+//    player1.showPossibleAlternativesAfterThrow();
+//
+//    //============
+//    addEventTestBtn();
+//    function addEventTestBtn() {
+//        $("#testBtn").click(function () {
+//            player1.resetPossibleAlternatives();
+//        });
+//    }
+//});
 
