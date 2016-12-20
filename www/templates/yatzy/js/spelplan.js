@@ -43,8 +43,6 @@ function Player(playerName) {
     this.scoreCells = [];
     this.active = false;
 
-
-
     this.setActive = function () {
         this.active = true;
         $(this.TH).addClass('active-player');
@@ -61,7 +59,6 @@ function Player(playerName) {
                 $(this.scoreCells[i].TD).removeClass("active-player-col");
             }
         }
-
     };
 
     this.setInactive = function () {
@@ -86,12 +83,46 @@ function Player(playerName) {
 
     this.showPossibleAlternativesAfterThrow = function () {
         var ettor = checkScore.One();
-        var isTvaor = true;
+        var tvaor = checkScore.Two();
+        var treor = checkScore.Three();
+        var fyror = checkScore.Four();
+        var femmor = checkScore.Five();
+        var sexor = checkScore.Six();
 
         for (var i = 0; i < this.scoreCells.length; i++) {
             if (ettor > 0) {
-                if (this.scoreCells[i].type === 'Ettor') {
+                if (this.scoreCells[i].type === 'Ettor' && this.scoreCells[i].score === 0) {
                     this.scoreCells[i].highlightPossibleAlternative(ettor);
+                }
+            }
+
+            if (tvaor > 0) {
+                if (this.scoreCells[i].type === 'Tvåor' && this.scoreCells[i].score === 0) {
+                    this.scoreCells[i].highlightPossibleAlternative(tvaor);
+                }
+            }
+
+            if (treor > 0) {
+                if (this.scoreCells[i].type === 'Treor' && this.scoreCells[i].score === 0) {
+                    this.scoreCells[i].highlightPossibleAlternative(treor);
+                }
+            }
+
+            if (fyror > 0) {
+                if (this.scoreCells[i].type === 'Fyror' && this.scoreCells[i].score === 0) {
+                    this.scoreCells[i].highlightPossibleAlternative(fyror);
+                }
+            }
+
+            if (femmor > 0) {
+                if (this.scoreCells[i].type === 'Femmor' && this.scoreCells[i].score === 0) {
+                    this.scoreCells[i].highlightPossibleAlternative(femmor);
+                }
+            }
+
+            if (sexor > 0) {
+                if (this.scoreCells[i].type === 'Sexor' && this.scoreCells[i].score === 0) {
+                    this.scoreCells[i].highlightPossibleAlternative(sexor);
                 }
             }
         }
@@ -161,6 +192,9 @@ function ScoreCell(player, playerName, type) {
     this.resetPossibleAlternative = function () {
         this.possibleAlternative = false;
         $(this.TD).removeClass("possible-alternative");
+        if (this.score === 0 && this.isSpecialColumn === false) {
+            $(this.TD).text("");
+        }
     };
 
     this.highlightPossibleAlternative = function (value) {
@@ -189,7 +223,7 @@ function ScoreCell(player, playerName, type) {
         var thiS = this;
         setTimeout(function () {
             thiS.toggleSelected();
-            thiS.resetPossibleAlternative();
+            thiS.player.resetPossibleAlternatives();
             DICE_SET.reset();
             spelPlan.nextPlayer();
         }, 2000);
@@ -239,10 +273,12 @@ function Spelplan() {
     this.nextPlayer = function () {
         var activePlayer = this.getActivePlayerNr();
         this.players[activePlayer].setInactive();
-        if (activePlayer !== this.players.length) {
+        if (activePlayer !== this.players.length - 1) {
             activePlayer++;
+            this.players[activePlayer].setActive();
+        } else {
+            this.players[0].setActive();
         }
-        this.players[activePlayer].setActive();
     };
 
     this.getActivePlayerNr = function () {
@@ -294,7 +330,7 @@ function Spelplan() {
                         $(td).addClass("calc-summ-cell");
                     }
                     //
-                    $(td).text(this.players[i].playerNr + " / " + this.players[i].scoreCells[x].type);
+//                    $(td).text(this.players[i].playerNr + " / " + this.players[i].scoreCells[x].type);
                     $(td).addClass("common-cell");
                     //
                     this.applyStyleCommonCell(this.players[i].scoreCells[x], td);

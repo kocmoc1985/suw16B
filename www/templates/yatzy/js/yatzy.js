@@ -70,10 +70,21 @@ function DiceSet() {
 
     this.reset = function () {
         this.waitForScore = false;
+        //
+        this.removeLockedIcons();
+        //
         for (var i = 0; i < this.dices.length; i++) {
             this.dices[i].reset();
         }
+        //
         this.throws = 0;
+        //
+        $(".dice-img").each(function () {
+            $(this).attr("src", "");
+            $(this).attr("alt", "");
+        });
+
+
     };
 
     this.printAll = function () {
