@@ -43,9 +43,18 @@ function Player(playerName) {
     this.scoreCells = [];
     this.active = false;
 
+
+
     this.setActive = function () {
         this.active = true;
         $(this.TH).addClass('active-player');
+        this.paintPlayersColumn();
+    };
+
+    this.paintPlayersColumn = function () {
+        for (var i = 0; i < this.scoreCells.length; i++) {
+            $(this.scoreCells[i].TD).addClass("active-player-col");
+        }
     };
 
     this.setInactive = function () {
@@ -80,7 +89,6 @@ function Player(playerName) {
         }
     };
 
-
     this.calcAndShowSumm = function () {
         var summ = 0;
         var summCell;
@@ -113,7 +121,7 @@ function Player(playerName) {
 
     this.createScoreCells = function () {
         for (var i = 0; i < ruleNames.length; i++) {
-            var scoreCell = new ScoreCell(this.playerName, ruleNames[i]);
+            var scoreCell = new ScoreCell(this,this.playerName, ruleNames[i]);
             this.scoreCells.push(scoreCell);
         }
     };
@@ -121,10 +129,11 @@ function Player(playerName) {
     this.createScoreCells();
 }
 
-function ScoreCell(playerName, type) {
+function ScoreCell(player, playerName, type) {
     //
     this.TD;
     //
+    this.player = player;
     this.playerName = playerName;
     this.type = type;
     this.selected = false;
@@ -160,9 +169,19 @@ function ScoreCell(playerName, type) {
         this.TD = TD;
     };
 
-    this.setSelected = function () {
-        $(this.TD).addClass("col-selected");
-        this.selected = true;
+    this.toggleSelected = function () {
+        //
+        if (this.player.active === false) {
+            return;
+        }
+        //
+        if (this.selected === false) {
+            $(this.TD).addClass("col-selected");
+            this.selected = true;
+        } else {
+            $(this.TD).removeClass("col-selected");
+            this.selected = false;
+        }
     };
 
     this.checkIfSpecialCol = function () {
@@ -213,6 +232,10 @@ function Spelplan() {
             var td = $.parseHTML("<td></td>");
             $(td).text(ruleNames[x]);
             $(tr).append(td);
+            //
+            if (this.checkIfSpecialCol(ruleNames[x])) {
+                $(td).addClass("name-col-special");
+            }
             //
             for (var i = 0; i < this.players.length; i++) {
                 //

@@ -4,9 +4,13 @@ var DICES_ARR = DICE_SET.dices;
 //
 var player1 = new Player("Player 1");
 var player2 = new Player("Player 2");
+var player3 = new Player("Player 3");
+//
 var spelPlan = new Spelplan();
+//
 spelPlan.addPlayer(player1);
 spelPlan.addPlayer(player2);
+spelPlan.addPlayer(player3);
 
 $(document).ready(function () {
     spelPlan.createTable();
@@ -29,7 +33,7 @@ function addEventTestBtn() {
 function addEventCommonCellCliked() {
     $("body").on('click', '.common-cell', function () {
         var cellObj = $(this).data("cellObj");
-        cellObj.setSelected();
+        cellObj.toggleSelected();
     });
 }
 

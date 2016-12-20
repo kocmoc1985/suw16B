@@ -3,11 +3,11 @@ table, th, td {
 }
 
 .col-selected{
-    background-color: lightblue;
+    background-color: lightblue !important;
 }
 
 .col-special{
-    background-color: lightgreen;
+    background-color: lightcyan !important;
 }
 
 .empty-th{
@@ -20,5 +20,18 @@ table, th, td {
 }
 
 .possible-alternative{
-    background-color: lightyellow;
+    background-color: lightyellow !important;
+}
+
+.active-player-col{
+    background-color: lightgreen;
+}
+
+.active-player-col:not(.col-special):hover{
+    cursor: pointer;
+}
+
+.name-col-special, .col-special{
+    border: 2px solid black;
+    font-weight: bold;
 }
