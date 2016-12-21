@@ -31,6 +31,14 @@ function getScrollPosition() {
     return $(window).scrollTop();
 }
 
+function isScrolledToTop(){
+    if($(window).scrollTop() === 0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 /**
  * Super important!
  * get the distance from elements top to the top of the view port
@@ -121,6 +129,10 @@ function scrollIntoView(selector) {
             scrollTop: $(selector).offset().top - 20
         }, 1000);
     }
+}
+
+function scrollToTop(){
+     $('html, body').animate({"scrollTop": "0px"}, 1000);
 }
 
 /**
