@@ -39,6 +39,14 @@ function isScrolledToTop(){
     }
 }
 
+function isScrolledToBottom(tollerance) {
+    if ($(window).scrollTop() + $(window).height() > $(document).height() - tollerance) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /**
  * Super important!
  * get the distance from elements top to the top of the view port
