@@ -83,8 +83,6 @@ function DiceSet() {
             $(this).attr("src", "");
             $(this).attr("alt", "");
         });
-
-
     };
 
     this.printAll = function () {
@@ -92,7 +90,6 @@ function DiceSet() {
             console.log(this.dices[i].toString());
         }
     };
-
 
     this.toString = function () {
         return "throws: " + this.throws +
