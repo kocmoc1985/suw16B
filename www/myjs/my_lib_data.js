@@ -1,4 +1,5 @@
 
+
 /**
  * Very important when assigning index to elements like 
  * "side-bar-entries" to be able to retrieve them later
@@ -31,6 +32,23 @@ function includeHtml(url, selector, addType) {
     } else {
         $(selector).append(html);
     }
+}
+
+
+function ajaxSync() {
+    $.ajax({
+        async: true,
+        type: 'POST',
+        dataType: 'json',
+        url: "http://localhost:3000/",
+        data: {param1: "", param2: "", param3: "", param4: ""},
+        success: function (json) {
+           
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+           
+        }
+    });
 }
 
 function includeHtmlAsync(url, selector, addType) {
