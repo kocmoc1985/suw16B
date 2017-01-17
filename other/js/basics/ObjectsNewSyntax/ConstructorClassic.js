@@ -1,3 +1,5 @@
+'use strict';
+
 class Organism {
 
   constructor(alive = true, cool = false){
@@ -6,7 +8,8 @@ class Organism {
     this.cool = cool;
 
   }
-
+  
+ 
 }
 
 var anOrganism = new Organism(false,true);

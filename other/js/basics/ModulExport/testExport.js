@@ -7,4 +7,4 @@ var animal1 = new Animal(
 
 console.log(animal1.sayHi());
 
-console.log("\n\n_name",animal1._name);
+console.log("\n\n:Result: ",animal1._name);
