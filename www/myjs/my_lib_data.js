@@ -35,7 +35,7 @@ function includeHtml(url, selector, addType) {
 }
 
 
-function ajaxSync() {
+function ajaxAsync() {
     $.ajax({
         async: true,
         type: 'POST',
