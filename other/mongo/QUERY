@@ -1,0 +1,8 @@
+ BASIC QUERIES:
+ 
+ ALL:    {} - empty brackets as parameter
+ SINGLE: {name:value}
+ AND:    {name:{$in:[param1,param2]}
+ OR:     {$or:[{name:param1},{name:param2}]}
+ 
+//==============================================================================

@@ -1,0 +1,27 @@
+
+Show all Shema's: *show dbs*
+
+Use give shema: *use test*
+
+Show all collections in Schema: *show collections*
+
+Show all entries in a Shema: *db.testcollection.find()*
+
+Drop actual Schema: *db.dropDatabase()*
+
+================================================================================
+
+//Connecting to the DB
+var mongoose = require('mongoose');
+var Model = require('./Cats.model')(mongoose);
+
+mongoose.connect('mongodb://10.87.0.145/test'); //mongodb://localhost/kittendb
+var db = mongoose.connection;
+
+db.once('open', function (){
+    console.log("Connected to MongoDB");
+    connected();
+});
+
+
+================================================================================

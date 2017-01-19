@@ -1,0 +1,8 @@
+New versions don't work with winXP
+
+For winXP use:
+
+1. Mongoose : 3.8 
+
+2. If you use MongoDB (standalone) use ver: 1.4.9
+
