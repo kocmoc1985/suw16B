@@ -50,4 +50,8 @@ hus.addVaning(vaningTwo);
 
 //=======================
 
-console.log(hus);
+//console.log(hus);
+
+var jsonStr = JSON.stringify(hus);
+
+console.log(jsonStr);
