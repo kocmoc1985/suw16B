@@ -1,0 +1,6 @@
+
+OBS! win XP not supported since "node-v6.0.0"
+
+Latest supported XP version is: node-v5.12.0
+
+NOTE!!!: node-v5.12.0 does not support JavaScript ES6 syntax so you need to use 'use strict'
