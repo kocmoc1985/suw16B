@@ -15,7 +15,7 @@ function exists(selector) {
     }
 }
 
-function refreshWindow(){
+function refreshWindow() {
     window.location = window.location;
 }
 
