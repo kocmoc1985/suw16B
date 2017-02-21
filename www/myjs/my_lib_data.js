@@ -1,5 +1,50 @@
+//VERY IMPORTANT
+function getVariableOrFunctionByName(){
+    var func = window['addUser'];
+}
 
+//SUPER IMPORTANT
+function makePpropertiesWithParams(param1,param2) {
+    var obj = {};
+    obj[param1] = 'test@mail.com';
+    obj[param2] = '850131-0737';
+    //
+    var willBeThis = {param1: 'test@mail.com', param2: '850131-0737'};
+}
 
+function ajaxAsync() {
+    $.ajax({
+        async: true,
+        type: 'POST',
+        dataType: 'json',
+        processData: false,
+        headers: {"Content-Type": "application/json"},
+        url: "http://localhost:3000/",
+        data: {param1: "aa", param2: "bb", param3: "cc", param4: "dd"},
+        success: function (json) {
+
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function ajaxAsyncB(properties, callback) {
+    $.ajax({
+        async: true,
+        type: 'POST',
+        dataType: 'json',
+        processData: false,
+        headers: {"Content-Type": "application/json"},
+        url: "http://localhost:3000/",
+        data: JSON.stringify(properties),
+        success: callback,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+        }
+    });
+}
 /**
  * Very important when assigning index to elements like 
  * "side-bar-entries" to be able to retrieve them later
@@ -35,21 +80,7 @@ function includeHtml(url, selector, addType) {
 }
 
 
-function ajaxAsync() {
-    $.ajax({
-        async: true,
-        type: 'POST',
-        dataType: 'json',
-        url: "http://localhost:3000/",
-        data: {param1: "", param2: "", param3: "", param4: ""},
-        success: function (json) {
-           
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-           
-        }
-    });
-}
+
 
 function includeHtmlAsync(url, selector, addType) {
     $.ajax({

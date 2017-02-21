@@ -1,3 +1,12 @@
+function containsElement(elemToCheck,containsElem){
+    var elems =  $(elemToCheck).find(containsElem);
+    if(elems.length > 0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function exists(selector) {
     if ($(selector).length) {
         return true;
