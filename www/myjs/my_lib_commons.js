@@ -1,3 +1,13 @@
+//Not approved
+function existsWithFind(selectorOrObj,toFindSelector) {
+    var rst = $(selectorOrObj).find(toFindSelector);
+    if (rst.length > 0) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function exists(selector) {
     if ($(selector).length) {
         return true;
@@ -6,7 +16,7 @@ function exists(selector) {
     }
 }
 
-function refreshWindow(){
+function refreshWindow() {
     window.location = window.location;
 }
 

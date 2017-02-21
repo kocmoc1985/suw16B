@@ -1,10 +1,19 @@
+/**
+ * Suuper Important
+ * @returns {undefined}
+ */
+function DOMNodeInserted() {
+    $(document).on('DOMNodeInserted', '.empty-th', function () {
+
+    });
+}
 
 /**
  * Check for changes in DOM
  * @returns {undefined}
  */
 function checkDOMChangeListener() {
-   
+
     if (exists(".php-module")) {
         $("#content").addClass("content-background-a");
     } else {
@@ -29,7 +38,7 @@ function addListenerWithOn() {
     //
 }
 
-function windowScrollListener(){
+function windowScrollListener() {
     $(window).on('scroll', function () {
         if ($(window).scrollTop() > 100) {
             addScrollTopController();
