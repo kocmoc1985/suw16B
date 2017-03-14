@@ -3,10 +3,10 @@
  * ITERATE ATTRIBUTES OF AN OBJECT
  * @returns {undefined}
  */
-function iterateA(obj){
-     $.each(obj, function (name, value) {
-         
-     });
+function iterateA(obj) {
+    $.each(obj, function (name, value) {
+
+    });
 }
 
 /**
@@ -14,8 +14,25 @@ function iterateA(obj){
  * @param {type} data
  * @returns {undefined}
  */
-function iterateB(array){
-     $(array).each(function (index, value) {
-         
-     });
+function iterateB(array) {
+    $(array).each(function (index, value) {
+
+    });
+
+//==============================================================================
+
+    var obj = {a: 1, b: 2, c: 3};
+
+    for (var prop in obj) {
+        console.log('obj.' + prop, '=', obj[prop]);
+    }
+
+// Output:
+// "obj.a = 1"
+// "obj.b = 2"
+// "obj.c = 3"
+
+//==============================================================================
+
+
 }

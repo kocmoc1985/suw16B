@@ -1,10 +1,24 @@
+function initiaizeClassOnlyOnce() {
+    if (FLAG_A.once) {
+        throw(new Error("MyModals can only be initialized once"));
+    }
+    FLAG_A.once = true;
+}
+
+function preventUselessRequests() {
+    clearTimeout(this.updateRun);
+    this.updateRun = setTimeout(function () {
+        //Do something
+    }, 50);
+}
+
 //VERY IMPORTANT
-function getVariableOrFunctionByName(){
+function getVariableOrFunctionByName() {
     var func = window['addUser'];
 }
 
 //SUPER IMPORTANT
-function makePpropertiesWithParams(param1,param2) {
+function makePpropertiesWithParams(param1, param2) {
     var obj = {};
     obj[param1] = 'test@mail.com';
     obj[param2] = '850131-0737';
@@ -111,12 +125,24 @@ function convertStringToHtmlExample() {
     $(htmlConverted).find("p").text("Try convert");
 }
 
+function loadTemplateAsync(url, cb) {
+    //
+    $.ajax({
+        url: url,
+        type: "GET",
+        dataType: 'html',
+        async: true
+    }).done(function (res) {
+        cb(res);
+    });
+}
+
 /**
  * To convert the rcieved html string into jquery object use: var obj = $.parseHTML(responseText)
  * @param {type} url
  * @returns {jqXHR.responseText}
  */
-function loadHtml(url) {
+function loadTemplate(url) {
     //
     var html = $.ajax({
         url: url,
@@ -127,6 +153,7 @@ function loadHtml(url) {
     //
     return html;
 }
+
 
 function getJsonFromUrlSync(url) {
     //
