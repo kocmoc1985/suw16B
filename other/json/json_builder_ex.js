@@ -61,7 +61,7 @@ console.log(jsonStr);
 var parsedObj = JSON.parse(jsonStr);
 
 //==============================================================================
-//iterateParsedJson(parsed);
+//iterateParsedJson(parsedObj);
 
 function iterateParsedJson(parsed) {
     for (var key in parsed) {
@@ -81,8 +81,8 @@ function iterateParsedJson(parsed) {
 //==============================================================================
 var depth = 0;
 var returArr = [];
-searchParsedJson(parsedObj, "floor", "ett", returArr);
-console.log("ready: " + returArr.toString());
+//searchParsedJson(parsedObj, "floor", "ett", returArr);
+//console.log("ready: " + returArr.toString());
 
 
 function searchParsedJson(parsed, keyIn, valueIn, returArr) {
