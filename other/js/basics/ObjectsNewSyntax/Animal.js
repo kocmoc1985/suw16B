@@ -1,3 +1,5 @@
+'use strict';
+
 class Animal {
 
   constructor(name,species,birthDate){
@@ -41,16 +43,6 @@ class Animal {
 
 //==============================================================================
 
-// Make all properties with starting
-// with "_" private for real
-var classprivates = require("classprivates");
-Animal = classprivates(Animal);
-
-// Export our class as a module
-module.exports = Animal;
-
-var Animal = require('./animal.class');
-
 // Test 
 var animal1 = new Animal(
   "Garfield", "cat", "2010-11-29"
@@ -59,3 +51,13 @@ var animal1 = new Animal(
 console.log(animal1.sayHi());
 
 console.log("\n\n_name",animal1._name);
+
+// Make all properties with starting
+// with "_" private for real
+//var classprivates = require("classprivates");
+//Animal = classprivates(Animal);
+//
+//// Export our class as a module
+//module.exports = Animal;
+//
+//var Animal = require('./animal.class');
